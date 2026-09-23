@@ -1,0 +1,209 @@
+/*-- scss:defaults --*/
+
+@import "_fonts_embedded.scss";
+
+$esp-navy: #2c3254;
+$esp-beige: #f4f2e4;
+$esp-light-beige: #fffdf2;
+$esp-green: #70ad8f;
+$esp-hover-green: #84cca8;
+$esp-purple: #472b51;
+$esp-gold: #ebc382;
+$esp-pink: #ffbfa7;
+$esp-headline-black: #232849;
+$esp-text-black: #3c4164;
+$esp-divider: #caccd4;
+
+$body-bg: $esp-beige;
+$body-color: $esp-text-black;
+$link-color: $esp-purple;
+
+$presentation-heading-font: "Neue Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
+$presentation-font-size-root: 30px;
+$presentation-h1-font-size: 2em;
+$presentation-h2-font-size: 1.35em;
+$presentation-h3-font-size: 1.05em;
+
+/*-- scss:rules --*/
+
+.reveal {
+  font-family: "Public Sans", -apple-system, sans-serif;
+  color: $esp-text-black;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  color: $esp-headline-black;
+  font-family: "Neue Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.reveal .slides section .fragment { color: $esp-text-black; }
+
+.reveal .slide-background { background-color: $esp-beige; }
+
+/* Title slide: styled as a full card, not a content-hugging box */
+.reveal #title-slide {
+  background-color: $esp-navy;
+  width: 86%;
+  min-height: 62%;
+  margin: 0 auto;
+  padding: 2.2em 3em;
+  box-sizing: border-box;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+.reveal #title-slide h1.title {
+  font-family: "Publico Banner", Georgia, serif;
+  font-weight: 500;
+  color: $esp-beige;
+  font-size: 1.7em;
+  margin-bottom: 0.4em;
+}
+.reveal #title-slide .subtitle {
+  font-family: "Neue Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
+  color: $esp-pink;
+  font-size: 0.75em;
+  font-weight: 500;
+  margin-bottom: 1.4em;
+}
+.reveal #title-slide .quarto-title-author-name,
+.reveal #title-slide .date {
+  color: $esp-beige !important;
+  font-family: "Public Sans", sans-serif;
+  font-size: 0.65em;
+  opacity: 0.85;
+}
+.reveal #title-slide .date {
+  text-align: center;
+}
+
+/* Section titles get the accent as a rule, never as a fill */
+.reveal h2 {
+  border-bottom: 3px solid $esp-green;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
+}
+
+.reveal strong { color: $esp-headline-black; font-weight: 600; }
+
+/* Callout box: accent used as a rule/tint, never a full-bleed accent background */
+.callout-box {
+  background-color: $esp-light-beige;
+  border-left: 6px solid $esp-green;
+  padding: 0.55em 1em;
+  border-radius: 4px;
+  font-size: 0.85em;
+  margin: 0.5em 0;
+}
+
+/* Images default to centered; the logo has its own absolute positioning */
+.reveal .slides section img:not(.slide-logo) {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.origin-block {
+  background-color: rgba(71, 43, 81, 0.06);
+  border-left: 6px solid $esp-purple;
+  padding: 0.55em 1em;
+  border-radius: 4px;
+  font-size: 0.85em;
+  margin-bottom: 0.5em;
+}
+
+.big-stat {
+  font-family: "Publico Banner", Georgia, serif;
+  font-weight: 500;
+  font-size: 2.6em;
+  color: $esp-navy;
+  text-align: center;
+  margin: 0.2em 0;
+}
+
+.reveal table {
+  font-size: 0.8em;
+  margin: 0.6em auto;
+}
+.reveal table thead th {
+  color: $esp-navy;
+  border-bottom: 2px solid $esp-divider;
+}
+.reveal table td, .reveal table th {
+  border-bottom: 1px solid $esp-divider;
+  padding: 0.3em 0.7em;
+}
+
+.reveal .footer, .reveal .slide-number {
+  color: $esp-text-black;
+  opacity: 0.6;
+}
+
+.reveal .columns { display: flex; gap: 1.5em; }
+
+/* Process flow: numbered boxes feeding into one another */
+.flow-row {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  margin-top: 2em;
+}
+.flow-box {
+  background-color: $esp-navy;
+  border-radius: 10px;
+  padding: 1.3em 1.1em;
+  width: 21%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.55em;
+}
+.flow-step {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 50%;
+  background-color: $esp-green;
+  color: $esp-navy;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Neue Haas Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 0.95em;
+}
+.flow-title {
+  font-family: "Neue Haas Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 1.05em;
+  color: $esp-beige;
+}
+.flow-sub {
+  font-size: 0.72em;
+  color: $esp-beige;
+  opacity: 0.85;
+  line-height: 1.35;
+}
+.flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4%;
+  font-size: 1.6em;
+  font-weight: 700;
+  color: $esp-navy;
+}
+
+/* Text under a stretched chart: smaller, with room above the footer */
+.chart-note {
+  font-size: 0.72em;
+  line-height: 1.35;
+  margin-bottom: 0.6em;
+}
+.chart-note .callout-box { font-size: 1em; }

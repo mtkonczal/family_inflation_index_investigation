@@ -1,0 +1,63 @@
+cat_id,major,cat_label,cex_item_code,in_cpi_scope,cpi_item_code,cpi_item_name,cpi_level,ri,series_start,confidence,note
+01,Food,Food at home,FOODHOME,TRUE,SAF11,Food at home,2,8.071,1997-01-01,high,Direct counterpart.
+02,Food,Food away from home,FOODAWAY,TRUE,SEFV,Food away from home,2,5.412,1997-01-01,high,Direct counterpart. CEX includes tips; CPI captures them in the priced item.
+03,Alcohol,Alcoholic beverages,ALCBEVG,TRUE,SAF116,Alcoholic beverages,2,0.844,1997-01-01,high,Direct counterpart. Covers both at-home and away-from-home alcohol in each source.
+06,Housing,"Owned dwellings: maintenance, repairs, insurance",OWNEXPEN,PARTIAL,SEHD,Tenants' and household insurance,2,0.408,1997-12-01,low,"WEAK MAPPING. CEX owner maintenance, repairs and insurance. Only the insurance leg has a CPI counterpart (tenants' and household insurance). CPI treats owner-occupied repair as an intermediate input to housing services captured by OER, so the repair leg has no target. Dropped entirely under scope_cpi_b."
+07,Housing,Rented dwellings,RNTDWELL,TRUE,SEHA,Rent of primary residence,2,7.75,1997-01-01,high,"CEX rented dwellings is 96 pct contract rent (210110), which is exactly SEHA. The residual is renter maintenance and insurance (RNTEXPEN), conceptually SEHD."
+08,Housing,Other lodging,OTHLODGE,TRUE,SEHB,Lodging away from home,2,1.364,1997-12-01,medium,"CEX other lodging = lodging on out-of-town trips plus housing while at school (both in SEHB) plus owned vacation homes, which is owner shelter with no CPI consumption counterpart."
+09,Utilities,Natural gas,NATRLGAS,TRUE,SEHF02,Utility (piped) gas service,4,0.684,1997-01-01,high,Direct counterpart (utility piped gas service).
+10,Utilities,Electricity,ELECTRIC,TRUE,SEHF01,Electricity,4,2.419,1997-01-01,high,Direct counterpart.
+11,Utilities,Fuel oil and other fuels,OTHRFUEL,TRUE,SEHE,Fuel oil and other fuels,3,0.151,1997-01-01,high,Direct counterpart (fuel oil and other fuels).
+12,Utilities,Telephone services,PHONE,TRUE,SEED,Telephone services,3,1.529,1997-12-01,high,"CEX residential plus cellular service maps to CPI telephone services (SEED03 wireless, SEED04 residential)."
+13,Utilities,Water and other public services,WATER,TRUE,SEHG,Water and sewer and trash collection services,2,1.11,1997-12-01,high,"Direct counterpart (water, sewer, trash collection)."
+14,Household ops,Personal services (childcare proxy),HHPERSRV,TRUE,SEEB03,Day care and preschool,3,0.724,1997-01-01,medium,"CHILDCARE PROXY, see decisions_log D-06. SEEB03 is day care and preschool. CEX HHPERSRV also contains elderly and invalid care, which has no CPI stratum; that leg is 3.5 pct of the total for married-with-children but 48 pct for single-person and other CUs."
+15,Household ops,Other household expenses,HHOTHXPN,TRUE,SEEE,"Information technology, hardware and services",2,1.666,1997-01-01,medium,"Computers, software, accessories and internet service, which CEX files under household operations (690111, 690119, 690120, 690114). Internet alone is the single largest item in this CEX category."
+15,Household ops,Other household expenses,HHOTHXPN,TRUE,SEHP,Household operations,2,NA,1997-12-01,medium,"Housekeeping, gardening, pest control, home security, moving and storage."
+16,Household ops,Housekeeping supplies,HKPGSUPP,TRUE,SEHN,Housekeeping supplies,2,0.788,1997-01-01,high,Direct counterpart (cleaning and paper products).
+17,Household ops,Household furnishings and equipment,HHFURNSH,TRUE,SEHJ,Furniture and bedding,2,0.933,1997-01-01,high,Furniture and bedding.
+17,Household ops,Household furnishings and equipment,HHFURNSH,TRUE,SEHM,"Tools, hardware, outdoor equipment and supplies",2,0.69,1997-12-01,high,"Tools, hardware, outdoor equipment and supplies."
+17,Household ops,Household furnishings and equipment,HHFURNSH,TRUE,SEHL,Other household equipment and furnishings,2,0.498,1997-12-01,high,Other household equipment and furnishings.
+17,Household ops,Household furnishings and equipment,HHFURNSH,TRUE,SEHH,Window and floor coverings and other linens,2,0.283,1997-12-01,high,Household textiles / window and floor coverings and other linens.
+17,Household ops,Household furnishings and equipment,HHFURNSH,TRUE,SEHK,Appliances,2,0.216,1997-12-01,high,Major and small appliances.
+18,Apparel,Apparel: men and boys,MENBOYS,TRUE,SAA1,Men's and boys' apparel,1,0.645,1997-01-01,high,Direct counterpart (men's and boys' apparel).
+19,Apparel,Apparel: women and girls,WMNSGRLS,TRUE,SAA2,Women's and girls' apparel,1,1.01,1997-01-01,high,Direct counterpart (women's and girls' apparel).
+20,Apparel,Apparel: children under 2,INFANT,TRUE,SEAF,Infants' and toddlers' apparel,1,0.097,1997-01-01,high,Direct counterpart (infants' and toddlers' apparel).
+21,Apparel,Footwear,FOOTWEAR,TRUE,SEAE,Footwear,1,0.528,1997-01-01,high,Direct counterpart.
+22,Apparel,Other apparel products and services,OTHAPPRL,TRUE,SEAG,Jewelry and watches,1,0.235,1997-01-01,high,Jewelry and watches.
+22,Apparel,Other apparel products and services,OTHAPPRL,TRUE,SEGD03,Laundry and dry cleaning services,3,0.158,1997-12-01,high,Laundry and dry cleaning services.
+22,Apparel,Other apparel products and services,OTHAPPRL,TRUE,SEGD04,Apparel services other than laundry and dry cleaning,3,0.027,1997-12-01,high,"Apparel services other than laundry: alterations, repair, rental, storage."
+22,Apparel,Other apparel products and services,OTHAPPRL,TRUE,SERE02,"Sewing machines, fabric and supplies",2,0.027,1997-12-01,medium,"Sewing machines, fabric and supplies, matching CEX 420115 sewing and needlework materials."
+23,Transport,Vehicle purchases (net outlay),VEHPURCH,PARTIAL,SETA01,New vehicles,3,3.566,1997-01-01,medium,New vehicles. CONCEPT MISMATCH: CEX reports net outlay (net of trade-in); CPI prices the gross transaction value.
+23,Transport,Vehicle purchases (net outlay),VEHPURCH,PARTIAL,SETA02,Used cars and trucks,3,1.889,1997-01-01,medium,Used cars and trucks. Same net-outlay caveat.
+24,Transport,Gasoline and other fuels,GASFUEL,TRUE,SETB,Motor fuel,2,3.189,1997-01-01,high,"Direct counterpart (motor fuel). Note the 2023 CEX definition change removed motor oil, see decisions_log D-05."
+25,Transport,Other vehicle expenses,VEHOTHXP,PARTIAL,SETE,Motor vehicle insurance,2,3.015,1997-01-01,high,Motor vehicle insurance.
+25,Transport,Other vehicle expenses,VEHOTHXP,PARTIAL,SETD,Motor vehicle maintenance and repair,2,1.271,1997-01-01,high,Motor vehicle maintenance and repair.
+25,Transport,Other vehicle expenses,VEHOTHXP,PARTIAL,SETF,Motor vehicle fees,2,0.537,1997-12-01,high,"Motor vehicle fees: registration, licences, inspection, tolls."
+25,Transport,Other vehicle expenses,VEHOTHXP,PARTIAL,SETC,Motor vehicle parts and equipment,2,0.461,1997-01-01,high,Motor vehicle parts and equipment.
+25,Transport,Other vehicle expenses,VEHOTHXP,PARTIAL,SETA04,Car and truck rental,3,0.131,1997-12-01,high,Car and truck rental.
+25,Transport,Other vehicle expenses,VEHOTHXP,PARTIAL,SETA03,Leased cars and trucks,3,NA,2001-12-01,high,Leased cars and trucks.
+26,Transport,Public and other transportation,PUBTRANS,TRUE,SETG,Public transportation,1,1.116,1997-01-01,high,"Direct counterpart: airline, bus, rail, transit, taxi, ship fares."
+27,Health,Health insurance,HLTHINSR,PARTIAL,SEME,Health insurance,2,0.591,2005-12-01,low,LARGEST CONCEPT MISMATCH AFTER SHELTER. CEX reports household out-of-pocket premiums (4.5 to 4.9 pct of spending); CPI health insurance captures only retained earnings and carries a relative importance of about 0.6 pct. The two measure different things. Do not treat this weight as comparable.
+28,Health,Medical services,MEDSERVS,TRUE,SEMC,Professional services,2,3.626,1997-01-01,high,"Professional services: physician, dental, eyecare, other practitioners."
+28,Health,Medical services,MEDSERVS,TRUE,SEMD,Hospital and related services,2,2.326,1997-01-01,high,Hospital and related services including nursing homes.
+29,Health,Drugs,DRUGS,TRUE,SEMF,Medicinal drugs,2,1.34,2009-12-01,high,"Medicinal drugs (prescription, nonprescription, vitamins)."
+30,Health,Medical supplies,MEDSUPPL,TRUE,SEMG,Medical equipment and supplies,2,0.115,2009-12-01,high,Medical equipment and supplies.
+31,Entertainment,Fees and admissions,FEESADM,TRUE,SERF,Other recreation services,1,1.871,1997-12-01,high,"Direct counterpart: SERF01 club memberships, SERF02 admissions, SERF03 fees for lessons."
+32,Entertainment,Audio and visual equipment and services,TVAUDIO,TRUE,SERA,Video and audio,1,1.168,1997-01-01,high,"Video and audio, including cable/satellite/streaming service and equipment."
+32,Entertainment,Audio and visual equipment and services,TVAUDIO,TRUE,SERE03,Music instruments and accessories,2,0.03,1997-12-01,high,"Music instruments and accessories, which CEX files under audio and visual (610130)."
+33,Entertainment,"Pets, toys, hobbies, and playground equipment",PETSPLAY,TRUE,SERB,"Pets, pet products and services",1,1.048,1997-12-01,high,"Pets, pet products and services."
+33,Entertainment,"Pets, toys, hobbies, and playground equipment",PETSPLAY,TRUE,SERE01,Toys,2,0.265,1997-01-01,high,"Toys, matching CEX TOYS (toys, hobbies, and playground equipment)."
+34,Entertainment,"Other entertainment supplies, equipment, services",ENTEROTH,TRUE,SERC,Sporting goods,1,0.62,1997-01-01,high,"Sporting goods: SERC01 sports vehicles including bicycles and motorized recreational vehicles, SERC02 sports equipment."
+34,Entertainment,"Other entertainment supplies, equipment, services",ENTEROTH,TRUE,SERD,Photography,1,0.073,1997-12-01,high,"Photography: equipment, supplies, processing."
+35,Personal care,Personal care products and services,PERSCARE,TRUE,SEGB,Personal care products,2,0.657,1997-01-01,high,Personal care products.
+35,Personal care,Personal care products and services,PERSCARE,TRUE,SEGC,Personal care services,2,0.64,1997-01-01,high,Personal care services.
+36,Reading,Reading,READING,TRUE,SERG,Recreational reading materials,1,0.098,1997-01-01,high,"Recreational reading materials: newspapers, magazines, books."
+37,Education,Education,EDUCATN,PARTIAL,SEEB01,College tuition and fees,3,1.272,1997-01-01,high,College tuition and fees.
+37,Education,Education,EDUCATN,PARTIAL,SEEB02,Elementary and high school tuition and fees,3,0.297,1997-01-01,high,Elementary and high school tuition and fees.
+37,Education,Education,EDUCATN,PARTIAL,SEEA,Educational books and supplies,2,0.087,1997-01-01,high,Educational books and supplies.
+37,Education,Education,EDUCATN,PARTIAL,SEEB04,Technical and vocational school tuition and fixed fees,3,0.047,1997-12-01,high,Technical and vocational school tuition and fixed fees.
+38,Tobacco,Tobacco products and smoking supplies,TOBACCO,TRUE,SEGA,Tobacco and smoking products,1,0.562,1997-01-01,high,Direct counterpart (tobacco and smoking products).
+39,Miscellaneous,Miscellaneous,MISC,PARTIAL,SEGD05,Financial services,3,0.234,1997-01-01,medium,"Financial services: bank charges, accounting, tax preparation."
+39,Miscellaneous,Miscellaneous,MISC,PARTIAL,SEGD02,Funeral expenses,3,0.157,1997-01-01,medium,Funeral expenses.
+39,Miscellaneous,Miscellaneous,MISC,PARTIAL,SEGE,Miscellaneous personal goods,2,0.157,1997-12-01,medium,Miscellaneous personal goods.
+39,Miscellaneous,Miscellaneous,MISC,PARTIAL,SEGD01,Legal services,3,NA,1997-01-01,medium,Legal services.

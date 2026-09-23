@@ -1,0 +1,107 @@
+Warning messages:
+1: package 'tibble' was built under R version 4.4.3 
+2: package 'tidyr' was built under R version 4.4.3 
+3: package 'readr' was built under R version 4.4.3 
+4: package 'lubridate' was built under R version 4.4.3 
+# Adjusted-passes validation log
+# built_at: 2026-09-23T09:41:37-0400
+
+## 1. Bases
+  consumption: 39 categories
+  ex_shelter: 34 categories
+  ex_housing: 25 categories
+  shelter categories dropped: OWNMORTG, 220211, OWNEXPEN, RNTDWELL, OTHLODGE
+  housing categories dropped: OWNMORTG, 220211, OWNEXPEN, RNTDWELL, OTHLODGE, NATRLGAS, ELECTRIC, OTHRFUEL, PHONE, WATER, HHPERSRV, HHOTHXPN, HKPGSUPP, HHFURNSH
+
+Preparing LB06 (composition)...
+  splice GASOIL -> GASFUEL at 2023:
+    2023 GASFUEL = 13816
+    2022 GASOIL = 16000
+    2023 GASOIL = 6
+  additivity OK [LB06]: 197 cells, worst 0.016%
+Preparing LB04 (age)...
+  additivity OK [LB04]: 283 cells, worst 0.027%
+Preparing LB17 (tenure)...
+  additivity OK [LB17]: 123 cells, worst 0.036%
+## 2. Partition checks, 2024
+  LB04 brackets sum to 135,760 of 135,760 CUs (100.000%)
+  LB17 owner+renter sum to 135,760 of 135,760 CUs (100.000%)
+
+## 3. Group characteristics, 2024
+  families with children:      mean age 44.3, homeowner 74.6%
+  single-person and other CUs: mean age 53.1, homeowner 51.0%
+  age gap -8.8 years, homeownership gap 23.6 pp
+
+## 4. Pass construction
+  [consumption] share sums: min 100.000 max 100.000  (39 categories)
+  [ex_shelter] share sums: min 100.000 max 100.000  (34 categories)
+  [ex_housing] share sums: min 100.000 max 100.000  (25 categories)
+
+## 5. Basket dissimilarity index (percent of budget needing reallocation)
+  consumption   n=39  observed 13.88  net of age 14.26  net of tenure 10.00
+  ex_shelter    n=34  observed  8.33  net of age  6.32  net of tenure  9.05
+  ex_housing    n=25  observed  7.27  net of age  6.08  net of tenure  7.81
+
+
+============== PASS A: NET OUT HOUSING (2024) ==============
+
+--- All housing removed, largest remaining gaps ---
+                               cat_label   fam single   gap   adj
+                               Education  5.33   3.14  2.19  2.19
+          Vehicle purchases (net outlay) 14.02  12.51  1.51  1.51
+                           Miscellaneous  2.64   4.08 -1.44 -1.44
+                        Health insurance  8.70   9.88 -1.18 -1.18
+                     Fees and admissions  2.88   1.77  1.11  1.11
+ Audio and visual equipment and services  1.86   2.91 -1.05 -1.05
+   Tobacco products and smoking supplies  0.55   1.36 -0.81 -0.81
+                     Food away from home 10.24   9.45  0.79  0.79
+         Public and other transportation  2.38   2.97 -0.60 -0.60
+                  Other vehicle expenses 10.45  11.02 -0.57 -0.57
+                                   Drugs  1.27   1.73 -0.45 -0.45
+                     Alcoholic beverages  1.27   1.63 -0.36 -0.36
+
+============== PASS B: AGE-ADJUSTED (2024) ==============
+
+--- Consumption base, gap net of age composition ---
+                                  cat_label  fam single    gap    adj
+                           Rented dwellings 5.10  15.22 -10.12 -12.10
+ Owned dwellings: mortgage interest and cha 7.16   4.08   3.08   2.20
+                                  Education 3.33   1.78   1.55   2.14
+             Vehicle purchases (net outlay) 8.75   7.10   1.65   1.67
+            Owned dwellings: property taxes 4.37   3.46   0.91   1.44
+ Owned dwellings: maintenance, repairs, ins 3.91   4.14  -0.23   1.04
+                              Other lodging 1.86   1.50   0.35   0.81
+                               Food at home 9.90   8.83   1.07   0.67
+                        Food away from home 6.39   5.36   1.03   0.64
+                        Fees and admissions 1.80   1.00   0.79   0.60
+        Personal services (childcare proxy) 1.79   0.34   1.45   0.60
+                     Other vehicle expenses 6.52   6.26   0.27   0.56
+
+============== PASS C: TENURE DECOMPOSITION ==============
+
+--- Consumption base, gap net of tenure composition ---
+                                  cat_label  fam single    gap   adj
+                           Rented dwellings 5.10  15.22 -10.12 -2.69
+ Owned dwellings: maintenance, repairs, ins 3.91   4.14  -0.23 -1.61
+                                  Education 3.33   1.78   1.55  1.47
+        Personal services (childcare proxy) 1.79   0.34   1.45  1.37
+ Owned dwellings: mortgage interest and cha 7.16   4.08   3.08  1.34
+                               Food at home 9.90   8.83   1.07  1.24
+             Vehicle purchases (net outlay) 8.75   7.10   1.65  1.10
+                        Food away from home 6.39   5.36   1.03  1.03
+                              Miscellaneous 1.65   2.32  -0.67 -0.73
+                           Health insurance 5.43   5.61  -0.18 -0.65
+                        Fees and admissions 1.80   1.00   0.79  0.64
+                   Other household expenses 1.85   2.22  -0.37 -0.55
+
+--- Basket dissimilarity (pct of budget to reallocate) ---
+        base n_cats diss_total diss_net_of_age diss_net_of_ten
+ consumption     39      13.88           14.26           10.00
+  ex_shelter     34       8.33            6.32            9.05
+  ex_housing     25       7.27            6.08            7.81
+
+Validation log: /Users/mtkonczal/Documents/GitHub/family_inflation_index_investigation/output/tables/t00b_adjusted_validation.txt
+## 8. Cross-script consistency vs 02_build_shares.R
+  78 category x group reconciliations, worst delta 0.0006 pp
+
+Cross-script consistency OK: worst delta 0.0006 pp vs 02_build_shares.R

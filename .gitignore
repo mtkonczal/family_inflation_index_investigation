@@ -1,0 +1,41 @@
+# --- OS / editor -----------------------------------------------------------
+.DS_Store
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# --- Secrets ---------------------------------------------------------------
+# API keys and BLS_EMAIL live here. Never commit.
+.Renviron
+
+# --- Raw BLS pulls (reproducible via R/01_download_data.R) ------------------
+# ~7 MB of cached .rds. Keep the manifest: it is the vintage record.
+data/raw/*.rds
+data/raw/ce_tables/
+!data/raw/download_manifest.txt
+
+# --- Large intermediates with no downstream reader --------------------------
+# Rebuilt by R/06 and R/07. The smaller data/derived/*.csv files stay tracked
+# because paper/family_inflation.qmd reads family_index.csv directly.
+data/derived/index_weights.csv
+output/tables/t17_gap_decomposition.csv
+output/tables/t22_dimension_decomposition.csv
+
+# --- Quarto build artifacts -------------------------------------------------
+.quarto/
+paper/family_inflation.html
+paper/family_inflation_files/
+slides/family_inflation_slides.html
+slides/family_inflation_slides_files/
+*_cache/
+
+# --- Licensed fonts ---------------------------------------------------------
+# Neue Haas Grotesk and Publico are commercial typefaces; do not redistribute.
+# _fonts_embedded.scss base64-embeds them. Public Sans (OFL) stays tracked.
+slides/assets/fonts/neue-haas-grotesk/
+slides/assets/fonts/publico/
+slides/_fonts_embedded.scss
+
+# --- Local tooling ---
+.claude/

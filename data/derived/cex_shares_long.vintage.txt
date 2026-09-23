@@ -1,0 +1,4 @@
+artifact: cex_shares_long
+built_at: 2026-09-23T09:41:21-0400
+rows: 9102
+cols: year, group, group_label, characteristics_code, cat_id, major, cat_label, item_code, in_cpi_scope, n_cu, dollars, totalexp, share_raw, share_cpi

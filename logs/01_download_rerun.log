@@ -1,0 +1,42 @@
+Warning messages:
+1: package 'tibble' was built under R version 4.4.3 
+2: package 'tidyr' was built under R version 4.4.3 
+3: package 'readr' was built under R version 4.4.3 
+4: package 'lubridate' was built under R version 4.4.3 
+Main caches present; download_manifest.txt left as the record of their vintage.
+Dimension files cached: cx.item (1214 rows), cx.characteristics (164), cu.item (400)
+Cache hit: cex_raw.rds (4.3 MB)
+Cache hit: cpi_raw.rds (2.9 MB)
+Building: cpiw_raw
+Downloading cw.data.0.Current (46.8 MB)...
+Downloading series file...
+  join area on (area_code)
+  join base on (base_code)
+  join item on (item_code)
+  join periodicity on (periodicity_code)
+  join seasonal on (seasonal)
+Note: 1,296 value(s) were not numeric and became NA (BLS writes '-' for suppressed or unavailable observations).
+Merging main data with series metadata...
+Cached: /Users/mtkonczal/Documents/GitHub/family_inflation_index_investigation/data/raw/cpiw_raw.rds (2.6 MB)
+  FAILED https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2012.xlsx: HTTP 404 for https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2012.xlsx
+  FAILED https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2013.xlsx: HTTP 404 for https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2013.xlsx
+  FAILED https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2014.xlsx: HTTP 404 for https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2014.xlsx
+  FAILED https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2015.xlsx: HTTP 404 for https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2015.xlsx
+  FAILED https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2016.xlsx: HTTP 404 for https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2016.xlsx
+  FAILED https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2017.xlsx: HTTP 404 for https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2017.xlsx
+  FAILED https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2018.xlsx: HTTP 404 for https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-housing-tenure-2018.xlsx
+  FAILED https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-income-deciles-before-taxes-2012.xlsx: HTTP 404 for https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-income-deciles-before-taxes-2012.xlsx
+  FAILED https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-income-deciles-before-taxes-2013.xlsx: HTTP 404 for https://www.bls.gov/cex/tables/calendar-year/mean-item-share-average-standard-error/cu-income-deciles-before-taxes-2013.xlsx
+CE standard-error tables: 65 cached (56 downloaded this run)
+
+=== CEX ===
+rows: 2,182,685
+years: 1984-2024
+cols: series_id, year, period, value, footnote_codes, date, freq, is_average, seasonal, category_code, subcategory_code, item_code, demographics_code, characteristics_code, process_code, series_title, begin_year, begin_period, end_year, end_period, category_text, category_display_level, category_selectable, category_sort_sequence, characteristics_text, characteristics_display_level, characteristics_selectable, characteristics_sort_sequence, demographics_text, demographics_display_level, demographics_selectable, demographics_sort_sequence, item_text, item_display_level, item_selectable, item_sort_sequence, process_text, process_display_level, process_selectable, process_sort_sequence, subcategory_text, subcategory_display_level, subcategory_selectable, subcategory_sort_sequence
+
+=== CPI ===
+rows: 1,164,656
+date range: 1997-01-01 to 2026-07-01
+cols: series_id, year, period, value, footnote_codes, date, freq, is_average, area_code, item_code, seasonal, periodicity_code, base_code, base_period, series_title, begin_year, begin_period, end_year, end_period, area_name, area_display_level, area_selectable, area_sort_sequence, base_name, item_name, item_display_level, item_selectable, item_sort_sequence, periodicity_name, seasonal_text, weight, weight_12mo, effect_1m, effect_12m
+
+Done. Vintage 2026-09-23T09:19:04-0400

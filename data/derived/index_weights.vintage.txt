@@ -1,0 +1,4 @@
+artifact: index_weights
+built_at: 2026-09-23T10:22:29-0400
+rows: 377052
+cols: date, cat_id, weight, group, basket

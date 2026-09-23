@@ -1,0 +1,47 @@
+# Phase 1 validation log
+# built_at: 2026-09-23T09:41:21-0400
+
+## 1. Input
+  all-CU fallback verified against LB04: 10727 item-year overlaps, max difference 0
+  filled 3438 all-CU cells from LB04 for year(s): 2010, 2011, 2012, 2013
+CEX EXPEND x LB06 rows: 74,018
+years: 1984-2024
+groups: 01, 03, 04, 09, 10
+
+## 2. Spliced series
+  splice GASOIL -> GASFUEL at 2023:
+    2023 GASFUEL = 13816
+    2022 GASOIL = 16000
+    2023 GASOIL = 6
+
+  no interior year gaps [LB06 EXPEND]: 01:1984-2024, 03:1984-2024, 04:1988-2024, 09:1984-2024, 10:1984-2024
+
+## 3. Additivity: 41 categories vs TOTALEXP
+tolerance: 0.25% of TOTALEXP
+year x group cells checked: 201
+cells outside tolerance:    0
+worst absolute gap:         0.016%
+
+balanced-panel start year: 1988
+
+## 4. Category coverage (of 41)
+minimum non-missing categories in any year x group: 41
+all 41 categories present in every year x group. No suppression.
+
+## 5. Consumer-unit counts (thousands), 2024
+  all_cu           01     135,760
+  married_nokids   03      29,434
+  married_kids     04      30,318
+  single_parent    09       6,161
+  single_other     10      64,426
+
+## 6. Share sums (should be 100)
+  share_raw: min 99.984  max 100.015
+  share_cpi: min 99.982  max 100.018
+
+## 7. Outputs
+  t01_shares_2024.csv      41 rows
+  t02_share_gaps_2024.csv  41 rows
+  t03_shares_majors.csv    15 rows
+  cex_shares_long.csv      9102 rows, 1988-2024
+

@@ -1,0 +1,108 @@
+Warning messages:
+1: package 'tibble' was built under R version 4.4.3 
+2: package 'tidyr' was built under R version 4.4.3 
+3: package 'readr' was built under R version 4.4.3 
+4: package 'lubridate' was built under R version 4.4.3 
+# Phase 1 validation log
+# built_at: 2026-09-23T09:41:21-0400
+
+## 1. Input
+  all-CU fallback verified against LB04: 10727 item-year overlaps, max difference 0
+  filled 3438 all-CU cells from LB04 for year(s): 2010, 2011, 2012, 2013
+CEX EXPEND x LB06 rows: 74,018
+years: 1984-2024
+groups: 01, 03, 04, 09, 10
+
+## 2. Spliced series
+  splice GASOIL -> GASFUEL at 2023:
+    2023 GASFUEL = 13816
+    2022 GASOIL = 16000
+    2023 GASOIL = 6
+
+  no interior year gaps [LB06 EXPEND]: 01:1984-2024, 03:1984-2024, 04:1988-2024, 09:1984-2024, 10:1984-2024
+
+## 3. Additivity: 41 categories vs TOTALEXP
+tolerance: 0.25% of TOTALEXP
+year x group cells checked: 201
+cells outside tolerance:    0
+worst absolute gap:         0.016%
+
+balanced-panel start year: 1988
+
+## 4. Category coverage (of 41)
+minimum non-missing categories in any year x group: 41
+all 41 categories present in every year x group. No suppression.
+
+## 5. Consumer-unit counts (thousands), 2024
+  all_cu           01     135,760
+  married_nokids   03      29,434
+  married_kids     04      30,318
+  single_parent    09       6,161
+  single_other     10      64,426
+
+## 6. Share sums (should be 100)
+  share_raw: min 99.984  max 100.015
+  share_cpi: min 99.982  max 100.018
+
+Wrote /Users/mtkonczal/Documents/GitHub/family_inflation_index_investigation/data/derived/cex_shares_long.csv (9102 rows)
+## 7. Outputs
+  t01_shares_2024.csv      41 rows
+  t02_share_gaps_2024.csv  41 rows
+  t03_shares_majors.csv    15 rows
+  cex_shares_long.csv      9102 rows, 1988-2024
+
+
+================ PHASE 1 HEADLINE (2024) ================
+
+Total expenditures per consumer unit:
+  all_cu           $78,535
+  married_nokids   $88,687
+  married_kids     $113,585
+  single_parent    $61,857
+  single_other     $56,587
+  families_kids    $104,849
+
+Largest share GAPS, families with children minus single/other (pp):
+                                    cat_label   fam single gap_pp
+              Personal insurance and pensions 14.87  10.36   4.51
+ Owned dwellings: mortgage interest and charg  5.94   3.52   2.42
+                                    Education  2.76   1.54   1.22
+          Personal services (childcare proxy)  1.48   0.29   1.19
+               Vehicle purchases (net outlay)  7.26   6.14   1.13
+                          Food away from home  5.30   4.63   0.67
+              Owned dwellings: property taxes  3.62   2.99   0.63
+                          Fees and admissions  1.49   0.87   0.62
+                                 Food at home  8.22   7.63   0.58
+                     Gasoline and other fuels  3.56   3.25   0.30
+
+Where singles spend proportionally MORE (pp):
+                               cat_label  fam single gap_pp
+                        Rented dwellings 4.23  13.16  -8.92
+                      Cash contributions 2.14   3.21  -1.07
+                           Miscellaneous 1.37   2.00  -0.63
+                             Electricity 2.12   2.63  -0.51
+ Audio and visual equipment and services 0.96   1.43  -0.46
+   Tobacco products and smoking supplies 0.28   0.67  -0.38
+                Other household expenses 1.54   1.92  -0.38
+                        Health insurance 4.51   4.85  -0.34
+
+By major group (pp gap):
+         major   fam single gap_pp
+  Out of scope 17.01  13.57   3.44
+          Food 13.52  12.27   1.25
+     Education  2.76   1.54   1.22
+     Transport 17.47  16.25   1.21
+ Household ops  6.96   6.29   0.66
+       Apparel  2.80   2.33   0.46
+ Entertainment  4.61   4.27   0.34
+       Reading  0.16   0.14   0.02
+ Personal care  1.24   1.24   0.00
+       Alcohol  0.66   0.80  -0.14
+       Tobacco  0.28   0.67  -0.38
+        Health  6.94   7.54  -0.60
+ Miscellaneous  1.37   2.00  -0.63
+     Utilities  5.64   6.53  -0.89
+       Housing 18.58  24.55  -5.97
+
+Validation log: /Users/mtkonczal/Documents/GitHub/family_inflation_index_investigation/output/tables/t00_validation.txt
+Vintage: 2026-09-23T09:41:21-0400

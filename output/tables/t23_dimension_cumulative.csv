@@ -1,0 +1,91 @@
+dimension,basket,group,characteristics_code,cum_pct
+cu_size,all_in,All consumer units,01,24.810607156829523
+cu_size,all_in,Five or more people,07,26.072764470711252
+cu_size,all_in,Four people,06,25.441824388336308
+cu_size,all_in,One person,02,25.43801800450247
+cu_size,ex_housing,All consumer units,01,24.14886031860297
+cu_size,ex_housing,Five or more people,07,26.266345757419373
+cu_size,ex_housing,Four people,06,25.275000993819585
+cu_size,ex_housing,One person,02,23.908125202008
+cu_size,ex_shelter,All consumer units,01,24.050576866577767
+cu_size,ex_shelter,Five or more people,07,25.871695496945613
+cu_size,ex_shelter,Four people,06,24.984232580218404
+cu_size,ex_shelter,One person,02,23.92232777182086
+cu_size,pm_ex_shelter,All consumer units,01,27.40818978374817
+cu_size,pm_ex_shelter,Five or more people,07,28.290589333028905
+cu_size,pm_ex_shelter,Four people,06,27.82951327096297
+cu_size,pm_ex_shelter,One person,02,27.462606933628606
+cu_size,pm_oer_all_in,All consumer units,01,29.61859385764809
+cu_size,pm_oer_all_in,Five or more people,07,29.90394820569564
+cu_size,pm_oer_all_in,Four people,06,29.659233751175407
+cu_size,pm_oer_all_in,One person,02,30.06469332620414
+income_decile,all_in,All consumer units,01,24.810607156829523
+income_decile,all_in,Fifth decile,06,25.60769377825971
+income_decile,all_in,Highest decile,11,23.434650990195706
+income_decile,all_in,Lowest decile,02,26.31680449016478
+income_decile,ex_housing,All consumer units,01,24.14886031860297
+income_decile,ex_housing,Fifth decile,06,24.741192611719253
+income_decile,ex_housing,Highest decile,11,23.207232671579337
+income_decile,ex_housing,Lowest decile,02,24.76016846498137
+income_decile,ex_shelter,All consumer units,01,24.05057686657761
+income_decile,ex_shelter,Fifth decile,06,24.584128705227037
+income_decile,ex_shelter,Highest decile,11,23.02856181117312
+income_decile,ex_shelter,Lowest decile,02,24.91115033755915
+income_decile,pm_ex_shelter,All consumer units,01,27.40818978374815
+income_decile,pm_ex_shelter,Fifth decile,06,28.25724541835053
+income_decile,pm_ex_shelter,Highest decile,11,25.582904709973107
+income_decile,pm_ex_shelter,Lowest decile,02,28.20379194884164
+income_decile,pm_oer_all_in,All consumer units,01,29.618593857648136
+income_decile,pm_oer_all_in,Fifth decile,06,30.233753564375675
+income_decile,pm_oer_all_in,Highest decile,11,28.236035361951295
+income_decile,pm_oer_all_in,Lowest decile,02,30.294531743153463
+income_quintile,all_in,All consumer units,01,24.810607156829523
+income_quintile,all_in,Fourth quintile,05,24.955764785276678
+income_quintile,all_in,Highest quintile,06,23.729978750495896
+income_quintile,all_in,Lowest quintile,02,25.71181216949272
+income_quintile,all_in,Second quintile,03,25.7257404352885
+income_quintile,all_in,Third quintile,04,25.41914992839778
+income_quintile,ex_housing,All consumer units,01,24.14886031860297
+income_quintile,ex_housing,Fourth quintile,05,24.533758353992408
+income_quintile,ex_housing,Highest quintile,06,23.56247938802123
+income_quintile,ex_housing,Lowest quintile,02,23.864019244514
+income_quintile,ex_housing,Second quintile,03,24.67319081441954
+income_quintile,ex_housing,Third quintile,04,24.63098830960291
+income_quintile,ex_shelter,All consumer units,01,24.050576866577767
+income_quintile,ex_shelter,Fourth quintile,05,24.311506620976097
+income_quintile,ex_shelter,Highest quintile,06,23.36607962179251
+income_quintile,ex_shelter,Lowest quintile,02,24.315201221627202
+income_quintile,ex_shelter,Second quintile,03,24.683120145690452
+income_quintile,ex_shelter,Third quintile,04,24.485221937934632
+income_quintile,pm_ex_shelter,All consumer units,01,27.40818978374817
+income_quintile,pm_ex_shelter,Fourth quintile,05,27.721746561244174
+income_quintile,pm_ex_shelter,Highest quintile,06,26.178728005864848
+income_quintile,pm_ex_shelter,Lowest quintile,02,28.260558766190847
+income_quintile,pm_ex_shelter,Second quintile,03,28.622185036392757
+income_quintile,pm_ex_shelter,Third quintile,04,28.112532606382135
+income_quintile,pm_oer_all_in,All consumer units,01,29.61859385764809
+income_quintile,pm_oer_all_in,Fourth quintile,05,29.775569055215566
+income_quintile,pm_oer_all_in,Highest quintile,06,28.638442319032542
+income_quintile,pm_oer_all_in,Lowest quintile,02,30.480891931632147
+income_quintile,pm_oer_all_in,Second quintile,03,30.529185895207945
+income_quintile,pm_oer_all_in,Third quintile,04,30.1034990164484
+tenure,all_in,All consumer units,01,24.810607156829523
+tenure,all_in,Homeowner with mortgage,03,23.993137486943873
+tenure,all_in,Homeowner without mortgage,04,22.653691179920532
+tenure,all_in,Homeowners,02,23.523446936987625
+tenure,all_in,Renters,05,27.83687287675567
+tenure,ex_housing,All consumer units,01,24.14886031860297
+tenure,ex_housing,Homeowner with mortgage,03,24.286029792661058
+tenure,ex_housing,Homeowner without mortgage,04,22.184292477872482
+tenure,ex_housing,Homeowners,02,23.56414198597838
+tenure,ex_housing,Renters,05,25.92702356429857
+tenure,ex_shelter,All consumer units,01,24.050576866577767
+tenure,ex_shelter,Homeowner with mortgage,03,24.1547075872383
+tenure,ex_shelter,Homeowner without mortgage,04,22.64896521450406
+tenure,ex_shelter,Homeowners,02,23.632024637555627
+tenure,ex_shelter,Renters,05,25.362611741114204
+tenure,pm_ex_shelter,All consumer units,01,27.40818978374817
+tenure,pm_ex_shelter,Homeowner with mortgage,03,27.3129981572376
+tenure,pm_ex_shelter,Homeowner without mortgage,04,27.01238596037323
+tenure,pm_ex_shelter,Homeowners,02,27.205073346023447
+tenure,pm_ex_shelter,Renters,05,28.055198669984406
