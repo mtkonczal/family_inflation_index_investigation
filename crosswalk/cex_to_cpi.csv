@@ -1,0 +1,67 @@
+cat_id,cex_item_code,cpi_item_code,confidence,note
+01,FOODHOME,SAF11,high,Direct counterpart.
+02,FOODAWAY,SEFV,high,"Direct counterpart. CEX includes tips; CPI captures them in the priced item."
+03,ALCBEVG,SAF116,high,Direct counterpart. Covers both at-home and away-from-home alcohol in each source.
+04,OWNMORTG,,unmapped,"OUT OF SCOPE. Mortgage interest is a financing cost. CPI replaces all owner shelter outlays with owners' equivalent rent (SEHC), which CEX published tables do not report."
+05,220211,,unmapped,"OUT OF SCOPE. Property taxes are subsumed into owners' equivalent rent in CPI."
+06,OWNEXPEN,SEHD,low,"WEAK MAPPING. CEX owner maintenance, repairs and insurance. Only the insurance leg has a CPI counterpart (tenants' and household insurance). CPI treats owner-occupied repair as an intermediate input to housing services captured by OER, so the repair leg has no target. Dropped entirely under scope_cpi_b."
+07,RNTDWELL,SEHA,high,"CEX rented dwellings is 96 pct contract rent (210110), which is exactly SEHA. The residual is renter maintenance and insurance (RNTEXPEN), conceptually SEHD."
+08,OTHLODGE,SEHB,medium,"CEX other lodging = lodging on out-of-town trips plus housing while at school (both in SEHB) plus owned vacation homes, which is owner shelter with no CPI consumption counterpart."
+09,NATRLGAS,SEHF02,high,Direct counterpart (utility piped gas service).
+10,ELECTRIC,SEHF01,high,Direct counterpart.
+11,OTHRFUEL,SEHE,high,Direct counterpart (fuel oil and other fuels).
+12,PHONE,SEED,high,"CEX residential plus cellular service maps to CPI telephone services (SEED03 wireless, SEED04 residential)."
+14,HHPERSRV,SEEB03,medium,"CHILDCARE PROXY, see decisions_log D-06. SEEB03 is day care and preschool. CEX HHPERSRV also contains elderly and invalid care, which has no CPI stratum; that leg is 3.5 pct of the total for married-with-children but 48 pct for single-person and other CUs."
+13,WATER,SEHG,high,"Direct counterpart (water, sewer, trash collection)."
+15,HHOTHXPN,SEHP,medium,"Housekeeping, gardening, pest control, home security, moving and storage."
+15,HHOTHXPN,SEEE,medium,"Computers, software, accessories and internet service, which CEX files under household operations (690111, 690119, 690120, 690114). Internet alone is the single largest item in this CEX category."
+16,HKPGSUPP,SEHN,high,Direct counterpart (cleaning and paper products).
+17,HHFURNSH,SEHH,high,Household textiles / window and floor coverings and other linens.
+17,HHFURNSH,SEHJ,high,Furniture and bedding.
+17,HHFURNSH,SEHK,high,Major and small appliances.
+17,HHFURNSH,SEHL,high,Other household equipment and furnishings.
+17,HHFURNSH,SEHM,high,"Tools, hardware, outdoor equipment and supplies."
+18,MENBOYS,SAA1,high,Direct counterpart (men's and boys' apparel).
+19,WMNSGRLS,SAA2,high,Direct counterpart (women's and girls' apparel).
+20,INFANT,SEAF,high,Direct counterpart (infants' and toddlers' apparel).
+21,FOOTWEAR,SEAE,high,Direct counterpart.
+22,OTHAPPRL,SEAG,high,Jewelry and watches.
+22,OTHAPPRL,SEGD03,high,Laundry and dry cleaning services.
+22,OTHAPPRL,SEGD04,high,"Apparel services other than laundry: alterations, repair, rental, storage."
+22,OTHAPPRL,SERE02,medium,"Sewing machines, fabric and supplies, matching CEX 420115 sewing and needlework materials."
+23,VEHPURCH,SETA01,medium,"New vehicles. CONCEPT MISMATCH: CEX reports net outlay (net of trade-in); CPI prices the gross transaction value."
+23,VEHPURCH,SETA02,medium,Used cars and trucks. Same net-outlay caveat.
+24,GASFUEL,SETB,high,"Direct counterpart (motor fuel). Note the 2023 CEX definition change removed motor oil, see decisions_log D-05."
+25,VEHOTHXP,SETA03,high,Leased cars and trucks.
+25,VEHOTHXP,SETA04,high,Car and truck rental.
+25,VEHOTHXP,SETC,high,Motor vehicle parts and equipment.
+25,VEHOTHXP,SETD,high,Motor vehicle maintenance and repair.
+25,VEHOTHXP,SETE,high,Motor vehicle insurance.
+25,VEHOTHXP,SETF,high,"Motor vehicle fees: registration, licences, inspection, tolls."
+26,PUBTRANS,SETG,high,"Direct counterpart: airline, bus, rail, transit, taxi, ship fares."
+27,HLTHINSR,SEME,low,"LARGEST CONCEPT MISMATCH AFTER SHELTER. CEX reports household out-of-pocket premiums (4.5 to 4.9 pct of spending); CPI health insurance captures only retained earnings and carries a relative importance of about 0.6 pct. The two measure different things. Do not treat this weight as comparable."
+28,MEDSERVS,SEMC,high,"Professional services: physician, dental, eyecare, other practitioners."
+28,MEDSERVS,SEMD,high,Hospital and related services including nursing homes.
+29,DRUGS,SEMF,high,"Medicinal drugs (prescription, nonprescription, vitamins)."
+30,MEDSUPPL,SEMG,high,Medical equipment and supplies.
+31,FEESADM,SERF,high,"Direct counterpart: SERF01 club memberships, SERF02 admissions, SERF03 fees for lessons."
+32,TVAUDIO,SERA,high,"Video and audio, including cable/satellite/streaming service and equipment."
+32,TVAUDIO,SERE03,high,"Music instruments and accessories, which CEX files under audio and visual (610130)."
+33,PETSPLAY,SERB,high,"Pets, pet products and services."
+33,PETSPLAY,SERE01,high,"Toys, matching CEX TOYS (toys, hobbies, and playground equipment)."
+34,ENTEROTH,SERC,high,"Sporting goods: SERC01 sports vehicles including bicycles and motorized recreational vehicles, SERC02 sports equipment."
+34,ENTEROTH,SERD,high,"Photography: equipment, supplies, processing."
+35,PERSCARE,SEGB,high,Personal care products.
+35,PERSCARE,SEGC,high,Personal care services.
+36,READING,SERG,high,"Recreational reading materials: newspapers, magazines, books."
+37,EDUCATN,SEEA,high,Educational books and supplies.
+37,EDUCATN,SEEB01,high,College tuition and fees.
+37,EDUCATN,SEEB02,high,Elementary and high school tuition and fees.
+37,EDUCATN,SEEB04,high,Technical and vocational school tuition and fixed fees.
+38,TOBACCO,SEGA,high,Direct counterpart (tobacco and smoking products).
+39,MISC,SEGD01,medium,Legal services.
+39,MISC,SEGD02,medium,Funeral expenses.
+39,MISC,SEGD05,medium,"Financial services: bank charges, accounting, tax preparation."
+39,MISC,SEGE,medium,Miscellaneous personal goods.
+40,CASHCONT,,unmapped,"OUT OF SCOPE. Gifts, alimony, child support, charity are transfers, not consumption by the giving household."
+41,INSPENSN,,unmapped,"OUT OF SCOPE. Social Security contributions, pensions, life insurance are saving."

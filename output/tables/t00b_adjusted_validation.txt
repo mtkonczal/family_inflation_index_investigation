@@ -1,0 +1,31 @@
+# Adjusted-passes validation log
+# built_at: 2026-09-23T09:41:37-0400
+
+## 1. Bases
+  consumption: 39 categories
+  ex_shelter: 34 categories
+  ex_housing: 25 categories
+  shelter categories dropped: OWNMORTG, 220211, OWNEXPEN, RNTDWELL, OTHLODGE
+  housing categories dropped: OWNMORTG, 220211, OWNEXPEN, RNTDWELL, OTHLODGE, NATRLGAS, ELECTRIC, OTHRFUEL, PHONE, WATER, HHPERSRV, HHOTHXPN, HKPGSUPP, HHFURNSH
+
+## 2. Partition checks, 2024
+  LB04 brackets sum to 135,760 of 135,760 CUs (100.000%)
+  LB17 owner+renter sum to 135,760 of 135,760 CUs (100.000%)
+
+## 3. Group characteristics, 2024
+  families with children:      mean age 44.3, homeowner 74.6%
+  single-person and other CUs: mean age 53.1, homeowner 51.0%
+  age gap -8.8 years, homeownership gap 23.6 pp
+
+## 4. Pass construction
+  [consumption] share sums: min 100.000 max 100.000  (39 categories)
+  [ex_shelter] share sums: min 100.000 max 100.000  (34 categories)
+  [ex_housing] share sums: min 100.000 max 100.000  (25 categories)
+
+## 5. Basket dissimilarity index (percent of budget needing reallocation)
+  consumption   n=39  observed 13.88  net of age 14.26  net of tenure 10.00
+  ex_shelter    n=34  observed  8.33  net of age  6.32  net of tenure  9.05
+  ex_housing    n=25  observed  7.27  net of age  6.08  net of tenure  7.81
+
+## 8. Cross-script consistency vs 02_build_shares.R
+  78 category x group reconciliations, worst delta 0.0006 pp

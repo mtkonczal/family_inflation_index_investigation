@@ -1,0 +1,45 @@
+Warning messages:
+1: package 'tibble' was built under R version 4.4.3 
+2: package 'tidyr' was built under R version 4.4.3 
+3: package 'readr' was built under R version 4.4.3 
+4: package 'lubridate' was built under R version 4.4.3 
+Manifest written.
+Dimension files cached: cx.item (1214 rows), cx.characteristics (164), cu.item (400)
+Building: cex_raw
+Downloading cx.data.1.AllData (120.8 MB)...
+Downloading series file...
+  join category on (category_code)
+  join characteristics on (demographics_code, characteristics_code)
+  join demographics on (demographics_code)
+  join item on (subcategory_code, item_code)
+  join process on (process_code)
+  join subcategory on (category_code, subcategory_code)
+Note: 220,493 value(s) were not numeric and became NA (BLS writes '-' for suppressed or unavailable observations).
+Merging main data with series metadata...
+Cached: /Users/mtkonczal/Documents/command_line_AI_projects/family_inflation_index/data/raw/cex_raw.rds (4.3 MB)
+Building: cpi_raw
+Downloading cu.data.0.Current (48.9 MB)...
+Downloading series file...
+  join area on (area_code)
+  join base on (base_code)
+  join item on (item_code)
+  join periodicity on (periodicity_code)
+  join seasonal on (seasonal)
+Note: 2,753 value(s) were not numeric and became NA (BLS writes '-' for suppressed or unavailable observations).
+Merging main data with series metadata...
+Downloading aspect (weights/metadata) file: cu.aspect
+Attached relative importance to 99,991 of 1,164,656 rows (U.S. city average, March 2012 forward; NA elsewhere).
+Attached BLS published effects to 46,407 (1-month, SA) and 53,533 (12-month, NSA) rows.
+Cached: /Users/mtkonczal/Documents/command_line_AI_projects/family_inflation_index/data/raw/cpi_raw.rds (2.9 MB)
+
+=== CEX ===
+rows: 2,182,685
+years: 1984-2024
+cols: series_id, year, period, value, footnote_codes, date, freq, is_average, seasonal, category_code, subcategory_code, item_code, demographics_code, characteristics_code, process_code, series_title, begin_year, begin_period, end_year, end_period, category_text, category_display_level, category_selectable, category_sort_sequence, characteristics_text, characteristics_display_level, characteristics_selectable, characteristics_sort_sequence, demographics_text, demographics_display_level, demographics_selectable, demographics_sort_sequence, item_text, item_display_level, item_selectable, item_sort_sequence, process_text, process_display_level, process_selectable, process_sort_sequence, subcategory_text, subcategory_display_level, subcategory_selectable, subcategory_sort_sequence
+
+=== CPI ===
+rows: 1,164,656
+date range: 1997-01-01 to 2026-07-01
+cols: series_id, year, period, value, footnote_codes, date, freq, is_average, area_code, item_code, seasonal, periodicity_code, base_code, base_period, series_title, begin_year, begin_period, end_year, end_period, area_name, area_display_level, area_selectable, area_sort_sequence, base_name, item_name, item_display_level, item_selectable, item_sort_sequence, periodicity_name, seasonal_text, weight, weight_12mo, effect_1m, effect_12m
+
+Done. Vintage 2026-09-08T13:50:37-0400

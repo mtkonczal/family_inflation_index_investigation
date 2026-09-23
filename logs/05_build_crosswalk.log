@@ -1,0 +1,193 @@
+Warning messages:
+1: package 'tibble' was built under R version 4.4.3 
+2: package 'tidyr' was built under R version 4.4.3 
+3: package 'readr' was built under R version 4.4.3 
+4: package 'lubridate' was built under R version 4.4.3 
+# Crosswalk validation log
+# built_at: 2026-09-23T09:41:47-0400
+
+## 1. Crosswalk structure
+  rows: 66  categories: 41
+  mapped rows: 62  distinct CPI items: 62
+  unmapped categories: 4 (OWNMORTG, 220211, CASHCONT, INSPENSN)
+  composite categories (>1 CPI target): 12
+  confidence: high=49, low=2, medium=11
+  no duplicate CPI codes, no nesting violations, all codes exist in cu.item
+
+## 2. CPI panel
+  rows: 133,585
+  date range: 1997-01-01 to 2026-07-01
+  distinct items: 400
+  all 62 mapped items have NSA national series
+  latest-starting mapped series (these bind the index start):
+    SEMF     2009-12-01  Medicinal drugs
+    SEMG     2009-12-01  Medical equipment and supplies
+    SEME     2005-12-01  Health insurance
+    SETA03   2001-12-01  Leased cars and trucks
+    SEEB04   1997-12-01  Technical and vocational school tuition and fi
+    SEED     1997-12-01  Telephone services
+    SEGD03   1997-12-01  Laundry and dry cleaning services
+    SEGD04   1997-12-01  Apparel services other than laundry and dry cl
+
+## 3. Relative-importance coverage, as of 2024-12-01
+  RI captured by the crosswalk: 70.72 of 100
+  the 8 primary major groups sum to 99.998 RI (partition check)
+  primary-tree items after dropping special aggregates: 362
+
+  coverage by primary major group:
+    major   name                          RI    mapped  unmapped  pct
+    SAH     Housing                     45.48   17.29     28.19   38%
+    SAT     Transportation              15.76   15.18      0.58   96%
+    SAG     Other goods and services     2.92    2.59      0.33   89%
+    SAE     Education and communicatio   5.78    5.62      0.16   97%
+    SAR     Recreation                   5.22    5.20      0.02  100%
+    SAF     Food and beverages          14.33   14.33      0.00  100%
+    SAA     Apparel                      2.52    2.52      0.00  100%
+    SAM     Medical care                 8.00    8.00     -0.00  100%
+
+  what the crosswalk does not cover:
+    owners' equivalent rent (SEHC):         27.18 RI
+    rest of Housing:                         1.01 RI
+    everything outside Housing, combined:    1.08 RI
+
+  So 93 pct of the uncovered basket is owners' equivalent rent alone, and
+  the entire non-housing residual is about 1 RI point. The crosswalk is
+  effectively complete outside owner-occupied shelter.
+
+  AUTHORITATIVE: mapped 70.72 + unmapped 29.27 = 100.00
+
+  NOTE: owners' equivalent rent (SEHC) is deliberately unmapped. It is
+  27 pct of CPI and has no CEX published-table counterpart. This is the
+  scope_cpi_b problem, not a crosswalk defect. See METHODS.md section 3.
+
+  additivity OK [LB06 all-CU]: 37 cells, worst 0.014%
+## 4. CEX all-CU shares vs CPI relative importance (2024, 37 mapped categories, both renormalized to 100)
+  Pearson correlation:  0.830
+  Spearman correlation: 0.778
+  dissimilarity index:  14.79 (pct of basket needing reallocation)
+
+  largest divergences (CEX share minus CPI share, pp):
+    Medical services                           CEX   2.08  CPI   8.42  diff  -6.33
+    Health insurance                           CEX   6.75  CPI   0.84  diff  +5.92
+    Owned dwellings: maintenance, repairs, ins CEX   4.87  CPI   0.58  diff  +4.29
+    Rented dwellings                           CEX   9.42  CPI  10.96  diff  -1.53
+    Miscellaneous                              CEX   2.03  CPI   0.77  diff  +1.25
+    Vehicle purchases (net outlay)             CEX   8.89  CPI   7.71  diff  +1.17
+    Fees and admissions                        CEX   1.56  CPI   2.65  diff  -1.09
+    Food away from home                        CEX   6.57  CPI   7.65  diff  -1.08
+    Food at home                               CEX  10.36  CPI  11.41  diff  -1.05
+    Drugs                                      CEX   1.10  CPI   1.89  diff  -0.80
+### 4b. Divergence under aggregation
+  medical categories pooled: CEX 10.32 vs CPI 11.31 (diff -0.99)
+    the -6.33 medical services and +5.92 health insurance gaps nearly
+    cancel, confirming a within-block reallocation, not a level error.
+  dissimilarity at 37 categories: 14.79
+  dissimilarity at 14 major blocks: 5.80
+  excluding 6 pre-flagged categories (06, 23, 25, 27, 37, 39):
+    Pearson rises 0.830 -> 0.922;  dissimilarity falls 14.79 -> 8.04
+
+
+  categories with components lacking published RI:
+    cat 15: 1 of 2 components
+    cat 25: 1 of 6 components
+    cat 39: 1 of 4 components
+
+## 5. Category price panel
+  published months: 354 of 355 between 1997-01-01 and 2026-07-01
+  MONTHS WITH NO PUBLISHED CPI (excluded from the grid, chained across):
+    2025-10-01  (11 series published that month)
+  component observations: 21,211  interpolated: 78 (0.37%)
+  components with interpolated months:
+    SETA03    38 months  Leased cars and trucks
+    SEHP      18 months  Household operations
+    SEGD01    14 months  Legal services
+    SEEA       7 months  Educational books and supplies
+    SETE       1 months  Motor vehicle insurance
+  188 category-months have fewer components than the full set; weights renormalized
+    explained by component series start and end dates: 188
+    genuine mid-series holes (should be 0): 0
+    components that stop before the panel end:
+      cat 39  SEGD01   last obs 2024-09-01
+      cat 15  SEHP     last obs 2024-10-01
+Wrote /Users/mtkonczal/Documents/GitHub/family_inflation_index_investigation/data/derived/cpi_category_index.csv (12589 rows)
+  categories built: 37 of 37 mapped
+  panel: 1997-02-01 to 2026-07-01
+  category-months with any interpolated weight: 108 of 12589
+  latest-starting categories (these bind any multi-category index):
+    cat 29  2010-01-01  Drugs
+    cat 30  2010-01-01  Medical supplies
+    cat 27  2006-01-01  Health insurance
+    cat 06  1998-01-01  Owned dwellings: maintenance, repairs, insur
+    cat 08  1998-01-01  Other lodging
+    cat 12  1998-01-01  Telephone services
+
+## 6. Reconciliation: single-item categories vs published CPI
+  categories checked: 25  observations: 8,353
+  worst absolute index error: 0.00000000 (rebased at each series start)
+  PASS: chaining reproduces published CPI exactly for every single-item,
+  fully-observed category. Gap handling and aggregation verified.
+
+## 7. Outputs
+  t10_crosswalk_audit.csv  62 rows
+  t11_share_vs_ri.csv      37 rows
+  t12_unmapped_cpi.csv     8 rows (coverage by major)
+  t13_coverage_by_major.csv 8 rows
+  t14_share_vs_ri_by_major.csv 14 rows
+  cpi_category_index.csv   12,589 rows
+
+=== CEX share vs CPI RI, largest divergences ===
+                                cat_label   cex   cpi  diff ratio
+                         Medical services  2.08  8.42 -6.33  0.25
+                         Health insurance  6.75  0.84  5.92  8.08
+ Owned dwellings: maintenance, repairs, i  4.87  0.58  4.29  8.44
+                         Rented dwellings  9.42 10.96 -1.53  0.86
+                            Miscellaneous  2.03  0.77  1.25  2.62
+           Vehicle purchases (net outlay)  8.89  7.71  1.17  1.15
+                      Fees and admissions  1.56  2.65 -1.09  0.59
+                      Food away from home  6.57  7.65 -1.08  0.86
+                             Food at home 10.36 11.41 -1.05  0.91
+                                    Drugs  1.10  1.89 -0.80  0.58
+                   Other vehicle expenses  7.00  7.66 -0.65  0.91
+                              Electricity  3.05  3.42 -0.37  0.89
+
+=== 12-month category inflation to Jul 2026 ===
+                                cat_label chg_12m n
+                 Gasoline and other fuels   24.81 1
+                 Fuel oil and other fuels   22.42 1
+          Public and other transportation   16.10 1
+      Other apparel products and services    9.94 4
+    Tobacco products and smoking supplies    6.71 1
+ Owned dwellings: maintenance, repairs, i    4.80 1
+          Water and other public services    4.62 1
+                              Natural gas    4.32 1
+                              Electricity    4.20 1
+                         Medical services    4.19 2
+ Other entertainment supplies, equipment,    3.97 2
+      Personal care products and services    3.76 2
+  Audio and visual equipment and services    3.49 2
+                    Apparel: men and boys    3.46 1
+                                 Footwear    3.43 1
+                      Food away from home    3.40 1
+      Personal services (childcare proxy)    3.39 1
+ Pets, toys, hobbies, and playground equi    3.24 2
+                 Apparel: women and girls    3.18 1
+                            Other lodging    2.97 1
+                         Rented dwellings    2.86 1
+                             Food at home    2.68 1
+                    Housekeeping supplies    2.46 1
+                                Education    2.43 4
+                                  Reading    2.22 1
+                      Alcoholic beverages    2.10 1
+                      Fees and admissions    0.95 1
+                            Miscellaneous    0.81 4
+      Household furnishings and equipment    0.24 5
+           Vehicle purchases (net outlay)   -0.16 2
+                 Other household expenses   -0.20 2
+                   Other vehicle expenses   -0.90 6
+                Apparel: children under 2   -1.72 1
+                                    Drugs   -2.69 1
+                         Medical supplies   -2.71 1
+                       Telephone services   -2.96 1
+                         Health insurance   -7.99 1
+
+Validation log: /Users/mtkonczal/Documents/GitHub/family_inflation_index_investigation/output/tables/t00c_crosswalk_validation.txt

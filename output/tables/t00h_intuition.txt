@@ -1,0 +1,96 @@
+# Intuition log
+# built_at: 2026-09-23T10:24:08-0400
+
+## 1. Relative-price decomposition of the cumulative family gap
+   contribution_i = (w_family - w_single) x (price change_i - all-CU change), summed over links
+   [2019-2026, CPI concept (headline)]  gap -0.69 pp = sum of contributions -0.65 + compounding residual -0.032  (all-CU +29.6%; Laspeyres link check 1.1e-15)
+     Rented dwellings                         share gap -7.50 pp  price  +33.0% (vs avg   +3.4)  contrib -0.255  [raw form -2.417]
+     Education                                share gap +1.28 pp  price  +14.3% (vs avg  -15.3)  contrib -0.175  [raw form +0.195]
+     Gasoline and other fuels                 share gap +0.41 pp  price  +53.3% (vs avg  +23.7)  contrib +0.175  [raw form +0.296]
+     Other entertainment supplies, equipment, share gap +0.29 pp  price  +12.8% (vs avg  -16.8)  contrib -0.102  [raw form -0.020]
+     Tobacco products and smoking supplies    share gap -0.43 pp  price  +53.6% (vs avg  +24.0)  contrib -0.090  [raw form -0.212]
+     Vehicle purchases (net outlay)           share gap +1.87 pp  price  +26.6% (vs avg   -3.1)  contrib -0.079  [raw form +0.505]
+     Other household expenses                 share gap -0.26 pp  price   +4.2% (vs avg  -25.4)  contrib +0.073  [raw form -0.008]
+     Electricity                              share gap -0.39 pp  price  +48.6% (vs avg  +19.0)  contrib -0.065  [raw form -0.178]
+     Household furnishings and equipment      share gap +0.24 pp  price  +18.4% (vs avg  -11.2)  contrib -0.063  [raw form -0.022]
+   [2014-2019, CPI concept]  gap -1.05 pp = sum of contributions -1.01 + compounding residual -0.046  (all-CU +9.1%; Laspeyres link check 5.0e-16)
+     Rented dwellings                         share gap -6.87 pp  price  +19.9% (vs avg  +10.8)  contrib -0.681  [raw form -1.306]
+     Vehicle purchases (net outlay)           share gap +1.69 pp  price   -1.4% (vs avg  -10.4)  contrib -0.180  [raw form -0.028]
+     Food at home                             share gap +1.00 pp  price   -0.3% (vs avg   -9.4)  contrib -0.096  [raw form -0.003]
+     Personal services (childcare proxy)      share gap +1.38 pp  price  +14.7% (vs avg   +5.7)  contrib +0.069  [raw form +0.195]
+     Tobacco products and smoking supplies    share gap -0.46 pp  price  +24.5% (vs avg  +15.5)  contrib -0.066  [raw form -0.106]
+     Gasoline and other fuels                 share gap +0.40 pp  price   +2.2% (vs avg   -6.8)  contrib -0.046  [raw form -0.011]
+     Owners' equivalent rent                  share gap +0.59 pp  price  +17.5% (vs avg   +8.4)  contrib +0.046  [raw form +0.095]
+     Household furnishings and equipment      share gap +0.30 pp  price   -5.4% (vs avg  -14.5)  contrib -0.045  [raw form -0.019]
+     Apparel: men and boys                    share gap +0.29 pp  price   -3.1% (vs avg  -12.2)  contrib -0.042  [raw form -0.013]
+   [2014-2019, ex-shelter]  gap -0.22 pp = sum of contributions -0.22 + compounding residual -0.005  (all-CU +5.4%; Laspeyres link check 8.3e-16)
+     Personal services (childcare proxy)      share gap +1.88 pp  price  +14.7% (vs avg   +9.4)  contrib +0.159  [raw form +0.261]
+     Medical care (pooled)                    share gap -1.28 pp  price  +15.9% (vs avg  +10.5)  contrib -0.140  [raw form -0.202]
+     Tobacco products and smoking supplies    share gap -0.76 pp  price  +24.5% (vs avg  +19.1)  contrib -0.134  [raw form -0.172]
+     Vehicle purchases (net outlay)           share gap +1.61 pp  price   -1.4% (vs avg   -6.7)  contrib -0.109  [raw form -0.027]
+     Education                                share gap +1.33 pp  price  +13.5% (vs avg   +8.1)  contrib +0.088  [raw form +0.165]
+     Fees and admissions                      share gap +0.83 pp  price  +13.9% (vs avg   +8.6)  contrib +0.065  [raw form +0.110]
+     Other vehicle expenses                   share gap -0.69 pp  price  +16.5% (vs avg  +11.1)  contrib -0.049  [raw form -0.089]
+     Gasoline and other fuels                 share gap +0.12 pp  price   +2.2% (vs avg   -3.2)  contrib -0.046  [raw form -0.042]
+     Telephone services                       share gap -0.21 pp  price   -9.2% (vs avg  -14.6)  contrib +0.038  [raw form +0.024]
+   [2019-2026, ex-shelter]  gap -0.41 pp = sum of contributions -0.40 + compounding residual -0.008  (all-CU +27.4%; Laspeyres link check 1.3e-15)
+     Electricity                              share gap -0.94 pp  price  +48.6% (vs avg  +21.2)  contrib -0.180  [raw form -0.432]
+     Education                                share gap +1.59 pp  price  +14.3% (vs avg  -13.1)  contrib -0.174  [raw form +0.242]
+     Other vehicle expenses                   share gap -0.53 pp  price  +42.8% (vs avg  +15.4)  contrib -0.174  [raw form -0.305]
+     Tobacco products and smoking supplies    share gap -0.72 pp  price  +53.6% (vs avg  +26.2)  contrib -0.168  [raw form -0.357]
+     Other household expenses                 share gap -0.64 pp  price   +4.2% (vs avg  -23.2)  contrib +0.158  [raw form -0.021]
+     Medical care (pooled)                    share gap -1.63 pp  price  +16.4% (vs avg  -11.0)  contrib +0.147  [raw form -0.292]
+     Gasoline and other fuels                 share gap +0.14 pp  price  +53.3% (vs avg  +25.9)  contrib +0.124  [raw form +0.166]
+     Other entertainment supplies, equipment, share gap +0.32 pp  price  +12.8% (vs avg  -14.6)  contrib -0.103  [raw form -0.043]
+     Audio and visual equipment and services  share gap -0.79 pp  price  +18.1% (vs avg   -9.3)  contrib +0.079  [raw form -0.148]
+   [2010-2019, ex-shelter (long panel)]  gap +0.07 pp = sum of contributions +0.06 + compounding residual +0.008  (all-CU +9.6%; Laspeyres link check 1.5e-15)
+     Education                                share gap +1.37 pp  price  +34.4% (vs avg  +24.8)  contrib +0.283  [raw form +0.425]
+     Personal services (childcare proxy)      share gap +1.90 pp  price  +25.8% (vs avg  +16.1)  contrib +0.277  [raw form +0.463]
+     Tobacco products and smoking supplies    share gap -0.91 pp  price  +37.9% (vs avg  +28.3)  contrib -0.218  [raw form -0.308]
+     Other vehicle expenses                   share gap -0.74 pp  price  +28.1% (vs avg  +18.5)  contrib -0.126  [raw form -0.178]
+     Vehicle purchases (net outlay)           share gap +1.31 pp  price   +2.2% (vs avg   -7.4)  contrib -0.125  [raw form -0.061]
+     Telephone services                       share gap -0.40 pp  price  -11.3% (vs avg  -20.9)  contrib +0.091  [raw form +0.046]
+     Fees and admissions                      share gap +0.90 pp  price  +19.7% (vs avg  +10.0)  contrib +0.087  [raw form +0.172]
+     Water and other public services          share gap -0.22 pp  price  +41.8% (vs avg  +32.2)  contrib -0.061  [raw form -0.083]
+     Other entertainment supplies, equipment, share gap +0.40 pp  price   -3.9% (vs avg  -13.5)  contrib -0.057  [raw form -0.013]
+
+   By block:
+   [2019-2026, CPI concept (headline)] Rent -0.26; Education -0.18; Utilities and phone -0.12; Apparel -0.11; Alcohol and tobacco -0.06; Everything else -0.05; Owners' housing and lodging -0.01; Childcare +0.00; Vehicles, gas, transport +0.02; Medical +0.03; Food +0.08
+   [2014-2019, CPI concept] Rent -0.68; Vehicles, gas, transport -0.22; Apparel -0.10; Food -0.07; Alcohol and tobacco -0.05; Everything else -0.03; Medical -0.02; Utilities and phone +0.02; Education +0.04; Owners' housing and lodging +0.04; Childcare +0.07
+   [2014-2019, ex-shelter] Vehicles, gas, transport -0.19; Medical -0.14; Alcohol and tobacco -0.14; Apparel -0.08; Food -0.01; Everything else +0.03; Utilities and phone +0.06; Education +0.09; Childcare +0.16
+   [2019-2026, ex-shelter] Utilities and phone -0.22; Education -0.17; Vehicles, gas, transport -0.15; Alcohol and tobacco -0.13; Apparel -0.09; Childcare +0.04; Food +0.04; Everything else +0.13; Medical +0.15
+   [2010-2019, ex-shelter (long panel)] Vehicles, gas, transport -0.26; Alcohol and tobacco -0.24; Apparel -0.07; Medical -0.00; Everything else +0.00; Food +0.01; Utilities and phone +0.06; Childcare +0.28; Education +0.28
+
+## 2. Childcare prices against other services (annualized CPI change)
+   Day care and preschool             2000s  4.32%   2010s  2.58%   2019-2026  4.04%
+   All services                       2000s  2.84%   2010s  2.55%   2019-2026  4.26%
+   Services less rent of shelter      2000s  3.27%   2010s  2.16%   2019-2026  3.95%
+   All items                          2000s  2.34%   2010s  1.78%   2019-2026  4.06%
+   Goods                              2000s  1.61%   2010s  0.52%   2019-2026  3.70%
+   Rent                               2000s  2.95%   2010s  3.32%   2019-2026  4.43%
+   Food away from home                2000s  2.92%   2010s  2.65%   2019-2026  4.99%
+   Personal care services             2000s  2.42%   2010s  2.02%   2019-2026  4.73%
+   Nursing homes and adult day care   2000s  4.14%   2010s  3.20%   2019-2026  4.36%
+   Pet services incl. veterinary      2000s  5.12%   2010s  3.23%   2019-2026  6.08%
+   College tuition                    2000s  6.71%   2010s  3.30%   2019-2026  1.68%
+   K-12 tuition                       2000s  5.84%   2010s  3.66%   2019-2026  3.59%
+
+## 3. Childcare spending, 2024 (CE item 670320; mean over ALL CUs in the group, users and non-users)
+   All Consumer Units                                 childcare $  470  =  0.7% of consumption
+   Total married couple with children cons. units     childcare $ 1669  =  1.8% of consumption
+   Married couple w/ children, oldest child under 6   childcare $ 5586  =  6.4% of consumption
+   Married couple w/ children, oldest child 6 to 17   childcare $ 1555  =  1.6% of consumption
+   Married couple w/ children, old. child 18 or over  childcare $  129  =  0.1% of consumption
+   One parent, at least one child under 18            childcare $  701  =  1.3% of consumption
+   Single person and other consumer units             childcare $   85  =  0.2% of consumption
+   Means include households that pay nothing for care, so the share for a family
+   that pays for full-time care is several times larger. The CE tables do not
+   publish the conditional mean.
+
+## 4. Budget shares by household size, 2024 (consumption with owners' housing at rental value)
+   1 person   shelter 40.3% ($ 19852, $ 19852 per person)  food at home  6.9%  vehicles/gas 12.6%  childcare 0.3%  education 1.7%
+   2 people   shelter 34.7% ($ 27606, $ 13803 per person)  food at home  7.6%  vehicles/gas 15.9%  childcare 0.2%  education 1.4%
+   3 people   shelter 31.3% ($ 27089, $  9030 per person)  food at home  8.8%  vehicles/gas 16.7%  childcare 1.0%  education 3.0%
+   4 people   shelter 30.8% ($ 31096, $  7774 per person)  food at home  8.6%  vehicles/gas 17.8%  childcare 1.7%  education 2.6%
+   5 or more  shelter 29.0% ($ 28120, $  4933 per person)  food at home 10.6%  vehicles/gas 18.7%  childcare 1.3%  education 2.5%
+

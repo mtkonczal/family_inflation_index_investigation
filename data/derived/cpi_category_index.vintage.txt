@@ -1,0 +1,4 @@
+artifact: cpi_category_index
+built_at: 2026-09-23T09:41:47-0400
+rows: 12589
+cols: cat_id, cat_label, major, in_cpi_scope, date, index, chg_12m, n_components, n_present, interp_share

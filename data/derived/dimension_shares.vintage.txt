@@ -1,0 +1,4 @@
+artifact: dimension_shares
+built_at: 2026-09-23T10:22:54-0400
+rows: 25297
+cols: dimension, characteristics_code, group, year, cat_id, cat_label, major, dollars, totalexp, share
