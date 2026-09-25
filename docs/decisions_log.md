@@ -829,9 +829,11 @@ groups.
 **Date:** 2026-09-23 | **Phase:** review 2 | **Status:** decided: F1 (04 + 09) stays the headline; K1 reported as robustness
 
 LB06 04 = 05 + 06 + 07, and 07 is married couples whose oldest child is 18
-or older, while 09 requires a child under 18. K1 = 05 + 06 + 09 pools
-families with a child under 18 by CU counts, exactly as 02 pools F1. Rental
-value of owned home pools with `ce_pool()` as 06 does for F1.
+or older, while 09 requires a child under 18. K1 = 05 + 06 + 09 pools a
+published-table minor-child proxy by CU counts, exactly as 02 pools F1. It
+omits married couples whose oldest child is an adult but who also have a
+younger minor; it does not isolate children exactly age 18. Rental value of
+owned home pools with `ce_pool()` as 06 does for F1.
 
 Comparison groups added: all CUs (01), married couples without children
 (03), and the complement of each family group within all CUs (RF = 03 + 08
@@ -942,3 +944,43 @@ and 10, and the slides now:
 
 F1 remains the headline family group by author decision; no headline number
 changes.
+
+---
+
+## D-42. Correct cumulative uncertainty propagation
+**Date:** 2026-09-25 | **Phase:** methods audit | **Status:** supersedes cumulative SEs and p-values in D-28, D-33, and D-36
+
+The cumulative index is a product of annual links. Its derivative with respect
+to a link must include the growth after that link: for link $L_y$ and
+cumulative index $I_T/I_0$, the multiplier is $(I_T/I_0)/(1+L_y)$.
+`cum_se()` and the disjoint-cell `group_D()` had used growth only through the
+link. That understated cumulative sampling error. Finite differences on a
+two-link synthetic index now verify both derivatives. Index levels, gaps,
+weights, prices, and all 12-month SEs are unchanged.
+
+For F1 minus 10, December 2019 to July 2026, the disjoint-cell check now
+gives a gap of -0.686 pp, SE 0.211 under independent survey-year errors and
+0.482 under the worst-case cross-year bound. The corresponding 95% margins
+are +/- 0.413 and +/- 0.945 pp; the bound p-value is 0.155. The original
+group-level calculation gives 0.216 and 0.493 SE, respectively. These two
+approaches are close, but both are still delta-method approximations with
+within-cell category independence and no allowance for non-sampling error.
+
+The published `t42_contrib_se.csv` contribution intervals remain approximate
+link-level attributions and are not validated by this cumulative-index
+derivative test. The contribution point estimates are unchanged.
+
+---
+
+## D-43. Clarify the minor-child proxy and exact age cutoff
+**Date:** 2026-09-25 | **Phase:** population-definition audit
+
+The LB06 K1 check (05 + 06 + 09) is **not** the set of all CUs with a resident
+child under 18. Codes 05 and 06 classify married couples by the age of the
+oldest child; code 07 includes both couples with only adult children and
+couples with an adult oldest child and a younger minor. The published tables
+cannot separate these cases or isolate exactly age 18. K1's -0.84 pp result
+therefore describes only this narrower proxy. An exact "at least one resident
+child aged 18 or younger" index requires CE member-level microdata, with an
+explicit relationship and CU-membership rule. No exact-cutoff estimate has
+been produced.

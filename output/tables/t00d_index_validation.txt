@@ -1,5 +1,5 @@
 # Index validation log
-# built_at: 2026-09-23T10:22:29-0400
+# built_at: 2026-09-25T10:46:23-0400
 
 ## 1. Inputs
   relative importance, category-months: 6211 strict (all components published) vs 6327 filled (D-27)
@@ -140,39 +140,39 @@
 
 ## 7. Cumulative price change and cumulative gap
    Families with children minus single/other, since December 2019 (95% CI: uncorrelated / correlated vintages)
-     all_in            +25.12% vs  +25.90%   gap -0.78 pp   +/- 0.46 / 1.08
-     ex_shelter        +24.69% vs  +24.69%   gap +0.00 pp   +/- 0.51 / 1.20
-     ex_housing        +24.91% vs  +24.83%   gap +0.08 pp   +/- 0.63 / 1.47
-     all_in_long       +28.67% vs  +29.65%   gap -0.98 pp   +/- 0.47 / 1.10
-     ex_shelter_long   +28.76% vs  +29.43%   gap -0.66 pp   +/- 0.53 / 1.23
-     pm_all_in         +27.55% vs  +28.41%   gap -0.86 pp   +/- 0.43 / 1.01
-     pm_ex_shelter     +27.48% vs  +27.89%   gap -0.41 pp   +/- 0.48 / 1.12
-     oer_all_in        +27.46% vs  +28.06%   gap -0.61 pp   +/- 0.39 / 0.90
-     pm_oer_all_in     +29.42% vs  +30.11%   gap -0.69 pp   +/- 0.37 / 0.86   <- headline
+     all_in            +25.12% vs  +25.90%   gap -0.78 pp   +/- 0.51 / 1.18
+     ex_shelter        +24.69% vs  +24.69%   gap +0.00 pp   +/- 0.56 / 1.30
+     ex_housing        +24.91% vs  +24.83%   gap +0.08 pp   +/- 0.69 / 1.60
+     all_in_long       +28.67% vs  +29.65%   gap -0.98 pp   +/- 0.53 / 1.23
+     ex_shelter_long   +28.76% vs  +29.43%   gap -0.66 pp   +/- 0.60 / 1.37
+     pm_all_in         +27.55% vs  +28.41%   gap -0.86 pp   +/- 0.49 / 1.13
+     pm_ex_shelter     +27.48% vs  +27.89%   gap -0.41 pp   +/- 0.55 / 1.24
+     oer_all_in        +27.46% vs  +28.06%   gap -0.61 pp   +/- 0.44 / 1.01
+     pm_oer_all_in     +29.42% vs  +30.11%   gap -0.69 pp   +/- 0.42 / 0.97   <- headline
      range across the 9 baskets: -0.98 to +0.08 pp
 
    One parent minus married with children, since December 2019 (95% CI: uncorrelated / correlated vintages)
-     all_in            +27.64% vs  +24.77%   gap +2.87 pp   +/- 0.90 / 2.06
-     ex_shelter        +26.61% vs  +24.46%   gap +2.14 pp   +/- 1.03 / 2.34
-     ex_housing        +27.21% vs  +24.64%   gap +2.57 pp   +/- 1.28 / 2.91
-     all_in_long       +29.97% vs  +28.49%   gap +1.49 pp   +/- 0.92 / 2.09
-     ex_shelter_long   +29.45% vs  +28.68%   gap +0.77 pp   +/- 1.06 / 2.38
-     pm_all_in         +29.13% vs  +27.34%   gap +1.79 pp   +/- 0.87 / 1.97
-     pm_ex_shelter     +28.44% vs  +27.37%   gap +1.07 pp   +/- 1.00 / 2.22
-     oer_all_in        +28.96% vs  +27.27%   gap +1.69 pp   +/- 0.79 / 1.81
-     pm_oer_all_in     +30.25% vs  +29.32%   gap +0.92 pp   +/- 0.77 / 1.73   <- headline
+     all_in            +27.64% vs  +24.77%   gap +2.87 pp   +/- 1.01 / 2.29
+     ex_shelter        +26.61% vs  +24.46%   gap +2.14 pp   +/- 1.15 / 2.57
+     ex_housing        +27.21% vs  +24.64%   gap +2.57 pp   +/- 1.43 / 3.22
+     all_in_long       +29.97% vs  +28.49%   gap +1.49 pp   +/- 1.05 / 2.35
+     ex_shelter_long   +29.45% vs  +28.68%   gap +0.77 pp   +/- 1.20 / 2.66
+     pm_all_in         +29.13% vs  +27.34%   gap +1.79 pp   +/- 0.99 / 2.21
+     pm_ex_shelter     +28.44% vs  +27.37%   gap +1.07 pp   +/- 1.13 / 2.47
+     oer_all_in        +28.96% vs  +27.27%   gap +1.69 pp   +/- 0.91 / 2.02
+     pm_oer_all_in     +30.25% vs  +29.32%   gap +0.92 pp   +/- 0.89 / 1.96   <- headline
      range across the 9 baskets: +0.77 to +2.87 pp
 
    Married with children (04 alone) minus single/other, since December 2019 (95% CI: uncorrelated / correlated vintages)
-     all_in            +24.77% vs  +25.90%   gap -1.13 pp   +/- 0.48 / 1.14
-     ex_shelter        +24.46% vs  +24.69%   gap -0.22 pp   +/- 0.54 / 1.26
-     ex_housing        +24.64% vs  +24.83%   gap -0.19 pp   +/- 0.66 / 1.54
-     all_in_long       +28.49% vs  +29.65%   gap -1.16 pp   +/- 0.50 / 1.17
-     ex_shelter_long   +28.68% vs  +29.43%   gap -0.74 pp   +/- 0.55 / 1.29
-     pm_all_in         +27.34% vs  +28.41%   gap -1.07 pp   +/- 0.46 / 1.07
-     pm_ex_shelter     +27.37% vs  +27.89%   gap -0.52 pp   +/- 0.51 / 1.17
-     oer_all_in        +27.27% vs  +28.06%   gap -0.80 pp   +/- 0.41 / 0.95
-     pm_oer_all_in     +29.32% vs  +30.11%   gap -0.79 pp   +/- 0.39 / 0.91   <- headline
+     all_in            +24.77% vs  +25.90%   gap -1.13 pp   +/- 0.54 / 1.25
+     ex_shelter        +24.46% vs  +24.69%   gap -0.22 pp   +/- 0.59 / 1.37
+     ex_housing        +24.64% vs  +24.83%   gap -0.19 pp   +/- 0.72 / 1.68
+     all_in_long       +28.49% vs  +29.65%   gap -1.16 pp   +/- 0.56 / 1.30
+     ex_shelter_long   +28.68% vs  +29.43%   gap -0.74 pp   +/- 0.62 / 1.44
+     pm_all_in         +27.34% vs  +28.41%   gap -1.07 pp   +/- 0.52 / 1.20
+     pm_ex_shelter     +27.37% vs  +27.89%   gap -0.52 pp   +/- 0.57 / 1.30
+     oer_all_in        +27.27% vs  +28.06%   gap -0.80 pp   +/- 0.46 / 1.06
+     pm_oer_all_in     +29.32% vs  +30.11%   gap -0.79 pp   +/- 0.45 / 1.02   <- headline
      range across the 9 baskets: -1.16 to -0.19 pp
 
 ## 8. Price-updating variants, effect on the family gap (12-month, pp)

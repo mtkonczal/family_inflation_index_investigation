@@ -78,7 +78,7 @@ GL <- c("01" = "All consumer units", "03" = "Married couple, no children",
         "08" = "Other married couple CUs", "09" = "One parent, child under 18",
         "10" = "Single person and other CUs",
         F1 = "Families with children, headline (04 + 09)",
-        K1 = "Families with children under 18 (05 + 06 + 09)",
+        K1 = "Minor-child proxy (05 + 06 + 09)",
         RF = "All CUs except 04 + 09", RK = "All CUs except 05 + 06 + 09")
 # Groups whose SHARES come from pooling published groups (as 02 pools F1).
 SHARE_SRC <- list(F1 = c("04", "09"), K1 = c("05", "06", "09"),

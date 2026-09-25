@@ -1,5 +1,5 @@
 # Other-dimension index validation log
-# built_at: 2026-09-23T10:22:54-0400
+# built_at: 2026-09-25T10:55:50-0400
 
 ## Weight-source discrepancy carried over from Phase 3 (mean over all its months)
    all_in           0.468 pp  (2013-03 to 2026-07)
@@ -67,34 +67,34 @@
 
    Lowest minus highest income quintile (Income quintile)
      basket            months  mean gap  mean|gap|   disc   ratio   mean SE  sig   cum since Dec 2019 (95% CI)
-     all_in             186   +0.328     0.437   0.468   1.03    0.077   94%   +1.98 pp  (+/- 0.66 / 1.54)
-     ex_shelter         186   +0.122     0.291   0.566   0.54    0.090   75%   +0.95 pp  (+/- 0.77 / 1.78)
-     ex_housing         186   +0.125     0.356   0.700   0.51    0.112   71%   +0.30 pp  (+/- 0.97 / 2.23)
-     pm_ex_shelter      160   +0.143     0.245   0.133   1.84    0.080   73%   +2.08 pp  (+/- 0.72 / 1.59)
-     pm_oer_all_in      139   +0.252     0.339   0.095   3.58    0.062   97%   +1.84 pp  (+/- 0.52 / 1.17)
+     all_in             186   +0.328     0.437   0.468   1.03    0.077   94%   +1.98 pp  (+/- 0.73 / 1.69)
+     ex_shelter         186   +0.122     0.291   0.566   0.54    0.090   75%   +0.95 pp  (+/- 0.85 / 1.93)
+     ex_housing         186   +0.125     0.356   0.700   0.51    0.112   71%   +0.30 pp  (+/- 1.06 / 2.42)
+     pm_ex_shelter      160   +0.143     0.245   0.133   1.84    0.080   73%   +2.08 pp  (+/- 0.81 / 1.77)
+     pm_oer_all_in      139   +0.252     0.339   0.095   3.58    0.062   97%   +1.84 pp  (+/- 0.59 / 1.32)
 
    Lowest minus highest income decile (Income decile)
      basket            months  mean gap  mean|gap|   disc   ratio   mean SE  sig   cum since Dec 2019 (95% CI)
-     all_in             115   +0.460     0.534   0.572   0.93    0.122   84%   +2.88 pp  (+/- 0.96 / 2.16)
-     ex_shelter         115   +0.227     0.334   0.708   0.47    0.141   57%   +1.88 pp  (+/- 1.13 / 2.52)
-     ex_housing         115   +0.247     0.409   0.877   0.47    0.176   57%   +1.55 pp  (+/- 1.41 / 3.14)
-     pm_ex_shelter      115   +0.248     0.310   0.110   2.82    0.127   57%   +2.62 pp  (+/- 1.08 / 2.35)
-     pm_oer_all_in      115   +0.290     0.333   0.092   3.61    0.096   81%   +2.06 pp  (+/- 0.78 / 1.74)
+     all_in             115   +0.460     0.534   0.572   0.93    0.122   84%   +2.88 pp  (+/- 1.07 / 2.38)
+     ex_shelter         115   +0.227     0.334   0.708   0.47    0.141   57%   +1.88 pp  (+/- 1.25 / 2.75)
+     ex_housing         115   +0.247     0.409   0.877   0.47    0.176   57%   +1.55 pp  (+/- 1.55 / 3.43)
+     pm_ex_shelter      115   +0.248     0.310   0.110   2.82    0.127   57%   +2.62 pp  (+/- 1.22 / 2.62)
+     pm_oer_all_in      115   +0.290     0.333   0.092   3.61    0.096   81%   +2.06 pp  (+/- 0.90 / 1.96)
 
    Four-person minus one-person CUs (Size of consumer unit)
      basket            months  mean gap  mean|gap|   disc   ratio   mean SE  sig   cum since Dec 2019 (95% CI)
-     all_in             186   -0.156     0.459   0.468   1.03    0.076   94%   +0.00 pp  (+/- 0.63 / 1.48)
-     ex_shelter         186   -0.004     0.249   0.566   0.45    0.085   71%   +1.06 pp  (+/- 0.70 / 1.63)
-     ex_housing         186   -0.040     0.352   0.700   0.52    0.104   69%   +1.37 pp  (+/- 0.86 / 2.01)
-     pm_ex_shelter      160   -0.045     0.205   0.133   1.54    0.078   61%   +0.37 pp  (+/- 0.67 / 1.56)
-     pm_oer_all_in      139   -0.207     0.444   0.095   4.69    0.063   93%   -0.41 pp  (+/- 0.51 / 1.20)
+     all_in             186   -0.156     0.459   0.468   1.03    0.076   94%   +0.00 pp  (+/- 0.70 / 1.62)
+     ex_shelter         186   -0.004     0.249   0.566   0.45    0.085   71%   +1.06 pp  (+/- 0.77 / 1.78)
+     ex_housing         186   -0.040     0.352   0.700   0.52    0.104   69%   +1.37 pp  (+/- 0.95 / 2.20)
+     pm_ex_shelter      160   -0.045     0.205   0.133   1.54    0.078   61%   +0.37 pp  (+/- 0.76 / 1.73)
+     pm_oer_all_in      139   -0.207     0.444   0.095   4.69    0.063   93%   -0.41 pp  (+/- 0.59 / 1.35)
 
    Families with children minus single-person and other CUs (Phase 3)
-     all_in             186   -0.154     0.302   0.468   0.69    0.056   91%   -0.78 pp  (+/- 0.46 / 1.08)
-     ex_shelter         186   -0.026     0.114   0.566   0.21    0.062   51%   +0.00 pp  (+/- 0.51 / 1.20)
-     ex_housing         186   -0.054     0.161   0.700   0.24    0.076   58%   +0.08 pp  (+/- 0.63 / 1.47)
-     pm_ex_shelter      160   -0.046     0.095   0.133   0.72    0.056   49%   -0.41 pp  (+/- 0.48 / 1.12)
-     pm_oer_all_in      139   -0.153     0.263   0.095   2.77    0.046   91%   -0.69 pp  (+/- 0.37 / 0.86)
+     all_in             186   -0.154     0.302   0.468   0.69    0.056   91%   -0.78 pp  (+/- 0.51 / 1.18)
+     ex_shelter         186   -0.026     0.114   0.566   0.21    0.062   51%   +0.00 pp  (+/- 0.56 / 1.30)
+     ex_housing         186   -0.054     0.161   0.700   0.24    0.076   58%   +0.08 pp  (+/- 0.69 / 1.60)
+     pm_ex_shelter      160   -0.046     0.095   0.133   0.72    0.056   49%   -0.41 pp  (+/- 0.55 / 1.24)
+     pm_oer_all_in      139   -0.153     0.263   0.095   2.77    0.046   91%   -0.69 pp  (+/- 0.42 / 0.97)
 
 ## Mean contributions since Jan 2020, headline basket, relative-price form (D-34)
    Renters minus homeowners:
@@ -127,9 +127,9 @@
      Other entertainment supplies, equipment, s -0.012 pp
 
 ## Ranking of cuts by cumulative gap since Dec 2019, headline basket
-   Lowest minus highest income decile             +2.06 pp  (95% CI +/- 0.78 to 1.74)   mean 12m gap +0.290
-   Lowest minus highest income quintile           +1.84 pp  (95% CI +/- 0.52 to 1.17)   mean 12m gap +0.252
-   Families with children minus single/other CUs  -0.69 pp  (95% CI +/- 0.37 to 0.86)   mean 12m gap -0.153
-   Four-person minus one-person CUs               -0.41 pp  (95% CI +/- 0.51 to 1.20)   mean 12m gap -0.207
+   Lowest minus highest income decile             +2.06 pp  (95% CI +/- 0.90 to 1.96)   mean 12m gap +0.290
+   Lowest minus highest income quintile           +1.84 pp  (95% CI +/- 0.59 to 1.32)   mean 12m gap +0.252
+   Families with children minus single/other CUs  -0.69 pp  (95% CI +/- 0.42 to 0.97)   mean 12m gap -0.153
+   Four-person minus one-person CUs               -0.41 pp  (95% CI +/- 0.59 to 1.35)   mean 12m gap -0.207
    Renters minus homeowners                          NA pp  (95% CI +/- NA to NA)   mean 12m gap +0.032
 

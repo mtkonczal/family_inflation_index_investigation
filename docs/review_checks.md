@@ -1,6 +1,6 @@
 # Second methods review: checks 1 to 8
 
-**Vintage:** 2026-09-23 | **Scripts:** `R/11_review_checks.R` (checks 1-6, 8),
+**Vintage:** 2026-09-25 (cumulative uncertainty correction) | **Scripts:** `R/11_review_checks.R` (checks 1-6, 8),
 `R/12_external_benchmarks.R` (check 7)
 **Logs:** `output/tables/t00i_review_checks.txt`, `t00j_external_benchmarks.txt`
 **Decisions:** D-35 to D-40
@@ -18,9 +18,14 @@ disjoint LB06 cells (D-36) under three conventions: **independent** weight
 vintages, **persistent** errors, and a **worst-case bound** over any
 correlation across vintages.
 
-Group codes: F1 = headline families (04 + 09); K1 = families with children
-under 18 (05 + 06 + 09); 10 = single person and other CUs; 01 = all CUs;
+Group codes: F1 = headline families (04 + 09); K1 = published-table proxy
+(05 + 06 + 09: married couples whose oldest child is under 18, plus one-parent
+CUs with a child under 18); 10 = single person and other CUs; 01 = all CUs;
 03 = married couples without children.
+
+K1 omits code 07, which mixes married couples with only adult children and
+couples who also have a younger minor. It also cannot isolate a child exactly
+age 18. K1 is not an exact "any child age 18 or younger at home" population.
 
 ---
 
@@ -30,22 +35,22 @@ under 18 (05 + 06 + 09); 10 = single person and other CUs; 01 = all CUs;
    under every definition, basket, weight timing and SE convention tried. The
    headline sign stands.
 2. **The size of the gap is less settled than the write-ups say.** It is
-   -0.69 on the headline, -0.84 for children under 18, and about -0.47 with
+   -0.69 on the headline, -0.84 for the K1 proxy, and about -0.47 with
    contemporaneous superlative weights. Under the worst-case SE bound the
-   full-window gap is not significant (p = 0.11).
+   full-window gap is not significant (p = 0.15).
 3. **"Families faced lower inflation" is a statement about the comparison
-   group.** Against all CUs the gap is -0.20 (p = 0.07). Against married
+   group.** Against all CUs the gap is -0.20 (p = 0.11). Against married
    couples without children it is +0.20 (not significant), and +0.89 on the
-   non-housing basket (p = 0.001 independent, 0.16 bound).
+   non-housing basket (p = 0.004 independent, 0.20 bound).
 4. **The 2021-22 "families higher" episode does not survive a window test.**
-   Over Dec 2020 to Dec 2022 the gap is +0.23 (p = 0.13), and +0.04 for
-   children under 18.
+   Over Dec 2020 to Dec 2022 the gap is +0.23 (p = 0.15), and +0.04 for
+   the K1 proxy.
 5. **"Tuition above all" is about parents of college-age children,** plus a
-   pricing artifact. For families with children under 18, education
+   pricing artifact. For the K1 proxy, education
    contributes about zero once K-12 and college tuition are priced separately.
 6. **Real childcare items, finance-charge removal and new/used vehicle splits
    each move the gap by 0.01 to 0.07 pp.** The childcare share ratio is 8.5x
-   (12x for under-18 families), not the 5x in the executive summary.
+   (12x for the K1 proxy), not the 5x in the executive summary.
 7. **Against BLS's own research index, the income gradient reproduces over
    2019-2025 but not 2014-2019.** Over 2019-2025 it is +1.84 against BLS's
    +2.15. Over 2014-2019 it is +1.27 against +0.28, and the gap looks like
@@ -60,18 +65,18 @@ or older. It spends $129 a year on childcare.
 
 | Group minus single/other (10) | CPI concept | SE indep / bound | Ex-shelter |
 |---|---|---|---|
-| F1, headline (04 + 09) | **-0.69** | 0.18 / 0.43 | -0.41 |
-| **K1, children under 18 (05 + 06 + 09)** | **-0.84** | 0.21 / 0.48 | -0.67 |
-| 05 Married, oldest child under 6 | -0.55 | 0.36 / 0.84 | -0.30 |
-| 06 Married, oldest child 6-17 | -1.17 | 0.26 / 0.60 | -1.08 |
-| 07 Married, oldest child 18+ | -0.37 | 0.28 / 0.64 | +0.12 |
-| 09 One parent, child under 18 | +0.14 | 0.38 / 0.85 | +0.55 |
+| F1, headline (04 + 09) | **-0.69** | 0.21 / 0.48 | -0.41 |
+| **K1, published-table minor-child proxy (05 + 06 + 09)** | **-0.84** | 0.24 / 0.54 | -0.67 |
+| 05 Married, oldest child under 6 | -0.55 | 0.41 / 0.95 | -0.30 |
+| 06 Married, oldest child 6-17 | -1.17 | 0.29 / 0.67 | -1.08 |
+| 07 Married, oldest child 18+ | -0.37 | 0.33 / 0.72 | +0.12 |
+| 09 One parent, child under 18 | +0.14 | 0.44 / 0.96 | +0.55 |
 
 Dropping adult-children couples makes the gap **larger**, not smaller. My
 review hypothesis that 07 drove the result was wrong on the total. It was
 right on the mechanism: education contributes -0.27 for 07 against -0.13 for
 K1 (headline pricing), and -0.30 against -0.01 once tuition is priced by
-level (check 8). For children-under-18 families, the non-shelter part of the
+level (check 8). For the K1 proxy, the non-shelter part of the
 gap is:
 
 - apparel, -0.13 ± 0.04;
@@ -83,13 +88,13 @@ gap is:
 
 | Gap | CPI concept | p (indep / bound) | Ex-shelter | p (indep / bound) |
 |---|---|---|---|---|
-| F1 minus single/other | -0.69 | <0.001 / 0.11 | -0.41 | 0.09 / 0.46 |
-| F1 minus all CUs | -0.20 | 0.07 / 0.44 | +0.07 | 0.60 / 0.82 |
-| F1 minus all other CUs | -0.32 | 0.06 / 0.42 | +0.10 | 0.66 / 0.85 |
-| F1 minus married, no children | **+0.20** | 0.33 / 0.68 | **+0.89** | 0.001 / 0.16 |
-| K1 minus single/other | -0.84 | <0.001 / 0.08 | -0.67 | 0.01 / 0.29 |
-| K1 minus all CUs | -0.35 | 0.02 / 0.31 | -0.18 | 0.32 / 0.67 |
-| K1 minus married, no children | +0.05 | 0.82 / 0.92 | **+0.63** | 0.04 / 0.36 |
+| F1 minus single/other | -0.69 | 0.001 / 0.15 | -0.41 | 0.13 / 0.51 |
+| F1 minus all CUs | -0.20 | 0.11 / 0.49 | +0.07 | 0.64 / 0.84 |
+| F1 minus all other CUs | -0.32 | 0.10 / 0.47 | +0.10 | 0.70 / 0.86 |
+| F1 minus married, no children | **+0.20** | 0.40 / 0.71 | **+0.89** | 0.004 / 0.20 |
+| K1 minus single/other | -0.84 | <0.001 / 0.12 | -0.67 | 0.03 / 0.34 |
+| K1 minus all CUs | -0.35 | 0.04 / 0.36 | -0.18 | 0.38 / 0.70 |
+| K1 minus married, no children | +0.05 | 0.84 / 0.93 | **+0.63** | 0.06 / 0.41 |
 
 Levels (headline): married, no children 29.22%; K1 29.27%; F1 29.42%; all
 CUs 29.62%; single/other 30.11%.
@@ -167,16 +172,16 @@ One test per cumulative window, F1 minus single/other, headline basket:
 | Window | Gap | SE indep / bound | p indep / bound |
 |---|---|---|---|
 | Dec 2014 - Dec 2019 | -1.05 | 0.06 / 0.13 | <0.001 / <0.001 |
-| Dec 2019 - Jul 2026 | -0.69 | 0.18 / 0.43 | <0.001 / 0.11 |
-| Dec 2020 - Dec 2022 | **+0.23** | 0.15 / 0.22 | **0.13 / 0.28** |
+| Dec 2019 - Jul 2026 | -0.69 | 0.21 / 0.48 | 0.001 / 0.15 |
+| Dec 2020 - Dec 2022 | **+0.23** | 0.16 / 0.22 | **0.15 / 0.30** |
 | Dec 2022 - Dec 2024 | -0.65 | 0.06 / 0.09 | <0.001 / <0.001 |
 | Dec 2024 - Jul 2026 | +0.01 | 0.04 / 0.06 | 0.77 / 0.83 |
 
-The 2021-22 window is significant only against childless couples (+0.44,
-p = 0.01) and all CUs (+0.19, p = 0.04), and only under independent vintages
-(bound: p = 0.07 and 0.14).
+In the 2021-22 window, the gap against childless couples is +0.44
+(p = 0.016 under independent vintages, 0.08 under the bound). Against all CUs
+it is +0.19 (p = 0.046 independent, 0.15 bound).
 
-**Single parents minus married parents: +0.92** (p = 0.02 independent, 0.29
+**Single parents minus married parents: +0.92** (p = 0.04 independent, 0.35
 bound). In the deep variant it rises to +1.95. That rise is the used-car term,
 +0.91 ± 1.02, so it is noise.
 
@@ -257,7 +262,7 @@ Applied 2026-09-23 to the paper, README, executive summary,
 3. **Retire the 2021-22 attribution.** Replace "driven by vehicles, food and
    gasoline" with this: over 2021-22 the family gap was positive but not
    statistically distinguishable from zero.
-4. **Replace "tuition above all."** For families with children under 18 the
+4. **Replace "tuition above all."** For the K1 proxy the
    non-housing tilt is apparel, utilities and tobacco. Tuition is a
    college-age story.
 5. **Childcare share ratio:** eight to twelve times, not five.
@@ -265,15 +270,19 @@ Applied 2026-09-23 to the paper, README, executive summary,
    a third to a half smaller.
 7. **Income gradient:** cite the BLS R-CPI-I comparison (+2.1 against +1.8,
    2019-2025).
-8. **Family definition.** Consider K1 (children under 18) as the headline.
+8. **Family definition.** Consider K1 (the published-table proxy) as the headline.
    Decided: F1 stays the headline; K1 (-0.84) is reported as robustness.
 
 ## What is still not done
 
-- **Age conditioning and democratic weights** still need PUMD.
+- **Age conditioning and equal-consumer-unit weights** still need PUMD;
+  [the microdata design](pumd_design.md) specifies the comparison.
 - **Sub-item RSEs are borrowed from the parent** for childcare, tuition
-  pieces and other education. The true RSEs are larger, so those
-  contributions' intervals are understated.
+  pieces and other education. Their true RSEs are unknown; those
+  contributions' intervals may be understated.
 - **Cell-based RSEs run about 10% below published all-CU RSEs** (median ratio
   0.90) and 4% below group 04's (0.96). Cells are treated as independent, and
   CE's design is not fully captured.
+- **Contribution intervals in `t42` are approximate link-level calculations.**
+  The D-42 finite-difference check validates cumulative gap SEs, not the
+  attribution intervals.

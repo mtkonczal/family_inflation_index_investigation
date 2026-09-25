@@ -1,6 +1,6 @@
 cat_id,w,variant,group,label
 14,1.589921468050262,headline,F1,"Families with children, headline (04 + 09)"
-14,2.235336664696409,headline,K1,Families with children under 18 (05 + 06 + 09)
+14,2.235336664696409,headline,K1,Minor-child proxy (05 + 06 + 09)
 14,6.056663929836321,headline,05,"Married, oldest child under 6"
 14,1.331249671013198,headline,06,"Married, oldest child 6-17"
 14,0.1499949212813762,headline,07,"Married, oldest child 18+"
@@ -9,8 +9,8 @@ cat_id,w,variant,group,label
 14,0.7121770682519275,headline,01,All consumer units
 14C,1.5667585956406498,childcare,F1,"Families with children, headline (04 + 09)"
 14E,0.023673721034605067,childcare,F1,"Families with children, headline (04 + 09)"
-14C,2.2296478393820225,childcare,K1,Families with children under 18 (05 + 06 + 09)
-14E,0.005793551869698539,childcare,K1,Families with children under 18 (05 + 06 + 09)
+14C,2.2296478393820225,childcare,K1,Minor-child proxy (05 + 06 + 09)
+14E,0.005793551869698539,childcare,K1,Minor-child proxy (05 + 06 + 09)
 14C,6.055703401127277,childcare,05,"Married, oldest child under 6"
 14E,9.714702584703533e-4,childcare,05,"Married, oldest child under 6"
 14C,1.3248288338095275,childcare,06,"Married, oldest child 6-17"

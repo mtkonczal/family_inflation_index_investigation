@@ -1,4 +1,4 @@
 artifact: dimension_index
-built_at: 2026-09-23T10:22:54-0400
+built_at: 2026-09-25T10:55:50-0400
 rows: 15875
 cols: dimension, basket, characteristics_code, group, date, index, chg_12m, n_cats, w_ref_year

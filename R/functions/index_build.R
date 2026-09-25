@@ -426,9 +426,10 @@ gap_se_12m <- function(wF, wN, rseF, rseN, pi12, lag_years = 2L) {
 #' The change is chained over calendar-year links (Dec to Dec, last link to
 #' d1); each link uses one CEX vintage. Within link y the link inflation's SE
 #' follows the formula above with the link's reference-month cost weights.
-#' The cumulative change is prod(1 + L_y) - 1, so its SE contribution from
-#' link y is (I_{y-1}/I_0) * (I_{y}/I_{y-1}) / (1 + L_y) * SE(L_y) ~= (I_{y-1}/I_0)
-#' * SE(L_y) to first order.
+#' The cumulative change is prod(1 + L_y) - 1. Holding the other links fixed,
+#' its derivative with respect to link y is (I_{d1}/I_0) / (1 + L_y), or
+#' equivalently (I_{y-1}/I_0) * (I_{d1}/I_y). The second factor carries a
+#' change in an early link through all subsequent price growth.
 #'
 #' Vintages from different years come from overlapping but different CE
 #' samples, so their errors are neither independent nor identical. Both
@@ -457,7 +458,8 @@ cum_se <- function(index, weights, prices, rse, d0, d1, lag_years = 2L) {
     if (anyNA(z$rse)) return(c(se_indep = NA_real_, se_corr = NA_real_))
     rbar <- sum(z$weight * z$r)
     se_l <- sqrt(sum((z$weight * (z$r - rbar) * z$rse)^2))
-    parts <- c(parts, (idx$index[idx$date == a] / I0) * se_l)
+    link_growth <- idx$index[idx$date == b] / idx$index[idx$date == a]
+    parts <- c(parts, (idx$index[idx$date == d1] / I0) / link_growth * se_l)
   }
   100 * c(se_indep = sqrt(sum(parts^2)), se_corr = sum(parts))
 }

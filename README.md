@@ -3,7 +3,7 @@
 A group-specific price index for households with children, built from BLS
 Consumer Expenditure Survey (CEX) budget shares and CPI-U item price indices.
 
-**Status:** Complete, revised 2026-09-23 after two methods reviews. Phases 1,
+**Status:** Complete, revised 2026-09-25 after two methods reviews and a cumulative uncertainty correction. Phases 1,
 1b, 2, 3, 4 (other dimensions), 5 (burden) and two robustness passes, written
 up in [paper/family_inflation.qmd](paper/family_inflation.qmd). The first
 review corrected the error bar, built the owners'-equivalent-rent basket,
@@ -32,15 +32,15 @@ published CPI-U to a mean absolute 0.10 pp on 12-month changes. The headline
 family group is married couples with children (of any age) plus one parent
 with a child under 18 (LB06 04 + 09).
 
-| Dec 2019 to Jul 2026 | Families with children | Single/other CUs | Gap | 95% sampling CI |
+| Dec 2019 to Jul 2026 | Families with children | Single/other CUs | Gap | 95% sampling margin (independent / year bound) |
 |---|---|---|---|---|
-| **CPI concept (headline)** | **29.42%** | **30.11%** | **-0.69 pp** | +/- 0.37 to 0.86 |
-| Ex-shelter, medical pooled | 27.48% | 27.89% | -0.41 pp | +/- 0.48 to 1.12 |
+| **CPI concept (headline)** | **29.42%** | **30.11%** | **-0.69 pp** | +/- 0.42 to 0.97 |
+| Ex-shelter, medical pooled | 27.48% | 27.89% | -0.41 pp | +/- 0.55 to 1.24 |
 | Range across all 9 baskets | | | -0.98 to +0.08 pp | |
 
-The CI range is CE sampling error with errors independent across survey years
-(0.37) and in the worst case over any correlation (0.86). The headline gap is
-3.7 standard errors under the first and 1.6 under the second (p = 0.11), so
+The margins are approximate CE sampling error using group-level standard errors, with errors independent across survey years
+(0.42) and in the worst case over any correlation (0.97). The disjoint-cell check gives 0.41 and 0.95, respectively; the headline gap is
+3.3 standard errors under the first and 1.4 under the second (p = 0.15), so
 "statistically distinguishable" depends on that assumption. No basket shows
 families meaningfully above single households.
 
@@ -49,10 +49,10 @@ families meaningfully above single households.
 
 | Families with children minus | CPI concept | p (independent / worst case) | Ex-shelter |
 |---|---|---|---|
-| Single-person and other CUs | -0.69 | <0.001 / 0.11 | -0.41 |
-| All other CUs | -0.32 | 0.06 / 0.42 | +0.10 |
-| All CUs | -0.20 | 0.07 / 0.44 | +0.07 |
-| Married couples without children | +0.20 | 0.33 / 0.68 | **+0.89** (0.001 / 0.16) |
+| Single-person and other CUs | -0.69 | 0.001 / 0.15 | -0.41 |
+| All other CUs | -0.32 | 0.10 / 0.47 | +0.10 |
+| All CUs | -0.20 | 0.11 / 0.49 | +0.07 |
+| Married couples without children | +0.20 | 0.40 / 0.71 | **+0.89** (0.004 / 0.20) |
 
 Against childless couples, two lifecycle categories nearly cancel: they carry
 more medical weight (medical lagged, +0.36 for families) and more OER weight
@@ -63,7 +63,7 @@ more medical weight (medical lagged, +0.36 for families) and more OER weight
 | Check | Headline gap |
 |---|---|
 | Baseline | -0.69 pp |
-| Families with a child under 18 only (05 + 06 + 09) | -0.84 |
+| Published-table minor-child proxy (05 + 06 + 09) | -0.84 |
 | Married couples with children alone (04) | -0.79 |
 | Tornqvist on contemporaneous CE weights (superlative) | -0.47 |
 | CPI-W prices / seasonally adjusted CPI-U | -0.80 / -0.87 |
@@ -75,6 +75,12 @@ The superlative index is the largest change. The headline follows CPI's
 two-year weight lag, which prices 2022-23 with pandemic-era spending; with
 same-year weights the gap is a third smaller (D-38).
 
+The 05 + 06 + 09 check is narrower than "any resident child under 18": the
+married-couple cells classify by **oldest** child's age, so a couple with an
+adult oldest child and a younger minor is in excluded code 07. The published
+tables also cannot isolate households with a child exactly age 18. The exact
+"18 or younger at home" comparison requires CE member-level microdata.
+
 **Why.** A category moves the gap only if families buy more (or less) of it
 *and* its price outran (or lagged) the average (D-34). Two pieces, roughly
 equal:
@@ -85,13 +91,13 @@ equal:
   Housing has economies of scale, so bigger households spend a smaller share
   on it.
 - *The rest of the basket.* Education (-0.18 +/- 0.05) is mostly parents of
-  college-age children; for families with a child under 18 it is about zero
+  college-age children; for the 05 + 06 + 09 proxy it is about zero
   once K-12 and college tuition are priced separately. Their non-housing tilt
   is apparel (-0.13), utilities (-0.07) and tobacco (-0.07). Gasoline (+0.18)
   and food (+0.08) push the other way. Vehicle purchases carry too much CE
   sampling error (+/- 0.28) to attribute in either direction.
 - *Childcare contributes about zero.* Families carry about eight times the
-  weight (twelve times for families with a child under 18), but day care
+  weight (twelve times for the 05 + 06 + 09 proxy), but day care
   prices rose 29.8 percent against 29.9 for CPI. It tracks services generally
   (2.6 percent a year in the 2010s against 2.6 for all services). The
   childcare problem is the size of the bill ($5,586 a year, 6.4 percent of
@@ -104,7 +110,7 @@ prices fell, childcare +0.07. See `R/10_intuition.R`.
 
 **2021-22, tested once.** The 12-month gap was positive from April 2021 to
 August 2022 (peak +0.60 pp). Over December 2020 to December 2022 as a whole,
-families' prices rose 0.23 pp more, not distinguishable from zero (p = 0.13).
+families' prices rose 0.23 pp more, not distinguishable from zero (p = 0.15).
 The reversal is clear: December 2022 to December 2024, -0.65 pp, significant
 under either assumption. Since December 2024, zero.
 
@@ -125,12 +131,12 @@ under either assumption. Since December 2024, zero.
 
 CPI-concept basket, cumulative since December 2019:
 
-| Cut | Gap | 95% CI |
+| Cut | Gap | 95% margin (independent / year bound) |
 |---|---|---|
-| Lowest minus highest income decile | **+2.06 pp** | +/- 0.78 to 1.74 |
-| Lowest minus highest income quintile | **+1.84 pp** | +/- 0.52 to 1.17 |
-| Families with children minus single/other | **-0.69 pp** | +/- 0.37 to 0.86 |
-| Four-person minus one-person CUs | -0.41 pp | +/- 0.51 to 1.20 |
+| Lowest minus highest income decile | **+2.06 pp** | +/- 0.90 to 1.96 |
+| Lowest minus highest income quintile | **+1.84 pp** | +/- 0.59 to 1.32 |
+| Families with children minus single/other | **-0.69 pp** | +/- 0.42 to 0.97 |
+| Four-person minus one-person CUs | -0.41 pp | +/- 0.59 to 1.35 |
 | Renters minus homeowners (2021 on, 12-month mean) | +0.03 pp | |
 
 The income gradient is about three times the family gap and runs the other
@@ -163,7 +169,7 @@ and all shelter outlays (rent and owner costs) as a share of 2024 consumption.
   single/other CUs. The earlier "19 percent less per person" ignored economies
   of scale and is withdrawn.
 - One-parent households faced 0.92 pp more cumulative inflation than married
-  parents (p = 0.02 with independent errors, 0.29 in the worst case; range
+  parents (p = 0.04 with independent errors, 0.35 in the worst case; range
   +0.77 to +2.87 across baskets). Their
   necessity-share gap is 43.0 versus 36.6 percent once owner shelter costs
   count, not the 29.3 versus 16.9 the rent-only definition gave.

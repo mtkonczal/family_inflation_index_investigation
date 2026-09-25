@@ -99,7 +99,7 @@ Check the gap against survey error, other household cuts, and other time periods
 A common view in family policy: **inflation hits families with children harder.** They buy more groceries, child care, cars and school supplies, and those prices jumped after 2021.
 :::
 
-Headline CPI tracks one basket for one average urban household. So we built two: the basket families with children actually buy, and the basket single-person households buy, each priced month by month.
+Headline CPI tracks the spending of urban consumers. So we built two baskets from surveyed expenditures: one for families with children, the other for single-person and other households, each priced with the same national CPI item indexes.
 
 **Did the family basket get more expensive, faster?**
 
@@ -166,7 +166,7 @@ Each of 37 spending categories is matched to the official CPI series for it, 62 
 **Owners' housing is priced the way CPI prices it.** CPI charges homeowners what their home would rent for. The survey asks every owner that question, and BLS uses the answer to weight the CPI. We use the same answer.
 :::
 
-Built this way, our all-household index tracks official CPI to within 0.1 percentage point a year on average.
+Built this way, our all-household index differs from official CPI by 0.1 percentage point on average across 12-month rates. This checks the aggregate fit, but cannot test prices paid within each household type.
 
 ---
 
@@ -185,13 +185,13 @@ Built this way, our all-household index tracks official CPI to within 0.1 percen
 | Single-person and other | **+30.1%** |
 | **Gap** | **−0.7 pts** |
 
-About 0.1 point a year, and in families' favor. Survey error is about ±0.4 to ±0.9 points over the period, so the gap sits at the edge of it.
+About 0.1 point a year, and in families' favor. The corrected 95% sampling margin is about ±0.4 to ±1.0 points, depending on how errors carry across survey years.
 :::
 
 ::::
 
 ::: {.callout-box}
-**No.** Families with children did not face higher inflation. Nine ways of defining the basket, three price sources, three family definitions and two index formulas all put families at or below single households.
+**No meaningful excess from the spending mix.** Across nine baskets the family-minus-single/other gap runs from −1.0 to +0.1 points. Other price inputs, family definitions and index formulas leave that conclusion intact. Prices paid within items are outside this index.
 :::
 
 ---
@@ -201,7 +201,7 @@ About 0.1 point a year, and in families' favor. Survey error is about ±0.4 to �
 ![](`r fig_slide("comparators_slide.png")`){.r-stretch}
 
 ::: {.chart-note}
-Families come out lower only against single-person households, who spend more of their budget on housing. Against all households the gap is −0.2 points; against married couples without children, who spend more on slow-rising medical care, it is +0.2. Neither is outside the margin of error. **Household type barely moves inflation.**
+The largest negative gap is against single-person and other households, whose basket has more housing. Against all households the gap is −0.2 points; against married couples without children, who spend more on slow-rising medical care, it is +0.2. Neither is outside the margin of error. **These group baskets have similar inflation.**
 :::
 
 ---
@@ -211,7 +211,7 @@ Families come out lower only against single-person households, who spend more of
 ![](`r fig_slide("gap12_slide.png")`){.r-stretch}
 
 ::: {.chart-note}
-Twelve-month inflation, families minus single households, with a 95% margin of error. From April 2021 to August 2022 families ran up to 0.6 points hotter, but over those two years the difference added up to +0.2 points, too small to separate from survey error. From late 2022 rent took over and singles ran clearly hotter, by 0.65 points over 2023-24. Today the gap is zero.
+Twelve-month inflation, families minus single-person and other households, with an approximate 95% sampling interval. From April 2021 to August 2022 the family basket ran up to 0.6 points hotter, but over those two years the difference added up to +0.2 points, too small to separate from survey error. From late 2022 rent took over and the single/other basket ran clearly hotter, by 0.65 points over 2023-24. By July 2026 the gap was zero.
 :::
 
 ---
@@ -302,7 +302,7 @@ A family of four needs one kitchen and one roof. Housing takes 40% of a one-pers
 | *Lowest-income fifth (reference)* | 30.5% | $5,800 | 46.3% |
 
 ::: {.callout-box}
-Married families pay twice the dollar increase of single households at a slightly lower rate. Single parents are the pressure point within "families": 0.9 points more inflation than married parents since 2019 (at the edge of the margin of error) and a necessity share closer to the bottom income fifth than to married couples.
+The extra cost of the fixed 2019 non-housing basket is twice as large for married families as for the single/other group, at a slightly lower rate. Single parents have a necessity share closer to the bottom income fifth than to married couples. The index alone cannot measure hardship.
 :::
 
 ---
@@ -312,8 +312,8 @@ Married families pay twice the dollar increase of single households at a slightl
 - **Prices paid.** Everyone is charged the same price for the same item here. Scanner-data research finds households pay quite different prices within an item.
 - **Cash versus CPI housing costs.** Owners are charged their home's rental value, as in CPI. An owner with a locked-in mortgage saw cash housing costs rise less than that; a recent buyer saw them rise more.
 - **Age.** Families average 44 years old, single households 53. The published tables don't allow controlling for age, and the comparison with childless couples shows age matters through medical care.
-- **Survey error.** Margins of error come from BLS standard errors. Under the most cautious assumption about errors across years, the headline gap is not distinguishable from zero.
-- **Index formula.** The headline uses two-year-old spending weights, as the CPI does. With up-to-date weights (as in BLS's chained CPI) the gap is a third smaller: −0.5, not −0.7.
+- **Survey error.** Margins of error use BLS expenditure standard errors, with category errors treated as uncorrelated. Under the cross-year correlation bound, the headline gap is not distinguishable from zero.
+- **Index formula.** The headline uses two-year-old spending weights, following CPI practice since 2023. An annual-share Törnqvist check, which approximates the chained CPI concept, gives a smaller gap: −0.5 rather than −0.7.
 
 ::: {.notes}
 Revised 2026-09-23 after two methods reviews. The earlier version headlined 25.32% vs 25.26%. That basket priced health insurance premiums with a CPI index that fell 19% while CPI rose 30%, and left out owners' housing. Review 2 added comparison groups, family definitions, a superlative index and a BLS benchmark (docs/review_checks.md). Methods and decisions: docs/decisions_log.md D-27 to D-40.

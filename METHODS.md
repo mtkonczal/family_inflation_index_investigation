@@ -1,7 +1,7 @@
 # Methods
 
-Version 0.3, revised 2026-09-23 after two methods reviews (decisions_log D-27 to D-40).
-Vintage of results reported here: 2026-09-23 (CEX through 2024, CPI-U through 2026 M07).
+Version 0.4, revised 2026-09-25 after the cumulative uncertainty correction (decisions_log D-42).
+Data vintage: CEX through 2024, CPI-U through 2026 M07.
 
 ---
 
@@ -58,9 +58,12 @@ roughly five to one.
   family status.** The flat files publish `LB06` and `LB21` (age) only
   marginally, with no cross-tab, so conditioning on age requires CEX PUMD
   microdata. This is the most important unaddressed confound.
-- Code 04 counts children of any age, so it includes married couples whose
-  children are all adults (code 07). Families with a child under 18 are
-  05 + 06 + 09 (D-37).
+- Code 04 counts children of any age. The published-table proxy 05 + 06 + 09
+  keeps married couples whose **oldest** child is under 18 and one-parent CUs
+  with at least one child under 18. It misses married couples with an adult
+  oldest child and a younger minor, and it cannot include exactly age 18
+  without also including older children. An exact resident-child definition
+  requires CE member-level microdata (D-37).
 - The sign of the family gap is specific to this comparison group. Against all
   CUs or married couples without children it is within a few tenths of a point
   either way (D-37).
@@ -272,11 +275,11 @@ using `CUCHARS`/`HOMEOWN` rates (families 74.6 percent, comparison 51.0 percent)
 against `LB17` share vectors. Explains 73 percent of the rent gap but only 5 to
 6 percent of the education and childcare gaps. See D-14.
 
-### Consequence for Phase 3
-Report **three** headline indices, not one: all-in, ex-shelter, ex-housing. The
-all-in number is dominated by the OER-versus-market-rent methodology choice and
-must never be quoted alone. Ex-shelter is the defensible "do families buy a
-more expensive basket" number.
+### Consequence proposed at Phase 1b, later superseded
+This phase proposed three headline indices: all-in, ex-shelter and ex-housing.
+It preceded the OER and pooled-medical corrections. D-30 set the CPI-concept
+basket as the headline and the corrected ex-shelter basket as co-headline;
+see section 10 for the current specification.
 
 ## 9. The CEX-to-CPI crosswalk (Phase 2)
 
@@ -369,13 +372,14 @@ group gap. Headline basket: 0.095 pp.
 **Sampling error of the gap** (D-28): CE standard errors propagated by the
 delta method, $\mathrm{Var}(\pi_g) \approx \sum_i [w_i(r_i - \pi_g)]^2
 \mathrm{RSE}_i^2$, groups independent. Mean SE of the 12-month headline gap:
-0.046 pp. Cumulative intervals are reported for uncorrelated and perfectly
-correlated weight vintages.
+0.046 pp. Cumulative intervals are reported for independent weight vintages
+and a worst-case bound over cross-year correlations, conditional on the
+within-cell category-independence assumption.
 
 ### Result
 Headline, December 2019 to July 2026: families with children 29.42 percent,
-single-person and other CUs 30.11 percent, gap -0.69 pp (95% CI +/- 0.37 to
-0.86, independent / worst-case correlation across survey years; p = 0.11 in
+single-person and other CUs 30.11 percent, gap -0.69 pp (95% margin +/- 0.42 to
+0.97, independent / worst-case correlation across survey years; p = 0.15 in
 the worst case). Across all nine baskets -0.98 to +0.08 pp. **Families did not
 face higher inflation than single/other CUs; they faced slightly lower
 inflation.** Against all CUs the gap is -0.20 and against married couples

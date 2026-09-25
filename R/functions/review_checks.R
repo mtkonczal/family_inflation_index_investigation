@@ -158,7 +158,8 @@ rse_source <- function(id) {
 # treated as independent; category means within a cell as uncorrelated (the
 # D-28 assumption). For a link y with first-month cost weights w and
 # relatives r, L_y = sum_i w_i r_i and dL_y / d log x_G,i = w_i (r_i - L_y);
-# the cumulative change moves by (I_{y-1} / I_0) dL_y to first order.
+# the cumulative change moves by [(I_end / I_0) / (1 + L_y)] dL_y. The factor
+# includes price growth after the link as well as before it.
 #
 #   independent vintages:   Var = sum_y sum_c sum_i (D_y,c,i * rse_y,c,i)^2
 #   persistent errors:      Var = sum_c sum_i (sum_y D_y,c,i * rse_y,c,i)^2
@@ -188,7 +189,10 @@ link_terms <- function(index, weights, prices, d0, d1, lag_years = 2L) {
     out[[k]] <- data.frame(link = k, a = a, b = b,
       vy = as.integer(format(first_m, "%Y")) - lag_years,
       cat_id = z$cat_id, w = z$weight, r = z$r, L = sum(z$weight * z$r),
-      lev = idx$index[idx$date == a] / I0, stringsAsFactors = FALSE)
+      lev = idx$index[idx$date == a] / I0,
+      sensitivity = (idx$index[idx$date == d1] / I0) /
+        (idx$index[idx$date == b] / idx$index[idx$date == a]),
+      stringsAsFactors = FALSE)
   }
   do.call(rbind, out)
 }
@@ -202,7 +206,8 @@ group_D <- function(lt, phi_g, sign = 1) {
   }
   m <- merge(lt, phi_g, by.x = c("vy", "cat_id"), by.y = c("year", "cat_id"))
   data.frame(link = m$link, vy = m$vy, cell = m$cell, cat_id = m$cat_id,
-             D = sign * 100 * m$lev * m$w * (m$r - m$L) * m$phi, stringsAsFactors = FALSE)
+             D = sign * 100 * m$sensitivity * m$w * (m$r - m$L) * m$phi,
+             stringsAsFactors = FALSE)
 }
 
 #' Standard errors from stacked D terms.

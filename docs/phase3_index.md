@@ -1,6 +1,6 @@
 # Phase 3: the family inflation index
 
-**Vintage:** 2026-09-23 (revised after review 2; supersedes earlier 2026-09-23 and 2026-09-08 versions)
+**Vintage:** 2026-09-25 (cumulative uncertainty correction; point estimates unchanged)
 **Scripts:** `R/06_build_index.R`, `R/11_review_checks.R`, `R/12_external_benchmarks.R`
 **Logs:** `output/tables/t00d_index_validation.txt`, `t00i_review_checks.txt`, `t00j_external_benchmarks.txt`
 **Decisions:** D-23 to D-40. Review-2 detail: `docs/review_checks.md`.
@@ -12,11 +12,11 @@
 **Families with children did not face higher inflation than single-person and
 other households. Over December 2019 to July 2026 they faced slightly lower
 inflation: 29.42 percent against 30.11 percent, a gap of -0.69 percentage
-points.** The 95% sampling interval is +/- 0.37 if CE errors are independent
-across survey years and +/- 0.86 in the worst case over any correlation.
+points.** The group-level 95% sampling margin is +/- 0.42 if CE errors are independent
+across survey years and +/- 0.97 in the worst case over any correlation.
 
-That is about 0.1 point a year and economically small. It is 3.7 standard
-errors under independent errors and 1.6 in the worst case (p = 0.11), so
+That is about 0.1 point a year and economically small. The disjoint-cell check
+gives 3.3 standard errors under independent errors and 1.4 in the worst case (p = 0.15), so
 "statistically distinguishable" depends on that assumption. On a superlative
 index with contemporaneous weights it is about -0.47. Its sign is specific to
 this comparison group. Against all households the gap is -0.20, and against
@@ -31,6 +31,11 @@ CPI-U to a mean absolute 0.10 pp on 12-month changes (mean -0.05 pp). Headline
 families are LB06 04 + 09: married couples with children of any age, plus one
 parent with a child under 18.
 
+The 05 + 06 + 09 check below is a published-table proxy for minor-child
+families. Married couples are classified by their **oldest** child's age, so
+it misses a couple whose oldest child is an adult but a younger child is
+still a minor. The tables also cannot separate age 18 from older ages.
+
 ---
 
 ## Every basket
@@ -38,17 +43,17 @@ parent with a child under 18.
 Cumulative change December 2019 to July 2026, families with children minus
 single-person and other CUs:
 
-| Basket | Families | Single/other | Gap | 95% CI (independent / worst case) |
+| Basket | Families | Single/other | Gap | 95% margin (independent / worst case) |
 |---|---|---|---|---|
-| **CPI concept, medical pooled (headline)** | **29.42%** | **30.11%** | **-0.69** | 0.37 / 0.86 |
-| CPI concept (OER), medical unpooled | 27.46% | 28.06% | -0.61 | 0.39 / 0.90 |
-| **Ex-shelter, medical pooled (co-headline)** | **27.48%** | **27.89%** | **-0.41** | 0.48 / 1.12 |
-| All-in, medical pooled, no owner shelter | 27.55% | 28.41% | -0.86 | 0.43 / 1.01 |
-| All-in, no owner shelter | 25.12% | 25.90% | -0.78 | 0.46 / 1.08 |
-| Ex-shelter | 24.69% | 24.69% | +0.00 | 0.51 / 1.20 |
-| Ex-housing | 24.91% | 24.83% | +0.08 | 0.63 / 1.47 |
-| All-in, long panel | 28.67% | 29.65% | -0.98 | 0.47 / 1.10 |
-| Ex-shelter, long panel | 28.76% | 29.43% | -0.66 | 0.53 / 1.23 |
+| **CPI concept, medical pooled (headline)** | **29.42%** | **30.11%** | **-0.69** | 0.42 / 0.97 |
+| CPI concept (OER), medical unpooled | 27.46% | 28.06% | -0.61 | 0.44 / 1.01 |
+| **Ex-shelter, medical pooled (co-headline)** | **27.48%** | **27.89%** | **-0.41** | 0.55 / 1.24 |
+| All-in, medical pooled, no owner shelter | 27.55% | 28.41% | -0.86 | 0.49 / 1.13 |
+| All-in, no owner shelter | 25.12% | 25.90% | -0.78 | 0.51 / 1.18 |
+| Ex-shelter | 24.69% | 24.69% | +0.00 | 0.56 / 1.30 |
+| Ex-housing | 24.91% | 24.83% | +0.08 | 0.69 / 1.60 |
+| All-in, long panel | 28.67% | 29.65% | -0.98 | 0.53 / 1.23 |
+| Ex-shelter, long panel | 28.76% | 29.43% | -0.66 | 0.60 / 1.37 |
 
 **Range: -0.98 to +0.08 pp.** No basket puts families meaningfully above
 single households.
@@ -87,11 +92,11 @@ independent errors / worst case (`t37`, `t38`):
 
 | Gap | CPI concept | p | Ex-shelter | p |
 |---|---|---|---|---|
-| Families minus single/other | -0.69 | <0.001 / 0.11 | -0.41 | 0.09 / 0.46 |
-| Families minus all other CUs | -0.32 | 0.06 / 0.42 | +0.10 | 0.66 / 0.85 |
-| Families minus all CUs | -0.20 | 0.07 / 0.44 | +0.07 | 0.60 / 0.82 |
-| Families minus married, no children | +0.20 | 0.33 / 0.68 | +0.89 | 0.001 / 0.16 |
-| Child under 18 only (05 + 06 + 09) minus single/other | -0.84 | <0.001 / 0.08 | -0.67 | 0.01 / 0.29 |
+| Families minus single/other | -0.69 | 0.001 / 0.15 | -0.41 | 0.13 / 0.51 |
+| Families minus all other CUs | -0.32 | 0.10 / 0.47 | +0.10 | 0.70 / 0.86 |
+| Families minus all CUs | -0.20 | 0.11 / 0.49 | +0.07 | 0.64 / 0.84 |
+| Families minus married, no children | +0.20 | 0.40 / 0.71 | +0.89 | 0.004 / 0.20 |
+| Published-table minor-child proxy (05 + 06 + 09) minus single/other | -0.84 | <0.001 / 0.12 | -0.67 | 0.03 / 0.34 |
 
 Against childless couples, two lifecycle categories nearly cancel on the full
 basket:
@@ -148,17 +153,17 @@ vehicle attribution is supported in either direction.
 | Group | Education contribution |
 |---|---|
 | Couples whose oldest child is 18+ | -0.27 |
-| Families with a child under 18 | -0.13 |
-| Families with a child under 18, K-12 and college tuition priced separately | -0.01 (D-39) |
+| K1 proxy | -0.13 |
+| K1 proxy, K-12 and college tuition priced separately | -0.01 (D-39) |
 
-For under-18 families the non-housing tilt that lowers their inflation is
+For the K1 proxy the non-housing tilt that lowers its inflation is
 apparel (-0.13), utilities (-0.07) and tobacco (-0.07).
 
 **Childcare** is the instructive case.
 
 - *Weight.* On the CE childcare items, families carry about eight times the
   weight single households do: 1.6 percent against 0.2. For families with a
-  child under 18 it is twelve times. The index's 0.3 for single households is
+  K1 proxy it is twelve times. The index's 0.3 for single households is
   the personal-services proxy, which includes elder care.
 - *Contribution.* Day care prices rose at the average rate, so childcare
   contributes nothing.
@@ -190,14 +195,14 @@ Cumulative gap, families minus single/other, headline basket (`t41`):
 | Window | Gap | SE (independent / worst case) | p (independent / worst case) |
 |---|---|---|---|
 | Dec 2014 to Dec 2019 | -1.05 | 0.06 / 0.13 | <0.001 / <0.001 |
-| Dec 2019 to Jul 2026 | -0.69 | 0.18 / 0.43 | <0.001 / 0.11 |
-| **Dec 2020 to Dec 2022** | **+0.23** | 0.15 / 0.22 | **0.13 / 0.28** |
+| Dec 2019 to Jul 2026 | -0.69 | 0.21 / 0.48 | 0.001 / 0.15 |
+| **Dec 2020 to Dec 2022** | **+0.23** | 0.16 / 0.22 | **0.15 / 0.30** |
 | Dec 2022 to Dec 2024 | -0.65 | 0.06 / 0.09 | <0.001 / <0.001 |
 | Dec 2024 to Jul 2026 | +0.01 | 0.04 / 0.06 | 0.77 / 0.83 |
 
 **2021-22.** The 12-month gap was positive from April 2021 to August 2022
 (mean +0.43, peak +0.60). Over the two years it cumulated to +0.23, not
-distinguishable from zero; for families with a child under 18, +0.04. Inside
+distinguishable from zero; for the K1 proxy, +0.04. Inside
 that window:
 
 - rent is the one precisely estimated piece, +0.12 (it lagged other prices,
@@ -218,11 +223,11 @@ that window:
 | Seasonally adjusted CPI-U | -0.87 |
 | Price updating: full / pivot / none | -0.69 / -0.61 / -0.61 |
 | Married couples with children alone (04) | -0.79 |
-| Families with a child under 18 (05 + 06 + 09) | -0.84 |
+| Published-table minor-child proxy (05 + 06 + 09) | -0.84 |
 | Tornqvist on contemporaneous CE weights (extended past 2024 with 2024 shares) | -0.47 |
 | Five categories split into published sub-items (D-39) | -0.66 |
 | Vehicle / all separable finance charges removed | -0.71 / -0.71 |
-| Four-person minus one-person CUs (LB05) | -0.41 (CI +/- 0.51 / 1.20) |
+| Four-person minus one-person CUs (LB05) | -0.41 (95% margin +/- 0.59 / 1.35) |
 
 **Weight timing is the largest sensitivity (D-38).** Over December 2019 to
 December 2024:
@@ -244,8 +249,8 @@ December 2024:
 Not run: the full item-level (levels 4-7) crosswalk; age conditioning and
 household-weighted indices (need PUMD).
 
-**One parent minus married with children:** +0.92 pp on the headline (p = 0.02
-with independent errors, 0.29 in the worst case), and +0.77 to +2.87 across
+**One parent minus married with children:** +0.92 pp on the headline (p = 0.04
+with independent errors, 0.35 in the worst case), and +0.77 to +2.87 across
 baskets. The large figures come from the baskets with the health insurance
 artifact; single parents carry the smallest health insurance share.
 
@@ -253,10 +258,12 @@ artifact; single parents carry the smallest health insurance share.
 
 ## What this does and does not establish
 
-**Establishes.** Through the composition channel, families with children did
-not face higher inflation than single-person households over 2019-2026, under
-any basket, price input, family definition or weight timing tried. Against
-single/other CUs they faced 0.5 to 0.8 points less. Roughly half of that is
+**Establishes.** Through the measured composition channel, the family basket
+did not rise meaningfully faster than the single-person-and-other basket over
+2019-2026 under any basket, price input, family definition or weight timing
+tried. The headline gap is -0.69 points, about -0.47 with annual-share
+Törnqvist weights, and -0.98 to +0.08 across the nine baskets. Roughly half
+of the headline gap is
 their smaller shelter share, and half a non-housing tilt toward categories
 whose prices rose slowly.
 

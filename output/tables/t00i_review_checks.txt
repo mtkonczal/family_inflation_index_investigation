@@ -1,5 +1,5 @@
 # Review checks log (11_review_checks.R)
-# built_at: 2026-09-23T11:15:11-0400
+# built_at: 2026-09-25T11:06:53-0400
 
 ## 1. CEX panel (LB06, 2010-2024)
   all-CU fallback verified against LB04: 10727 item-year overlaps, max difference 0
@@ -50,133 +50,133 @@
 
 ## 5. Check 1: family definition (Dec 2019 to Jul 2026)
    gap, cumulative percent (group vs single/other), SE (independent / persistent / worst-case bound), z (independent / bound)
-   F1  -10   headline  oer   -0.69 pp  (29.42% vs 30.11%)  SE 0.18 / 0.11 / 0.43  z  -3.7 /  -1.6
-   K1  -10   headline  oer   -0.84 pp  (29.27% vs 30.11%)  SE 0.21 / 0.13 / 0.48  z  -4.0 /  -1.7
-   04  -10   headline  oer   -0.79 pp  (29.32% vs 30.11%)  SE 0.19 / 0.12 / 0.45  z  -4.1 /  -1.8
-   05  -10   headline  oer   -0.55 pp  (29.56% vs 30.11%)  SE 0.36 / 0.21 / 0.84  z  -1.5 /  -0.7
-   06  -10   headline  oer   -1.17 pp  (28.94% vs 30.11%)  SE 0.26 / 0.17 / 0.60  z  -4.6 /  -2.0
-   07  -10   headline  oer   -0.37 pp  (29.74% vs 30.11%)  SE 0.28 / 0.15 / 0.64  z  -1.3 /  -0.6
-   09  -10   headline  oer   +0.14 pp  (30.25% vs 30.11%)  SE 0.38 / 0.18 / 0.85  z  +0.4 /  +0.2
-   F1  -10   headline  exsh  -0.41 pp  (27.48% vs 27.89%)  SE 0.24 / 0.15 / 0.56  z  -1.7 /  -0.7
-   K1  -10   headline  exsh  -0.67 pp  (27.22% vs 27.89%)  SE 0.27 / 0.17 / 0.63  z  -2.5 /  -1.1
-   04  -10   headline  exsh  -0.52 pp  (27.37% vs 27.89%)  SE 0.25 / 0.15 / 0.59  z  -2.1 /  -0.9
-   05  -10   headline  exsh  -0.30 pp  (27.60% vs 27.89%)  SE 0.47 / 0.26 / 1.11  z  -0.6 /  -0.3
-   06  -10   headline  exsh  -1.08 pp  (26.81% vs 27.89%)  SE 0.33 / 0.21 / 0.77  z  -3.3 /  -1.4
-   07  -10   headline  exsh  +0.12 pp  (28.01% vs 27.89%)  SE 0.36 / 0.20 / 0.82  z  +0.3 /  +0.1
-   09  -10   headline  exsh  +0.55 pp  (28.44% vs 27.89%)  SE 0.49 / 0.24 / 1.10  z  +1.1 /  +0.5
-   F1  -K1   headline  oer   +0.15 pp  (29.42% vs 29.27%)  SE 0.10 / 0.05 / 0.22  z  +1.5 /  +0.7
-   F1  -K1   headline  exsh  +0.26 pp  (27.48% vs 27.22%)  SE 0.13 / 0.07 / 0.28  z  +2.0 /  +0.9
-   cross-check vs 06 (group-level RSEs): SE 0.188 (06) vs 0.184 (cells), independent vintages
+   F1  -10   headline  oer   -0.69 pp  (29.42% vs 30.11%)  SE 0.21 / 0.12 / 0.48  z  -3.3 /  -1.4
+   K1  -10   headline  oer   -0.84 pp  (29.27% vs 30.11%)  SE 0.24 / 0.14 / 0.54  z  -3.5 /  -1.5
+   04  -10   headline  oer   -0.79 pp  (29.32% vs 30.11%)  SE 0.22 / 0.13 / 0.51  z  -3.6 /  -1.6
+   05  -10   headline  oer   -0.55 pp  (29.56% vs 30.11%)  SE 0.41 / 0.21 / 0.95  z  -1.4 /  -0.6
+   06  -10   headline  oer   -1.17 pp  (28.94% vs 30.11%)  SE 0.29 / 0.18 / 0.67  z  -4.0 /  -1.8
+   07  -10   headline  oer   -0.37 pp  (29.74% vs 30.11%)  SE 0.33 / 0.17 / 0.72  z  -1.1 /  -0.5
+   09  -10   headline  oer   +0.14 pp  (30.25% vs 30.11%)  SE 0.44 / 0.20 / 0.96  z  +0.3 /  +0.1
+   F1  -10   headline  exsh  -0.41 pp  (27.48% vs 27.89%)  SE 0.27 / 0.16 / 0.62  z  -1.5 /  -0.7
+   K1  -10   headline  exsh  -0.67 pp  (27.22% vs 27.89%)  SE 0.31 / 0.18 / 0.70  z  -2.2 /  -1.0
+   04  -10   headline  exsh  -0.52 pp  (27.37% vs 27.89%)  SE 0.28 / 0.16 / 0.65  z  -1.8 /  -0.8
+   05  -10   headline  exsh  -0.30 pp  (27.60% vs 27.89%)  SE 0.53 / 0.26 / 1.23  z  -0.6 /  -0.2
+   06  -10   headline  exsh  -1.08 pp  (26.81% vs 27.89%)  SE 0.37 / 0.22 / 0.85  z  -2.9 /  -1.3
+   07  -10   headline  exsh  +0.12 pp  (28.01% vs 27.89%)  SE 0.41 / 0.22 / 0.91  z  +0.3 /  +0.1
+   09  -10   headline  exsh  +0.55 pp  (28.44% vs 27.89%)  SE 0.56 / 0.26 / 1.22  z  +1.0 /  +0.4
+   F1  -K1   headline  oer   +0.15 pp  (29.42% vs 29.27%)  SE 0.11 / 0.06 / 0.25  z  +1.3 /  +0.6
+   F1  -K1   headline  exsh  +0.26 pp  (27.48% vs 27.22%)  SE 0.14 / 0.07 / 0.32  z  +1.8 /  +0.8
+   cross-check vs 06 (group-level RSEs): SE 0.216 (06) vs 0.211 (cells), independent vintages
 
 ## 6. Check 2: comparison groups (Dec 2019 to Jul 2026)
-   F1  -10   headline  oer   -0.69 pp  (29.42% vs 30.11%)  SE 0.18 / 0.11 / 0.43  z  -3.7 /  -1.6
-   F1  -01   headline  oer   -0.20 pp  (29.42% vs 29.62%)  SE 0.11 / 0.07 / 0.25  z  -1.8 /  -0.8
-   F1  -03   headline  oer   +0.20 pp  (29.42% vs 29.22%)  SE 0.21 / 0.13 / 0.49  z  +1.0 /  +0.4
-   F1  -RF   headline  oer   -0.32 pp  (29.42% vs 29.74%)  SE 0.17 / 0.10 / 0.39  z  -1.9 /  -0.8
-   K1  -10   headline  oer   -0.84 pp  (29.27% vs 30.11%)  SE 0.21 / 0.13 / 0.48  z  -4.0 /  -1.7
-   K1  -01   headline  oer   -0.35 pp  (29.27% vs 29.62%)  SE 0.15 / 0.09 / 0.34  z  -2.4 /  -1.0
-   K1  -03   headline  oer   +0.05 pp  (29.27% vs 29.22%)  SE 0.23 / 0.15 / 0.54  z  +0.2 /  +0.1
-   K1  -RK   headline  oer   -0.47 pp  (29.27% vs 29.74%)  SE 0.19 / 0.12 / 0.45  z  -2.4 /  -1.1
-   F1  -10   headline  exsh  -0.41 pp  (27.48% vs 27.89%)  SE 0.24 / 0.15 / 0.56  z  -1.7 /  -0.7
-   F1  -01   headline  exsh  +0.07 pp  (27.48% vs 27.41%)  SE 0.14 / 0.08 / 0.32  z  +0.5 /  +0.2
-   F1  -03   headline  exsh  +0.89 pp  (27.48% vs 26.59%)  SE 0.27 / 0.16 / 0.62  z  +3.2 /  +1.4
-   F1  -RF   headline  exsh  +0.10 pp  (27.48% vs 27.38%)  SE 0.22 / 0.13 / 0.50  z  +0.4 /  +0.2
-   K1  -10   headline  exsh  -0.67 pp  (27.22% vs 27.89%)  SE 0.27 / 0.17 / 0.63  z  -2.5 /  -1.1
-   K1  -01   headline  exsh  -0.18 pp  (27.22% vs 27.41%)  SE 0.19 / 0.11 / 0.43  z  -1.0 /  -0.4
-   K1  -03   headline  exsh  +0.63 pp  (27.22% vs 26.59%)  SE 0.30 / 0.18 / 0.69  z  +2.1 /  +0.9
-   K1  -RK   headline  exsh  -0.26 pp  (27.22% vs 27.48%)  SE 0.25 / 0.15 / 0.57  z  -1.0 /  -0.4
-   F1  -10   deep      oer   -0.66 pp  (29.80% vs 30.47%)  SE 0.23 / 0.11 / 0.52  z  -2.8 /  -1.3
-   F1  -01   deep      oer   -0.12 pp  (29.80% vs 29.93%)  SE 0.14 / 0.07 / 0.30  z  -0.9 /  -0.4
-   F1  -03   deep      oer   +0.49 pp  (29.80% vs 29.31%)  SE 0.26 / 0.13 / 0.58  z  +1.9 /  +0.9
-   F1  -RF   deep      oer   -0.21 pp  (29.80% vs 30.01%)  SE 0.21 / 0.10 / 0.47  z  -1.0 /  -0.4
-   K1  -10   deep      oer   -0.74 pp  (29.73% vs 30.47%)  SE 0.26 / 0.13 / 0.58  z  -2.8 /  -1.3
-   K1  -01   deep      oer   -0.20 pp  (29.73% vs 29.93%)  SE 0.18 / 0.09 / 0.40  z  -1.1 /  -0.5
-   K1  -03   deep      oer   +0.41 pp  (29.73% vs 29.31%)  SE 0.28 / 0.15 / 0.64  z  +1.5 /  +0.7
-   K1  -RK   deep      oer   -0.28 pp  (29.73% vs 30.00%)  SE 0.24 / 0.12 / 0.53  z  -1.1 /  -0.5
-   F1  -10   deep      exsh  -0.42 pp  (27.97% vs 28.39%)  SE 0.32 / 0.15 / 0.70  z  -1.3 /  -0.6
-   F1  -01   deep      exsh  +0.16 pp  (27.97% vs 27.81%)  SE 0.18 / 0.08 / 0.39  z  +0.9 /  +0.4
-   F1  -03   deep      exsh  +1.27 pp  (27.97% vs 26.69%)  SE 0.35 / 0.16 / 0.75  z  +3.7 /  +1.7
-   F1  -RF   deep      exsh  +0.23 pp  (27.97% vs 27.74%)  SE 0.28 / 0.13 / 0.62  z  +0.8 /  +0.4
-   K1  -10   deep      exsh  -0.58 pp  (27.81% vs 28.39%)  SE 0.36 / 0.16 / 0.78  z  -1.6 /  -0.7
-   K1  -01   deep      exsh  -0.00 pp  (27.81% vs 27.81%)  SE 0.24 / 0.11 / 0.52  z  -0.0 /  -0.0
-   K1  -03   deep      exsh  +1.12 pp  (27.81% vs 26.69%)  SE 0.38 / 0.18 / 0.83  z  +2.9 /  +1.3
-   K1  -RK   deep      exsh  -0.01 pp  (27.81% vs 27.82%)  SE 0.32 / 0.14 / 0.70  z  -0.0 /  -0.0
+   F1  -10   headline  oer   -0.69 pp  (29.42% vs 30.11%)  SE 0.21 / 0.12 / 0.48  z  -3.3 /  -1.4
+   F1  -01   headline  oer   -0.20 pp  (29.42% vs 29.62%)  SE 0.12 / 0.07 / 0.29  z  -1.6 /  -0.7
+   F1  -03   headline  oer   +0.20 pp  (29.42% vs 29.22%)  SE 0.24 / 0.14 / 0.55  z  +0.8 /  +0.4
+   F1  -RF   headline  oer   -0.32 pp  (29.42% vs 29.74%)  SE 0.19 / 0.11 / 0.44  z  -1.7 /  -0.7
+   K1  -10   headline  oer   -0.84 pp  (29.27% vs 30.11%)  SE 0.24 / 0.14 / 0.54  z  -3.5 /  -1.5
+   K1  -01   headline  oer   -0.35 pp  (29.27% vs 29.62%)  SE 0.17 / 0.10 / 0.38  z  -2.1 /  -0.9
+   K1  -03   headline  oer   +0.05 pp  (29.27% vs 29.22%)  SE 0.26 / 0.16 / 0.61  z  +0.2 /  +0.1
+   K1  -RK   headline  oer   -0.47 pp  (29.27% vs 29.74%)  SE 0.22 / 0.13 / 0.50  z  -2.1 /  -0.9
+   F1  -10   headline  exsh  -0.41 pp  (27.48% vs 27.89%)  SE 0.27 / 0.16 / 0.62  z  -1.5 /  -0.7
+   F1  -01   headline  exsh  +0.07 pp  (27.48% vs 27.41%)  SE 0.16 / 0.09 / 0.35  z  +0.5 /  +0.2
+   F1  -03   headline  exsh  +0.89 pp  (27.48% vs 26.59%)  SE 0.31 / 0.17 / 0.69  z  +2.9 /  +1.3
+   F1  -RF   headline  exsh  +0.10 pp  (27.48% vs 27.38%)  SE 0.25 / 0.14 / 0.56  z  +0.4 /  +0.2
+   K1  -10   headline  exsh  -0.67 pp  (27.22% vs 27.89%)  SE 0.31 / 0.18 / 0.70  z  -2.2 /  -1.0
+   K1  -01   headline  exsh  -0.18 pp  (27.22% vs 27.41%)  SE 0.21 / 0.12 / 0.48  z  -0.9 /  -0.4
+   K1  -03   headline  exsh  +0.63 pp  (27.22% vs 26.59%)  SE 0.34 / 0.19 / 0.76  z  +1.9 /  +0.8
+   K1  -RK   headline  exsh  -0.26 pp  (27.22% vs 27.48%)  SE 0.28 / 0.16 / 0.64  z  -0.9 /  -0.4
+   F1  -10   deep      oer   -0.66 pp  (29.80% vs 30.47%)  SE 0.27 / 0.13 / 0.59  z  -2.5 /  -1.1
+   F1  -01   deep      oer   -0.12 pp  (29.80% vs 29.93%)  SE 0.16 / 0.07 / 0.34  z  -0.8 /  -0.4
+   F1  -03   deep      oer   +0.49 pp  (29.80% vs 29.31%)  SE 0.30 / 0.14 / 0.65  z  +1.7 /  +0.8
+   F1  -RF   deep      oer   -0.21 pp  (29.80% vs 30.01%)  SE 0.24 / 0.11 / 0.53  z  -0.9 /  -0.4
+   K1  -10   deep      oer   -0.74 pp  (29.73% vs 30.47%)  SE 0.30 / 0.14 / 0.66  z  -2.4 /  -1.1
+   K1  -01   deep      oer   -0.20 pp  (29.73% vs 29.93%)  SE 0.21 / 0.10 / 0.46  z  -1.0 /  -0.4
+   K1  -03   deep      oer   +0.41 pp  (29.73% vs 29.31%)  SE 0.33 / 0.16 / 0.72  z  +1.3 /  +0.6
+   K1  -RK   deep      oer   -0.28 pp  (29.73% vs 30.00%)  SE 0.28 / 0.13 / 0.60  z  -1.0 /  -0.5
+   F1  -10   deep      exsh  -0.42 pp  (27.97% vs 28.39%)  SE 0.36 / 0.17 / 0.78  z  -1.2 /  -0.5
+   F1  -01   deep      exsh  +0.16 pp  (27.97% vs 27.81%)  SE 0.20 / 0.09 / 0.43  z  +0.8 /  +0.4
+   F1  -03   deep      exsh  +1.27 pp  (27.97% vs 26.69%)  SE 0.39 / 0.18 / 0.84  z  +3.3 /  +1.5
+   F1  -RF   deep      exsh  +0.23 pp  (27.97% vs 27.74%)  SE 0.32 / 0.14 / 0.69  z  +0.7 /  +0.3
+   K1  -10   deep      exsh  -0.58 pp  (27.81% vs 28.39%)  SE 0.40 / 0.18 / 0.87  z  -1.4 /  -0.7
+   K1  -01   deep      exsh  -0.00 pp  (27.81% vs 27.81%)  SE 0.27 / 0.12 / 0.58  z  -0.0 /  -0.0
+   K1  -03   deep      exsh  +1.12 pp  (27.81% vs 26.69%)  SE 0.43 / 0.19 / 0.92  z  +2.6 /  +1.2
+   K1  -RK   deep      exsh  -0.01 pp  (27.81% vs 27.82%)  SE 0.36 / 0.16 / 0.78  z  -0.0 /  -0.0
 
 ## 7. Checks 4, 5, 8: basket variants, families minus single/other (Dec 2019 to Jul 2026)
-   F1  oer  Headline (D-30)                                gap  -0.69  (change vs headline +0.00)  SE 0.18 / 0.11 / 0.43
-   F1  oer  Vehicle finance charges removed (5)            gap  -0.71  (change vs headline -0.02)  SE 0.18 / 0.11 / 0.43
-   F1  oer  All separable finance charges removed (5)      gap  -0.71  (change vs headline -0.03)  SE 0.19 / 0.11 / 0.43
-   F1  oer  Real childcare items (4)                       gap  -0.70  (change vs headline -0.01)  SE 0.18 / 0.11 / 0.43
-   F1  oer  Vehicles split: new, used, cost pieces (8)     gap  -0.70  (change vs headline -0.02)  SE 0.23 / 0.12 / 0.52
-   F1  oer  Education split by level (8)                   gap  -0.61  (change vs headline +0.08)  SE 0.18 / 0.11 / 0.43
-   F1  oer  All deep splits, finance kept (4 + 8)          gap  -0.64  (change vs headline +0.05)  SE 0.23 / 0.11 / 0.52
-   F1  oer  All deep splits, finance removed (4 + 5 + 8)   gap  -0.66  (change vs headline +0.02)  SE 0.23 / 0.11 / 0.52
-   F1  exsh Headline (D-30)                                gap  -0.41  (change vs headline +0.00)  SE 0.24 / 0.15 / 0.56
-   F1  exsh Vehicle finance charges removed (5)            gap  -0.44  (change vs headline -0.02)  SE 0.24 / 0.15 / 0.56
-   F1  exsh All separable finance charges removed (5)      gap  -0.45  (change vs headline -0.04)  SE 0.24 / 0.15 / 0.56
-   F1  exsh Real childcare items (4)                       gap  -0.43  (change vs headline -0.02)  SE 0.24 / 0.15 / 0.56
-   F1  exsh Vehicles split: new, used, cost pieces (8)     gap  -0.48  (change vs headline -0.07)  SE 0.32 / 0.15 / 0.69
-   F1  exsh Education split by level (8)                   gap  -0.30  (change vs headline +0.12)  SE 0.24 / 0.14 / 0.56
-   F1  exsh All deep splits, finance kept (4 + 8)          gap  -0.39  (change vs headline +0.02)  SE 0.31 / 0.15 / 0.69
-   F1  exsh All deep splits, finance removed (4 + 5 + 8)   gap  -0.42  (change vs headline -0.01)  SE 0.32 / 0.15 / 0.70
-   K1  oer  Headline (D-30)                                gap  -0.84  (change vs headline +0.00)  SE 0.21 / 0.13 / 0.48
-   K1  oer  Vehicle finance charges removed (5)            gap  -0.86  (change vs headline -0.02)  SE 0.21 / 0.13 / 0.48
-   K1  oer  All separable finance charges removed (5)      gap  -0.86  (change vs headline -0.02)  SE 0.21 / 0.13 / 0.49
-   K1  oer  Real childcare items (4)                       gap  -0.85  (change vs headline -0.01)  SE 0.21 / 0.13 / 0.48
-   K1  oer  Vehicles split: new, used, cost pieces (8)     gap  -0.83  (change vs headline +0.01)  SE 0.26 / 0.13 / 0.58
-   K1  oer  Education split by level (8)                   gap  -0.71  (change vs headline +0.12)  SE 0.21 / 0.13 / 0.48
-   K1  oer  All deep splits, finance kept (4 + 8)          gap  -0.72  (change vs headline +0.12)  SE 0.26 / 0.13 / 0.58
-   K1  oer  All deep splits, finance removed (4 + 5 + 8)   gap  -0.74  (change vs headline +0.10)  SE 0.26 / 0.13 / 0.58
-   K1  exsh Headline (D-30)                                gap  -0.67  (change vs headline +0.00)  SE 0.27 / 0.17 / 0.63
-   K1  exsh Vehicle finance charges removed (5)            gap  -0.70  (change vs headline -0.03)  SE 0.27 / 0.17 / 0.63
-   K1  exsh All separable finance charges removed (5)      gap  -0.70  (change vs headline -0.03)  SE 0.27 / 0.17 / 0.63
-   K1  exsh Real childcare items (4)                       gap  -0.69  (change vs headline -0.02)  SE 0.27 / 0.17 / 0.63
-   K1  exsh Vehicles split: new, used, cost pieces (8)     gap  -0.71  (change vs headline -0.04)  SE 0.35 / 0.17 / 0.78
-   K1  exsh Education split by level (8)                   gap  -0.49  (change vs headline +0.18)  SE 0.27 / 0.16 / 0.63
-   K1  exsh All deep splits, finance kept (4 + 8)          gap  -0.55  (change vs headline +0.12)  SE 0.35 / 0.16 / 0.77
-   K1  exsh All deep splits, finance removed (4 + 5 + 8)   gap  -0.58  (change vs headline +0.09)  SE 0.36 / 0.16 / 0.78
+   F1  oer  Headline (D-30)                                gap  -0.69  (change vs headline +0.00)  SE 0.21 / 0.12 / 0.48
+   F1  oer  Vehicle finance charges removed (5)            gap  -0.71  (change vs headline -0.02)  SE 0.21 / 0.12 / 0.48
+   F1  oer  All separable finance charges removed (5)      gap  -0.71  (change vs headline -0.03)  SE 0.21 / 0.12 / 0.48
+   F1  oer  Real childcare items (4)                       gap  -0.70  (change vs headline -0.01)  SE 0.21 / 0.12 / 0.48
+   F1  oer  Vehicles split: new, used, cost pieces (8)     gap  -0.70  (change vs headline -0.02)  SE 0.27 / 0.13 / 0.58
+   F1  oer  Education split by level (8)                   gap  -0.61  (change vs headline +0.08)  SE 0.21 / 0.12 / 0.48
+   F1  oer  All deep splits, finance kept (4 + 8)          gap  -0.64  (change vs headline +0.05)  SE 0.27 / 0.13 / 0.58
+   F1  oer  All deep splits, finance removed (4 + 5 + 8)   gap  -0.66  (change vs headline +0.02)  SE 0.27 / 0.13 / 0.59
+   F1  exsh Headline (D-30)                                gap  -0.41  (change vs headline +0.00)  SE 0.27 / 0.16 / 0.62
+   F1  exsh Vehicle finance charges removed (5)            gap  -0.44  (change vs headline -0.02)  SE 0.27 / 0.16 / 0.62
+   F1  exsh All separable finance charges removed (5)      gap  -0.45  (change vs headline -0.04)  SE 0.27 / 0.15 / 0.62
+   F1  exsh Real childcare items (4)                       gap  -0.43  (change vs headline -0.02)  SE 0.27 / 0.16 / 0.62
+   F1  exsh Vehicles split: new, used, cost pieces (8)     gap  -0.48  (change vs headline -0.07)  SE 0.36 / 0.17 / 0.77
+   F1  exsh Education split by level (8)                   gap  -0.30  (change vs headline +0.12)  SE 0.27 / 0.15 / 0.62
+   F1  exsh All deep splits, finance kept (4 + 8)          gap  -0.39  (change vs headline +0.02)  SE 0.36 / 0.16 / 0.77
+   F1  exsh All deep splits, finance removed (4 + 5 + 8)   gap  -0.42  (change vs headline -0.01)  SE 0.36 / 0.17 / 0.78
+   K1  oer  Headline (D-30)                                gap  -0.84  (change vs headline +0.00)  SE 0.24 / 0.14 / 0.54
+   K1  oer  Vehicle finance charges removed (5)            gap  -0.86  (change vs headline -0.02)  SE 0.24 / 0.14 / 0.54
+   K1  oer  All separable finance charges removed (5)      gap  -0.86  (change vs headline -0.02)  SE 0.24 / 0.14 / 0.55
+   K1  oer  Real childcare items (4)                       gap  -0.85  (change vs headline -0.01)  SE 0.24 / 0.14 / 0.54
+   K1  oer  Vehicles split: new, used, cost pieces (8)     gap  -0.83  (change vs headline +0.01)  SE 0.30 / 0.15 / 0.66
+   K1  oer  Education split by level (8)                   gap  -0.71  (change vs headline +0.12)  SE 0.24 / 0.13 / 0.54
+   K1  oer  All deep splits, finance kept (4 + 8)          gap  -0.72  (change vs headline +0.12)  SE 0.30 / 0.14 / 0.66
+   K1  oer  All deep splits, finance removed (4 + 5 + 8)   gap  -0.74  (change vs headline +0.10)  SE 0.30 / 0.14 / 0.66
+   K1  exsh Headline (D-30)                                gap  -0.67  (change vs headline +0.00)  SE 0.31 / 0.18 / 0.70
+   K1  exsh Vehicle finance charges removed (5)            gap  -0.70  (change vs headline -0.03)  SE 0.31 / 0.17 / 0.70
+   K1  exsh All separable finance charges removed (5)      gap  -0.70  (change vs headline -0.03)  SE 0.31 / 0.17 / 0.70
+   K1  exsh Real childcare items (4)                       gap  -0.69  (change vs headline -0.02)  SE 0.31 / 0.18 / 0.70
+   K1  exsh Vehicles split: new, used, cost pieces (8)     gap  -0.71  (change vs headline -0.04)  SE 0.40 / 0.19 / 0.87
+   K1  exsh Education split by level (8)                   gap  -0.49  (change vs headline +0.18)  SE 0.30 / 0.17 / 0.70
+   K1  exsh All deep splits, finance kept (4 + 8)          gap  -0.55  (change vs headline +0.12)  SE 0.40 / 0.18 / 0.86
+   K1  exsh All deep splits, finance removed (4 + 5 + 8)   gap  -0.58  (change vs headline +0.09)  SE 0.40 / 0.18 / 0.87
 
 ## 8. Check 6: one test per cumulative window
    window 2014-12 to 2019-12, headline basket:
-     F1  -10    -1.05 pp  SE 0.06 / 0.10 / 0.13  p 0.000 / 0.000 / 0.000
-     K1  -10    -1.02 pp  SE 0.06 / 0.11 / 0.14  p 0.000 / 0.000 / 0.000
-     F1  -01    -0.43 pp  SE 0.03 / 0.06 / 0.07  p 0.000 / 0.000 / 0.000
-     K1  -01    -0.41 pp  SE 0.04 / 0.08 / 0.09  p 0.000 / 0.000 / 0.000
-     F1  -03    -0.36 pp  SE 0.06 / 0.11 / 0.14  p 0.000 / 0.002 / 0.008
-     K1  -03    -0.33 pp  SE 0.07 / 0.12 / 0.15  p 0.000 / 0.007 / 0.024
-     09  -04    +0.02 pp  SE 0.12 / 0.21 / 0.25  p 0.871 / 0.929 / 0.941
+     F1  -10    -1.05 pp  SE 0.06 / 0.11 / 0.13  p 0.000 / 0.000 / 0.000
+     K1  -10    -1.02 pp  SE 0.07 / 0.12 / 0.15  p 0.000 / 0.000 / 0.000
+     F1  -01    -0.43 pp  SE 0.03 / 0.06 / 0.08  p 0.000 / 0.000 / 0.000
+     K1  -01    -0.41 pp  SE 0.04 / 0.08 / 0.10  p 0.000 / 0.000 / 0.000
+     F1  -03    -0.36 pp  SE 0.07 / 0.12 / 0.14  p 0.000 / 0.002 / 0.012
+     K1  -03    -0.33 pp  SE 0.07 / 0.13 / 0.15  p 0.000 / 0.010 / 0.030
+     09  -04    +0.02 pp  SE 0.12 / 0.22 / 0.26  p 0.877 / 0.932 / 0.944
    window 2019-12 to 2026-07, headline basket:
-     F1  -10    -0.69 pp  SE 0.18 / 0.11 / 0.43  p 0.000 / 0.000 / 0.109
-     K1  -10    -0.84 pp  SE 0.21 / 0.13 / 0.48  p 0.000 / 0.000 / 0.084
-     F1  -01    -0.20 pp  SE 0.11 / 0.07 / 0.25  p 0.071 / 0.003 / 0.438
-     K1  -01    -0.35 pp  SE 0.15 / 0.09 / 0.34  p 0.017 / 0.000 / 0.305
-     F1  -03    +0.20 pp  SE 0.21 / 0.13 / 0.49  p 0.333 / 0.121 / 0.678
-     K1  -03    +0.05 pp  SE 0.23 / 0.15 / 0.54  p 0.817 / 0.719 / 0.921
-     09  -04    +0.92 pp  SE 0.39 / 0.19 / 0.88  p 0.018 / 0.000 / 0.293
+     F1  -10    -0.69 pp  SE 0.21 / 0.12 / 0.48  p 0.001 / 0.000 / 0.155
+     K1  -10    -0.84 pp  SE 0.24 / 0.14 / 0.54  p 0.000 / 0.000 / 0.124
+     F1  -01    -0.20 pp  SE 0.12 / 0.07 / 0.29  p 0.114 / 0.006 / 0.490
+     K1  -01    -0.35 pp  SE 0.17 / 0.10 / 0.38  p 0.036 / 0.000 / 0.361
+     F1  -03    +0.20 pp  SE 0.24 / 0.14 / 0.55  p 0.397 / 0.144 / 0.712
+     K1  -03    +0.05 pp  SE 0.26 / 0.16 / 0.61  p 0.839 / 0.730 / 0.929
+     09  -04    +0.92 pp  SE 0.45 / 0.21 / 0.99  p 0.040 / 0.000 / 0.352
    window 2020-12 to 2022-12, headline basket:
-     F1  -10    +0.23 pp  SE 0.15 / 0.07 / 0.22  p 0.129 / 0.002 / 0.278
-     K1  -10    +0.04 pp  SE 0.17 / 0.07 / 0.25  p 0.834 / 0.610 / 0.882
-     F1  -01    +0.19 pp  SE 0.09 / 0.04 / 0.13  p 0.038 / 0.000 / 0.138
-     K1  -01    -0.01 pp  SE 0.12 / 0.05 / 0.17  p 0.949 / 0.869 / 0.964
-     F1  -03    +0.44 pp  SE 0.18 / 0.09 / 0.24  p 0.012 / 0.000 / 0.070
-     K1  -03    +0.24 pp  SE 0.19 / 0.08 / 0.27  p 0.207 / 0.003 / 0.368
-     09  -04    +0.47 pp  SE 0.33 / 0.17 / 0.46  p 0.160 / 0.005 / 0.305
+     F1  -10    +0.23 pp  SE 0.16 / 0.08 / 0.22  p 0.145 / 0.003 / 0.295
+     K1  -10    +0.04 pp  SE 0.18 / 0.08 / 0.25  p 0.840 / 0.633 / 0.886
+     F1  -01    +0.19 pp  SE 0.10 / 0.05 / 0.13  p 0.046 / 0.000 / 0.152
+     K1  -01    -0.01 pp  SE 0.13 / 0.05 / 0.18  p 0.951 / 0.877 / 0.965
+     F1  -03    +0.44 pp  SE 0.18 / 0.09 / 0.25  p 0.016 / 0.000 / 0.080
+     K1  -03    +0.24 pp  SE 0.20 / 0.09 / 0.28  p 0.224 / 0.007 / 0.384
+     09  -04    +0.47 pp  SE 0.35 / 0.18 / 0.48  p 0.181 / 0.010 / 0.325
    window 2022-12 to 2024-12, headline basket:
      F1  -10    -0.65 pp  SE 0.06 / 0.08 / 0.09  p 0.000 / 0.000 / 0.000
      K1  -10    -0.61 pp  SE 0.07 / 0.10 / 0.10  p 0.000 / 0.000 / 0.000
      F1  -01    -0.28 pp  SE 0.04 / 0.05 / 0.05  p 0.000 / 0.000 / 0.000
      K1  -01    -0.24 pp  SE 0.05 / 0.07 / 0.07  p 0.000 / 0.000 / 0.001
-     F1  -03    -0.19 pp  SE 0.07 / 0.10 / 0.10  p 0.007 / 0.045 / 0.055
-     K1  -03    -0.15 pp  SE 0.08 / 0.11 / 0.11  p 0.061 / 0.162 / 0.180
-     09  -04    +0.29 pp  SE 0.11 / 0.14 / 0.15  p 0.008 / 0.046 / 0.054
+     F1  -03    -0.19 pp  SE 0.07 / 0.10 / 0.10  p 0.008 / 0.049 / 0.059
+     K1  -03    -0.15 pp  SE 0.08 / 0.11 / 0.12  p 0.065 / 0.169 / 0.187
+     09  -04    +0.29 pp  SE 0.11 / 0.15 / 0.15  p 0.009 / 0.050 / 0.058
    window 2024-12 to 2026-07, headline basket:
-     F1  -10    +0.01 pp  SE 0.04 / 0.04 / 0.06  p 0.766 / 0.755 / 0.825
-     K1  -10    +0.00 pp  SE 0.05 / 0.05 / 0.06  p 0.986 / 0.985 / 0.989
-     F1  -01    -0.00 pp  SE 0.03 / 0.03 / 0.04  p 0.853 / 0.845 / 0.890
-     K1  -01    -0.02 pp  SE 0.03 / 0.03 / 0.04  p 0.597 / 0.588 / 0.696
-     F1  -03    -0.02 pp  SE 0.05 / 0.05 / 0.07  p 0.670 / 0.648 / 0.752
-     K1  -03    -0.03 pp  SE 0.05 / 0.05 / 0.07  p 0.526 / 0.503 / 0.639
-     09  -04    +0.04 pp  SE 0.10 / 0.10 / 0.13  p 0.688 / 0.687 / 0.761
+     F1  -10    +0.01 pp  SE 0.04 / 0.04 / 0.06  p 0.767 / 0.756 / 0.827
+     K1  -10    +0.00 pp  SE 0.05 / 0.05 / 0.06  p 0.986 / 0.985 / 0.990
+     F1  -01    -0.00 pp  SE 0.03 / 0.03 / 0.04  p 0.853 / 0.846 / 0.891
+     K1  -01    -0.02 pp  SE 0.03 / 0.03 / 0.04  p 0.600 / 0.590 / 0.699
+     F1  -03    -0.02 pp  SE 0.05 / 0.05 / 0.07  p 0.672 / 0.649 / 0.754
+     K1  -03    -0.03 pp  SE 0.05 / 0.05 / 0.07  p 0.528 / 0.505 / 0.642
+     09  -04    +0.04 pp  SE 0.10 / 0.10 / 0.13  p 0.690 / 0.688 / 0.763
 
 ## 9. Check 6: contributions to the cumulative gap with 95% sampling intervals (independent vintages)
    point estimates vs 10_intuition.R (t33), headline F1: max |diff| 7.77e-16
@@ -502,7 +502,7 @@
 
 ## 11. Check 4: childcare cost weight, mean 2020-2026, CPI-concept basket
    F1  Families with children, headline (04 + 09)       proxy (HHPERSRV) 1.59%   real childcare 1.57%
-   K1  Families with children under 18 (05 + 06 + 09)   proxy (HHPERSRV) 2.24%   real childcare 2.23%
+   K1  Minor-child proxy (05 + 06 + 09)                 proxy (HHPERSRV) 2.24%   real childcare 2.23%
    05  Married, oldest child under 6                    proxy (HHPERSRV) 6.06%   real childcare 6.06%
    06  Married, oldest child 6-17                       proxy (HHPERSRV) 1.33%   real childcare 1.32%
    07  Married, oldest child 18+                        proxy (HHPERSRV) 0.15%   real childcare 0.09%
