@@ -73,8 +73,9 @@ The uncovered 29.27 decomposes as:
 
 **Outside owner-occupied shelter the crosswalk is effectively complete.** The
 OER hole is the `scope_cpi_b` problem from Phase 1, not a crosswalk defect: CPI
-prices owner shelter via rental equivalence and the CEX published tables report
-owner *outlays* instead. Closing it requires CEX PUMD.
+prices owner shelter via rental equivalence and the CEX flat files report
+owner *outlays* instead. The later index fills this gap with the CE rental-value
+means in the annual workbooks (D-29).
 
 ### The economic validation: CEX shares against CPI relative importance
 

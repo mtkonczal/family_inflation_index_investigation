@@ -275,8 +275,8 @@ Applied 2026-09-23 to the paper, README, executive summary,
 
 ## What is still not done
 
-- **Age conditioning and equal-consumer-unit weights** still need PUMD;
-  [the microdata design](pumd_design.md) specifies the comparison.
+- **Age conditioning and equal-consumer-unit weights** are not identified in
+  the published tables used here.
 - **Sub-item RSEs are borrowed from the parent** for childcare, tuition
   pieces and other education. Their true RSEs are unknown; those
   contributions' intervals may be understated.

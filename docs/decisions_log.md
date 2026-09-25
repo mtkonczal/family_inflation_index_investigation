@@ -36,11 +36,11 @@ family status. The elderly carry high medical shares, which biases the health
 comparison specifically.
 
 The flat files publish LB06 (composition) and LB21 (age) **marginally only**.
-There is no LB06 x LB21 cross-tab. Conditioning requires CEX PUMD microdata.
+There is no LB06 x LB21 cross-tab in these published data, so the index is
+unconditional on age.
 
-**Decision:** proceed with the unconditional comparison in Phase 1, document the
-confound prominently, and treat PUMD as the escalation path if the shares
-justify a paper. Do not present an unconditional gap as a causal "cost of
+**Decision:** proceed with the unconditional comparison in Phase 1 and document
+the confound prominently. Do not present an unconditional gap as a causal "cost of
 children" estimate.
 
 ---
@@ -721,7 +721,7 @@ Three defects in `08_burden.R`.
 | Seasonality, SA monthly | run, `09_robustness.R` |
 | Group: 04+09 vs 04 alone | run (`married_kids` in `06`) |
 | Group: LB05 size cut | run, `07_dimension_indices.R` |
-| Lifecycle, age-conditioned | **not run**: requires PUMD |
+| Lifecycle, age-conditioned | **not identified** in the published tables |
 
 The word "pre-registered" is dropped from the write-ups: the specification was
 written down before estimation, but not deposited anywhere, and half of it was
@@ -981,6 +981,5 @@ oldest child; code 07 includes both couples with only adult children and
 couples with an adult oldest child and a younger minor. The published tables
 cannot separate these cases or isolate exactly age 18. K1's -0.84 pp result
 therefore describes only this narrower proxy. An exact "at least one resident
-child aged 18 or younger" index requires CE member-level microdata, with an
-explicit relationship and CU-membership rule. No exact-cutoff estimate has
-been produced.
+child aged 18 or younger" group is not identified in these published tables.
+No exact-cutoff estimate has been produced.

@@ -133,8 +133,8 @@ Full log: `output/tables/t00_validation.txt`.
    comparison group spans young adults and the elderly. Part of the gap,
    especially in medical and electricity, is lifecycle. See decisions_log D-02.
 3. **No standard errors.** The CEX flat files publish means only. Whether a
-   0.2 pp share gap is distinguishable from sampling noise is unknown without
-   PUMD replicate weights.
+   0.2 pp share gap is distinguishable from sampling noise was unknown at this
+   stage. The later index uses CE workbook standard errors (D-28, D-36).
 4. **Composition channel only.** Within-item price dispersion across households
    is unmeasurable with CPI item indices.
 

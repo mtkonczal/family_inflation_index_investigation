@@ -1,11 +1,8 @@
 # ---------------------------------------------------------------------------
-# make_slide_figures.R  ---  presentation-only derivatives of Phase 1 figures
+# make_slide_figures.R  ---  presentation figures from saved analysis tables
 #
-# Not part of the numbered analysis pipeline; run after R/10_intuition.R.
-# Rebuilds f01 (share gaps, 2024)
-# without the baked-in title/subtitle/source caption and on a beige background
-# that matches the slide deck, so it can run larger on a slide with the
-# equivalent text moved into the slide body instead of the image.
+# Not part of the numbered analysis pipeline. Run after R/10_intuition.R and
+# R/11_review_checks.R, which produce the tables used by the deck.
 #
 # Run from anywhere inside the repo: Rscript slides/make_slide_figures.R
 # ---------------------------------------------------------------------------
@@ -328,3 +325,48 @@ p_cmp <- ggplot2::ggplot(cmp, ggplot2::aes(gap, who)) +
   theme_slide() + ggplot2::theme(panel.grid.major.y = ggplot2::element_blank(),
                                  axis.text.y = ggplot2::element_text(colour = ESP_TEXT, size = 15))
 save_slide(p_cmp, "comparators_slide.png", 11, 5.2)
+
+# --- family definitions (review checks, published CE groups) --------------
+defs <- readr::read_csv(file.path(DIR_TAB, "t37_family_definitions.csv"),
+                        show_col_types = FALSE,
+                        col_types = readr::cols(g1 = "c", g2 = "c")) |>
+  dplyr::filter(variant == "headline", basket == "oer", g2 == "10",
+                g1 %in% c("F1", "K1", "04", "05", "06", "07", "09")) |>
+  dplyr::mutate(
+    group = c(
+      F1 = "Families with children (headline)",
+      K1 = "Minor-child proxy",
+      `04` = "Married, children any age",
+      `05` = "Married, eldest under 6",
+      `06` = "Married, eldest 6–17",
+      `07` = "Married, eldest 18+",
+      `09` = "One parent, child under 18"
+    )[g1],
+    group = factor(group, levels = rev(c(
+      "Families with children (headline)", "Minor-child proxy",
+      "Married, children any age", "Married, eldest under 6",
+      "Married, eldest 6–17", "Married, eldest 18+",
+      "One parent, child under 18"))))
+
+p_defs <- ggplot2::ggplot(defs, ggplot2::aes(gap, group)) +
+  ggplot2::geom_vline(xintercept = 0, colour = "grey40", linewidth = 0.6) +
+  ggplot2::geom_errorbar(
+    ggplot2::aes(xmin = gap - 1.96 * se_bound, xmax = gap + 1.96 * se_bound),
+    width = 0, linewidth = 0.75, colour = ESP_NAVY, alpha = 0.45,
+    orientation = "y") +
+  ggplot2::geom_errorbar(
+    ggplot2::aes(xmin = gap - 1.96 * se_indep, xmax = gap + 1.96 * se_indep),
+    width = 0, linewidth = 2.2, colour = ESP_NAVY, alpha = 0.7,
+    orientation = "y") +
+  ggplot2::geom_point(size = 4.2, colour = ESP_GREEN) +
+  ggplot2::geom_text(ggplot2::aes(label = sprintf("%+.2f", gap)),
+                     vjust = -0.9, size = 4.2, colour = ESP_NAVY,
+                     fontface = "bold") +
+  ggplot2::scale_x_continuous(labels = function(x) paste0(x, " pts"),
+                              breaks = seq(-2, 2, 1), limits = c(-2.6, 2.2)) +
+  ggplot2::labs(x = "Family group minus single-person and other, cumulative inflation (pp)",
+                y = NULL) +
+  theme_slide() +
+  ggplot2::theme(panel.grid.major.y = ggplot2::element_blank(),
+                 axis.text.y = ggplot2::element_text(colour = ESP_TEXT, size = 13))
+save_slide(p_defs, "family_definitions_slide.png", 11.5, 5.7)

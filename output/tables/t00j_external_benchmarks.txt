@@ -1,5 +1,5 @@
 # External benchmarks log (12_external_benchmarks.R)
-# built_at: 2026-09-23T11:18:48-0400
+# built_at: 2026-09-25T13:48:33-0400
 
 ## 1. Inputs (see data/raw/external/manifest.txt for the pull date)
   r-cpi-i-data.xlsx         21353 bytes
@@ -13,7 +13,7 @@
   rebuild vs 07 dimension_index.csv: 906 rows, max |diff| 2.84e-14
 
 ## 3. Lowest minus highest income quintile, cumulative gap (pp)
-   BLS: equivalized-income quintiles, CE microdata, full CPI item-area detail.
+   BLS: equivalized-income quintiles, full CPI item-area detail.
    Ours: CE LB01 before-tax income quintiles, flat files, 34 categories (07).
    window               R-CPI-I   ours (lag-2 Laspeyres)   R-C-CPI-I   ours (Tornqvist)
    2014-12 to 2019-12    +0.28       +1.27                    +1.24       +1.18

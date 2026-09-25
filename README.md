@@ -79,7 +79,7 @@ The 05 + 06 + 09 check is narrower than "any resident child under 18": the
 married-couple cells classify by **oldest** child's age, so a couple with an
 adult oldest child and a younger minor is in excluded code 07. The published
 tables also cannot isolate households with a child exactly age 18. The exact
-"18 or younger at home" comparison requires CE member-level microdata.
+"18 or younger at home" group is not identifiable in these published tables.
 
 **Why.** A category moves the gap only if families buy more (or less) of it
 *and* its price outran (or lagged) the average (D-34). Two pieces, roughly
@@ -142,7 +142,7 @@ CPI-concept basket, cumulative since December 2019:
 The income gradient is about three times the family gap and runs the other
 way, led by rent and vehicle purchases, consistent in direction with Jaravel
 (2021) and Argente and Lee (2021). BLS's own research index by income quintile
-(R-CPI-I; Klick and Stockburger 2024), built from microdata with households
+(R-CPI-I; Klick and Stockburger 2024), with households
 ranked by size-adjusted income, shows +2.15 pp from December 2019 to December
 2025 against +1.84 here. Before 2020 the two diverge (+0.28 against +1.27),
 because the income rankings differ, so cite the post-2019 comparison (D-40).

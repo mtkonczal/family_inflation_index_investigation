@@ -66,7 +66,7 @@ Note the hierarchy: 02 = 03 + 04 + 08, and 04 = 05 + 06 + 07. Codes 01, 09, and
 
 The flat files publish each dimension **marginally**. There are no
 `LB06 x LB21` or `LB06 x LB17` cross-tabs. Conditioning on age or tenure
-*within* family type requires CEX PUMD microdata.
+*within* family type is not identified in these published tables.
 
 ### Coverage is uneven across time
 
@@ -166,11 +166,11 @@ These are where a family index should diverge most:
 
 1. **Standard errors.** `cx.process` has one code, `M` (means). CEX standard
    errors are published in separate tables on bls.gov, not in the flat files.
-   Sampling error on the weight vectors is unquantified without PUMD replicate
-   weights (44 of them).
+   The later index uses standard errors from CE annual workbooks to approximate
+   sampling error on the weight vectors.
 2. **Cross-tabs.** Marginal dimensions only, as noted above.
 3. **Rental equivalence.** CEX published tables report owner *outlays*, not the
-   imputed rental value CPI uses. The rental-equivalence question exists in
-   PUMD, not here. This is the largest single scope wedge. See `METHODS.md`.
+   imputed rental value CPI uses. The annual CE workbooks supply group means
+   of that rental value; the later index uses them. See `METHODS.md`.
 4. **A CEX-to-CPI item concordance.** Not published in either flat-file
    directory. The mapping in `crosswalk/` is built by hand and versioned.

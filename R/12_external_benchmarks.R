@@ -5,8 +5,7 @@
 # against, neither of which the flat files contain:
 #
 #   * R-CPI-I and R-C-CPI-I, BLS's research CPIs by income quintile (Klick and
-#     Stockburger, MLR July 2024). Built by BLS from CE microdata at the full
-#     CPI item-area level. If the flat-file method reproduces BLS's
+#     Stockburger, MLR July 2024). BLS uses full CPI item-area detail. If the flat-file method reproduces BLS's
 #     lowest-minus-highest quintile gap, that is the strongest external
 #     validation available for the family cut, which uses the same method.
 #     NOT a like-for-like comparison: BLS ranks households by EQUIVALIZED
@@ -164,7 +163,7 @@ for (Y in 2014:2025) {
 }
 readr::write_csv(t45, file.path(DIR_TAB, "t45_rcpi_i_benchmark.csv"))
 say("## 3. Lowest minus highest income quintile, cumulative gap (pp)")
-say("   BLS: equivalized-income quintiles, CE microdata, full CPI item-area detail.")
+say("   BLS: equivalized-income quintiles, full CPI item-area detail.")
 say("   Ours: CE LB01 before-tax income quintiles, flat files, 34 categories (07).")
 say("   window               R-CPI-I   ours (lag-2 Laspeyres)   R-C-CPI-I   ours (Tornqvist)")
 cu <- t45[t45$kind == "cumulative", ]
@@ -253,7 +252,7 @@ say("")
 # 6. Figure
 # ===========================================================================
 NAVY <- "#2c3254"; GREEN <- "#70ad8f"
-fa <- an |> dplyr::select(to, `BLS R-CPI-I (equivalized income, microdata)` = bls_rcpi_i,
+fa <- an |> dplyr::select(to, `BLS R-CPI-I (equivalized income)` = bls_rcpi_i,
                           `This project (CE income quintiles, flat files)` = ours_laspeyres) |>
   tidyr::pivot_longer(-to) |> dplyr::mutate(year = as.integer(format(to, "%Y")))
 p20 <- ggplot2::ggplot(fa, ggplot2::aes(year, value, fill = name)) +

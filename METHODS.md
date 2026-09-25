@@ -56,21 +56,21 @@ roughly five to one.
 - Code 10 also pools the young with the elderly, while families with children
   are concentrated in prime age. **Part of any measured gap is lifecycle, not
   family status.** The flat files publish `LB06` and `LB21` (age) only
-  marginally, with no cross-tab, so conditioning on age requires CEX PUMD
-  microdata. This is the most important unaddressed confound.
+  marginally, with no cross-tab, so this index does not condition on age.
+  This is the most important unaddressed confound.
 - Code 04 counts children of any age. The published-table proxy 05 + 06 + 09
   keeps married couples whose **oldest** child is under 18 and one-parent CUs
   with at least one child under 18. It misses married couples with an adult
   oldest child and a younger minor, and it cannot include exactly age 18
-  without also including older children. An exact resident-child definition
-  requires CE member-level microdata (D-37).
+  without also including older children. The published tables cannot identify
+  an exact resident-child group (D-37).
 - The sign of the family gap is specific to this comparison group. Against all
   CUs or married couples without children it is within a few tenths of a point
   either way (D-37).
 
 ## 3. Expenditure scope: CEX is not CPI
 
-CPI weights derive from CEX microdata but with adjustments that the published
+CPI weights derive from CE spending records but with adjustments that the published
 CEX tables do not reflect. Three scope treatments are defined; Phase 1 reports
 the first two.
 
@@ -228,7 +228,7 @@ residual alongside every estimate.
 | Weight timing | 2-year lag; 1-year lag; contemporaneous; Tornqvist on adjacent CE years | run (D-38) |
 | Seasonality | NSA 12-month changes; SA monthly | run |
 | Group definition | 04+09 versus 04 alone; `LB05` size cut; children under 18 (05+06+09); comparison groups 01, 03 and complements | run (D-37) |
-| Lifecycle | age-conditioned comparison (requires PUMD) | **not run** |
+| Lifecycle | age-conditioned comparison | **not identified in the published tables** |
 | External | BLS R-CPI-I income gradient; C-CPI-U | run (D-40) |
 
 The "kill criterion" above compared the gap with the weight-source residual.

@@ -246,8 +246,8 @@ December 2024:
   2019-2024. BLS's C-CPI-U minus CPI-U has the same sign and is larger
   (-1.35), as expected at finer aggregation.
 
-Not run: the full item-level (levels 4-7) crosswalk; age conditioning and
-household-weighted indices (need PUMD).
+Not run: the full item-level (levels 4-7) crosswalk. Age conditioning and
+household-weighted indices are not identified in the published tables.
 
 **One parent minus married with children:** +0.92 pp on the headline (p = 0.04
 with independent errors, 0.35 in the worst case), and +0.77 to +2.87 across

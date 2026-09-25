@@ -69,7 +69,7 @@ Match every spending category to its official CPI price series
 Indexes
 :::
 ::: {.flow-sub}
-Build a separate CPI for families and for single households, the way BLS builds the real one
+Price each group's spending shares with the same CPI item indexes
 :::
 :::
 
@@ -96,16 +96,16 @@ Check the gap against survey error, other household cuts, and other time periods
 ## The question {#origins-1}
 
 ::: {.origin-block}
-A common view in family policy: **inflation hits families with children harder.** They buy more groceries, child care, cars and school supplies, and those prices jumped after 2021.
+Families buy more groceries, child care, cars and school supplies. Did that make their inflation rate higher?
 :::
 
 Headline CPI tracks the spending of urban consumers. So we built two baskets from surveyed expenditures: one for families with children, the other for single-person and other households, each priced with the same national CPI item indexes.
 
-**Did the family basket get more expensive, faster?**
+**Did the family basket rise faster?**
 
 ---
 
-## Two forces pull in opposite directions {#origins-2}
+## Different spending shares {#origins-2}
 
 :::: {.columns}
 
@@ -119,7 +119,7 @@ Headline CPI tracks the spending of urban consumers. So we built two baskets fro
 :::
 
 ::: {.column width="50%"}
-**Single households spend a bigger share on:**
+**Single-person and other households spend a bigger share on:**
 
 - Rent (12.7% of the budget, against 5.3% for families)
 - Electricity
@@ -129,7 +129,7 @@ Headline CPI tracks the spending of urban consumers. So we built two baskets fro
 ::::
 
 ::: {.callout-box}
-We measure one mechanism: whether the *mix* of what a household buys gives it a different inflation rate. Everyone faces the same price for a given item here. BLS's experimental index for older Americans (CPI-E) works the same way.
+The index measures how the spending mix affects inflation. Each group gets the same CPI price change for a given item. It cannot capture differences in the prices households actually pay.
 :::
 
 ---
@@ -139,7 +139,7 @@ We measure one mechanism: whether the *mix* of what a household buys gives it a 
 The **Consumer Expenditure Survey** is BLS's survey of household spending. We use its published annual averages by household type, the same survey BLS uses to weight the CPI.
 
 ::: {.callout-box}
-"Families with children" pools married couples with children of any age (30.3 million households in 2024) and single parents with a child under 18 (6.2 million), weighted by how many households are in each. The main comparison group is single-person and other households (64.4 million); we also check against all households and married couples without children.
+The family group combines married couples with children of any age (30.3 million consumer units in 2024) and one-parent units with a child under 18 (6.2 million), weighted by unit counts. The main comparison is single-person and other units (64.4 million). We also compare with all units and childless married couples.
 :::
 
 - 41 spending categories, every year from 1988 to 2024
@@ -153,17 +153,17 @@ The **Consumer Expenditure Survey** is BLS's survey of household spending. We us
 ![](`r fig_slide("f01_budget_diff_slide.png")`){.r-stretch}
 
 ::: {.chart-note}
-Family budget share minus single-household share, 2024. Rent is the largest difference by far.
+Family share minus single-person-and-other share, 2024. Rent has the largest gap.
 :::
 
 ---
 
 ## Pricing the budgets {#crosswalk-1}
 
-Each of 37 spending categories is matched to the official CPI series for it, 62 series in all. Categories like "vehicles" combine several (new, used, leased) the way BLS combines them.
+We match 37 spending categories to 62 CPI price series. Vehicle spending, for example, combines prices for new, used and leased vehicles.
 
 ::: {.callout-box}
-**Owners' housing is priced the way CPI prices it.** CPI charges homeowners what their home would rent for. The survey asks every owner that question, and BLS uses the answer to weight the CPI. We use the same answer.
+**Owner housing uses rental equivalence.** CE asks owners what their home would rent for; BLS uses that answer to weight owners' equivalent rent in the CPI. We use the same measure.
 :::
 
 Built this way, our all-household index differs from official CPI by 0.1 percentage point on average across 12-month rates. This checks the aggregate fit, but cannot test prices paid within each household type.
@@ -185,13 +185,23 @@ Built this way, our all-household index differs from official CPI by 0.1 percent
 | Single-person and other | **+30.1%** |
 | **Gap** | **−0.7 pts** |
 
-About 0.1 point a year, and in families' favor. The corrected 95% sampling margin is about ±0.4 to ±1.0 points, depending on how errors carry across survey years.
+The gap is about −0.1 point a year. The approximate 95% sampling margin is ±0.41 points with independent survey-year errors and ±0.95 under the cross-year bound.
 :::
 
 ::::
 
 ::: {.callout-box}
-**No meaningful excess from the spending mix.** Across nine baskets the family-minus-single/other gap runs from −1.0 to +0.1 points. Other price inputs, family definitions and index formulas leave that conclusion intact. Prices paid within items are outside this index.
+**No family inflation premium in the spending-mix index.** Across nine baskets, the family-minus-single/other gap runs from −1.0 to +0.1 points. The result also survives alternative price inputs and index formulas.
+:::
+
+---
+
+## Across family definitions {#family-definitions}
+
+![](`r fig_slide("family_definitions_slide.png")`){.r-stretch}
+
+::: {.chart-note}
+Each group is compared with single-person and other households, Dec 2019 to Jul 2026. Thick bars show approximate 95% intervals under independent survey-year errors; thin bars use a cross-year correlation bound. The one-parent estimate is slightly positive but imprecise. The minor-child group is a published-table proxy, not every household with a child under 18.
 :::
 
 ---
@@ -206,27 +216,42 @@ The largest negative gap is against single-person and other households, whose ba
 
 ---
 
-## 2021-22: a blip, then a reversal {#two-waves}
+## The gap predates the pandemic {#pre-pandemic}
+
+| Window | Basket and family group | Gap vs. single/other |
+|---|---|---:|
+| 2010–19 | Ex-shelter, headline group | +0.07 pts |
+| 2014–19 | CPI-concept, headline group | −1.05 pts |
+| 2014–19 | CPI-concept, minor-child proxy | −1.02 pts |
+| 2019–26 | CPI-concept, headline group | −0.69 pts |
+
+::: {.chart-note}
+The comparable CPI-concept index begins in 2014, when CE owner housing weights are available. Its pre-pandemic gap is below zero even under the cross-year uncertainty bound. The 2010–19 check excludes shelter and has no sampling interval; it shows no sizable premium in that longer window. The two baskets should not be compared as if they were identical.
+:::
+
+---
+
+## The 2021–22 episode {#two-waves}
 
 ![](`r fig_slide("gap12_slide.png")`){.r-stretch}
 
 ::: {.chart-note}
-Twelve-month inflation, families minus single-person and other households, with an approximate 95% sampling interval. From April 2021 to August 2022 the family basket ran up to 0.6 points hotter, but over those two years the difference added up to +0.2 points, too small to separate from survey error. From late 2022 rent took over and the single/other basket ran clearly hotter, by 0.65 points over 2023-24. By July 2026 the gap was zero.
+Twelve-month inflation, families minus single-person and other households, with an approximate 95% sampling interval. From April 2021 to August 2022 the family basket ran up to 0.6 points hotter. The cumulative difference over 2020–22 was +0.23 points (independent-year p = 0.15). From late 2022 rent drove a reversal: the single/other basket ran 0.65 points hotter over 2023–24. By July 2026 the 12-month gap was near zero.
 :::
 
 ---
 
-## Normal times look the same, only more so {#result-normal}
+## Housing mattered before 2020 too {#result-normal}
 
 ![](`r fig_slide("blocks_slide.png")`){.r-stretch}
 
 ::: {.chart-note}
-Contribution of each spending area to the gap. From 2014 to 2019, before COVID, families trailed singles by 1.05 points. Rent rose 20% while overall prices rose 9%, and singles spend more than twice the share on rent. Cars and clothes, which families buy more of, got cheaper.
+Contribution of each spending area to the gap. From 2014 to 2019, families trailed single/other households by 1.05 points. Rent contributed −0.68 points: it rose 20% while overall prices rose 9%, and single/other households put more than twice the budget share toward rent. Vehicles and gasoline contributed another −0.22 points.
 :::
 
 ---
 
-## Income sorts inflation; family type barely does {#result-income}
+## Income groups differ more {#result-income}
 
 ![](`r fig_slide("income_bars_slide.png")`){.r-stretch}
 
@@ -238,19 +263,19 @@ Same method, same years. The lowest-income tenth of households saw prices rise 2
 
 ---
 
-## Why (1): a rate averages shares, not dollars {#intuition-0}
+## Inflation rates depend on spending shares {#intuition-0}
 
-Families spend $105,000 a year to single households' $57,000. That gives them a bigger dollar hit. It does not give them a faster rate. A household that buys twice as much of the same basket has the same inflation rate.
+Families spend $105,000 a year, against $57,000 for single-person and other households. That gives them a bigger dollar hit. It does not give them a faster rate. A household that buys twice as much of the same basket has the same inflation rate.
 
 The rate depends on budget *shares*, and the shares are close:
 
 ::: {.callout-box}
-73% of the family budget sits in categories where family and single shares differ by less than 1 percentage point. Only five categories differ by more: **rent, vehicle purchases, education, child care, groceries.**
+73% of the family budget sits in categories where family and single/other shares differ by less than 1 percentage point. Only five categories differ by more: **rent, vehicle purchases, education, child care, groceries.**
 :::
 
 ---
 
-## Why (2): buying more only matters if the price outran average {#intuition-1}
+## Which prices create a gap? {#intuition-1}
 
 ![](`r fig_slide("scatter_slide.png")`){.r-stretch}
 
@@ -260,7 +285,7 @@ A category moves the gap when families buy more of it **and** its price rose fas
 
 ---
 
-## Why (3): child care rises like any other service {#intuition-childcare}
+## Child care prices and bills {#intuition-childcare}
 
 ![](`r fig_slide("childcare_services_slide.png")`){height=330}
 
@@ -282,7 +307,7 @@ The problem is the size of the bill. Married couples whose oldest child is under
 
 ---
 
-## Why (4): housing has economies of scale {#intuition-housing}
+## Housing's share falls with household size {#intuition-housing}
 
 ![](`r fig_slide("size_slide.png")`){.r-stretch}
 
@@ -292,7 +317,7 @@ A family of four needs one kitchen and one roof. Housing takes 40% of a one-pers
 
 ---
 
-## Similar rates, very different bills {#burden}
+## Dollar cost of a fixed basket {#burden}
 
 | | Inflation, Dec 2019 to Jul 2026 | Extra cost per year for the 2019 non-housing basket | Share of spending on groceries, utilities and housing |
 |---|---|---|---|
@@ -307,11 +332,11 @@ The extra cost of the fixed 2019 non-housing basket is twice as large for marrie
 
 ---
 
-## What this does not cover {#limits}
+## Scope and uncertainty {#limits}
 
 - **Prices paid.** Everyone is charged the same price for the same item here. Scanner-data research finds households pay quite different prices within an item.
 - **Cash versus CPI housing costs.** Owners are charged their home's rental value, as in CPI. An owner with a locked-in mortgage saw cash housing costs rise less than that; a recent buyer saw them rise more.
-- **Age.** Families average 44 years old, single households 53. The published tables don't allow controlling for age, and the comparison with childless couples shows age matters through medical care.
+- **Age.** The average reference person is 44 in the family group and 53 in the single/other group. The published tables do not allow an age-conditioned comparison; medical spending helps explain the result against childless couples.
 - **Survey error.** Margins of error use BLS expenditure standard errors, with category errors treated as uncorrelated. Under the cross-year correlation bound, the headline gap is not distinguishable from zero.
 - **Index formula.** The headline uses two-year-old spending weights, following CPI practice since 2023. An annual-share Törnqvist check, which approximates the chained CPI concept, gives a smaller gap: −0.5 rather than −0.7.
 
