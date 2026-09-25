@@ -2,7 +2,8 @@
 > (25.32% vs 25.26%, "noise floor", "pre-registered error bar"), which no longer
 > hold. The revised numbers are in `executive_summary.md`, `README.md` and
 > `slides/family_inflation_slides.qmd`; the reasons are in
-> `docs/decisions_log.md` D-27 to D-33. Do not build slides from this file.
+> `docs/decisions_log.md` D-27 to D-40 (review 2: `docs/review_checks.md`).
+> Do not build slides from this file.
 
 # Presentation Deck Outline: Do Families Face Higher Inflation?
 ### A Clear, Data-Driven Look at Inflation Rates vs. Family Dollar Burdens

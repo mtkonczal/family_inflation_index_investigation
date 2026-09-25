@@ -1,0 +1,6 @@
+# External downloads, captured 2026-09-23T11:11:59-0400
+r-cpi-i-data.xlsx         21353 bytes  https://www.bls.gov/cpi/research-series/r-cpi-i-data.xlsx
+r-c-cpi-i-data.xlsx       20587 bytes  https://www.bls.gov/cpi/research-series/r-c-cpi-i-data.xlsx
+r-cpi-i-ri.xlsx           56262 bytes  https://www.bls.gov/cpi/research-series/r-cpi-i-ri.xlsx
+su.data.1.AllItems       405440 bytes  https://download.bls.gov/pub/time.series/su/su.data.1.AllItems
+su.series                  4914 bytes  https://download.bls.gov/pub/time.series/su/su.series

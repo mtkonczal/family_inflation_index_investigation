@@ -772,3 +772,173 @@ rose 29.8 percent against 29.9 for CPI, and has tracked services generally
 since 2010. The headline gap is roughly half shelter (rent -0.26 of -0.69) and
 half the non-housing mix (education -0.18, apparel -0.11, gasoline +0.18). In
 2014-2019 (gap -1.05) rent is -0.68.
+
+---
+
+## D-35. Second review: eight checks run beside the headline, headline unchanged
+**Date:** 2026-09-23 | **Phase:** review 2 | **Status:** results in `docs/review_checks.md`
+
+`R/11_review_checks.R` (checks 1-6, 8) and `R/12_external_benchmarks.R`
+(check 7) answer a second methods review. Several results bear on the
+headline (a children-under-18 definition moves it from -0.69 to -0.84; a
+superlative index moves it to about -0.47). None is promoted, because each
+changes empirical meaning and the choice is the author's. `11` stops unless
+its "headline" variant reproduces `family_index.csv` exactly (worst 4e-13
+across two baskets and six groups).
+
+Also fixed: `cum_se()` hard-coded a two-year lag when pairing links with RSE
+vintages; it now takes `lag_years`. No published number changes (every
+existing call used lag 2).
+
+---
+
+## D-36. Sampling error built from disjoint LB06 cells; three conventions
+**Date:** 2026-09-23 | **Phase:** review 2
+
+Every LB06 group is a consumer-unit-weighted mixture of seven disjoint
+published cells (03, 05, 06, 07, 08, 09, 10; they sum to all CUs exactly in
+every year). A group's log mean moves with each cell's log mean in
+proportion to that cell's dollar share, phi. Differentiating the cumulative
+change link by link against cell log means (D-28 treats category means as
+uncorrelated; that assumption is kept) gives each gap's SE with the right
+covariance, including gaps between overlapping groups such as families
+minus all CUs, which D-28's group-level SEs cannot handle.
+
+Three conventions, all reported:
+- **independent** vintages;
+- **persistent**: each cell-category's standardized error identical in every
+  vintage. Can come out *below* independent when a category's gradient
+  changes sign across links, so it is not a bound;
+- **bound**: link SDs added, the largest SE any correlation across vintages
+  can produce.
+
+Checks: families minus single/other on the headline gives 0.184 against
+D-28's 0.188 (independent). Cell-implied RSEs are a median 0.90 of the
+published all-CU RSEs and 0.96 of group 04's, so treating cells as
+independent slightly understates. Sub-items without a published SE
+(childcare, tuition pieces, other education) borrow the parent's RSE, which
+understates their contribution intervals.
+
+**Rejected:** D-28's `se_corr` (sum of each group's link SDs, then combined
+across groups) for the new pairs: it has no covariance term for overlapping
+groups.
+
+---
+
+## D-37. Family definition and comparison groups
+**Date:** 2026-09-23 | **Phase:** review 2 | **Status:** decided: F1 (04 + 09) stays the headline; K1 reported as robustness
+
+LB06 04 = 05 + 06 + 07, and 07 is married couples whose oldest child is 18
+or older, while 09 requires a child under 18. K1 = 05 + 06 + 09 pools
+families with a child under 18 by CU counts, exactly as 02 pools F1. Rental
+value of owned home pools with `ce_pool()` as 06 does for F1.
+
+Comparison groups added: all CUs (01), married couples without children
+(03), and the complement of each family group within all CUs (RF = 03 + 08
++ 10; RK = 03 + 07 + 08 + 10).
+
+Result: K1 minus single/other is -0.84 (F1 -0.69). Against childless
+couples, F1 is +0.20 and K1 +0.05 (both not significant), and +0.89 / +0.63
+on the ex-shelter basket. The headline sign is specific to the
+single/other comparison.
+
+---
+
+## D-38. Weight timing: contemporaneous Laspeyres and a Tornqvist
+**Date:** 2026-09-23 | **Phase:** review 2
+
+The two-year lag (D-24) is CPI's production constraint. A retrospective
+index can use CE years as they happened through 2024.
+
+- Laspeyres with `lag_years` 1 and 0 (same price updating, "full").
+- Tornqvist: for every month of year Y, ln(P_t / P_t-1) = sum_i wbar_i
+  ln(p_i,t / p_i,t-1) with wbar = (s_Y-1 + s_Y) / 2 on expenditure shares.
+  Fixed geometric weights inside a year telescope, so each December link is
+  exactly a Tornqvist on adjacent CE years. The approximation is treating
+  calendar-year shares as those of the December endpoints. An
+  annual-average-price Tornqvist is reported as a check on that choice.
+- After 2024, "extended" uses 2024 shares on both sides.
+
+This is the C-CPI-U's upper-level concept on the project's 34 categories.
+D-32 said C-CPI-U was impossible; that was true of BLS's item strata, not
+of the superlative formula. Result: F1 minus single/other, Dec 2019 to Dec
+2024, -0.67 (headline) to -0.47 (Tornqvist). All-CU Tornqvist minus
+Laspeyres is -0.41 against BLS's C-CPI-U minus CPI-U of -1.35 (same sign,
+coarser aggregation).
+
+---
+
+## D-39. Targeted deep crosswalk: five categories split into published sub-items
+**Date:** 2026-09-23 | **Phase:** review 2
+
+Instead of the ~750-item crosswalk (D-32), only the categories the review
+questioned are split, using sub-items published by LB06 cell:
+
+| Parent | Pieces (CPI price) | From |
+|---|---|---|
+| 14 Personal services | childcare (SEEB03); elder, invalid and adult day care (SEMD03 + SEMD02) | 2010 |
+| 23 Vehicle purchases | new (SETA01); used (SETA02); other vehicles (original 23 composite) | 1988 |
+| 25 Other vehicle expenses | finance charges; repair (SETC + SETD); insurance (SETE); rental, leases, licenses (SETA03 + SETA04 + SETF) | 1988 |
+| 37 Education | college incl. prepaid (SEEB01); K-12 (SEEB02); vocational (SEEB04); student-loan finance charges; other (SEEA) | 2010 |
+| 39 Miscellaneous | finance charges excl. mortgage and vehicle; other (original 39 composite) | 2010 |
+
+One piece per parent is the residual (parent less listed siblings), so the
+pieces add to the published parent exactly; a suppressed sibling counts as
+zero and lands in the residual (logged: 100 values under 14, 148 under 37,
+155 under 39, nearly all in small cells). Childcare is the residual because
+its item codes change in 2013 and 2023; personal services less 340906 and
+340910 equals the childcare items exactly wherever all are published.
+23O keeps the new-plus-used composite because CPI's new-motorcycle series
+ended in 2000.
+
+Finance charges are interest, out of CPI scope like mortgage interest
+(scope note on categories 25, 37, 39). The finance switches drop them from
+the basket; when a category is not split, its price is unchanged.
+
+Result: every piece moves the headline gap by 0.01 to 0.12 pp; all splits
+with finance removed, +0.02 (F1) and +0.10 (K1). The all-CU level moves
+from 29.62 to 29.93 percent, closer to published CPI-U (29.9).
+
+---
+
+## D-40. External benchmarks: BLS R-CPI-I and C-CPI-U
+**Date:** 2026-09-23 | **Phase:** review 2
+
+`12` downloads BLS's R-CPI-I, R-C-CPI-I and their relative importance
+(bls.gov/cpi/research-series), and the C-CPI-U all-items file, to
+`data/raw/external/` with a manifest.
+
+Not like-for-like: BLS ranks households by equivalized income (divided by
+the square root of household size), household-weighted, with smoothed
+expenditure weights and full item-area detail; `07` uses CE LB01
+before-tax income quintiles, unadjusted, on 34 categories. The comparison
+therefore tests the method and the definition jointly.
+
+Result: lowest minus highest quintile, Dec 2019 to Dec 2025, BLS +2.15,
+ours +1.84; Dec 2014 to Dec 2019, BLS +0.28, ours +1.27. Annual gaps
+correlate at 0.47. Our Q1 - Q5 shelter weight gap is about twice BLS's,
+which points at the income definition. Cite the 2019-2025 comparison, not
+our 2014-2019 gradient.
+
+---
+
+## D-41. Write-ups revised to the review-2 results, headline unchanged
+**Date:** 2026-09-23 | **Phase:** review 2
+
+Paper, README, executive summary, `phase3_index.md`, METHODS sections 1, 2
+and 10, and the slides now:
+
+- lead with "household type barely moves inflation" and the comparison-group
+  panel;
+- report significance under both the independent and worst-case conventions;
+- withdraw the "91% of months" count and the 2021-22 vehicles/food/gasoline
+  attribution, in favour of one test per window;
+- describe the tuition term as mostly parents of college-age children;
+- give the childcare weight ratio on the CE childcare items (about eight
+  times, not five);
+- report the superlative index and the BLS R-CPI-I benchmark;
+- replace "lower bound on dispersion" with "the price-faced channel could move
+  the gap either way."
+
+F1 remains the headline family group by author decision; no headline number
+changes.

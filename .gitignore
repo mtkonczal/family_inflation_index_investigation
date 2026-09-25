@@ -14,11 +14,15 @@
 data/raw/*.rds
 data/raw/ce_tables/
 !data/raw/download_manifest.txt
+# R-CPI-I and C-CPI-U pulls for 12_external_benchmarks.R; manifest kept.
+data/raw/external/*
+!data/raw/external/manifest.txt
 
 # --- Large intermediates with no downstream reader --------------------------
 # Rebuilt by R/06 and R/07. The smaller data/derived/*.csv files stay tracked
 # because paper/family_inflation.qmd reads family_index.csv directly.
 data/derived/index_weights.csv
+data/derived/review_index.csv
 output/tables/t17_gap_decomposition.csv
 output/tables/t22_dimension_decomposition.csv
 

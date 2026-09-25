@@ -1,0 +1,53 @@
+# External benchmarks log (12_external_benchmarks.R)
+# built_at: 2026-09-23T11:18:48-0400
+
+## 1. Inputs (see data/raw/external/manifest.txt for the pull date)
+  r-cpi-i-data.xlsx         21353 bytes
+  r-c-cpi-i-data.xlsx       20587 bytes
+  r-cpi-i-ri.xlsx           56262 bytes
+  su.data.1.AllItems       405440 bytes
+  su.series                  4914 bytes
+  R-CPI-I 2005-12-01 to 2025-12-01; R-C-CPI-I 2005-12-01 to 2024-12-01; quintiles 1 (lowest) to 5
+
+## 2. Our LB01 quintile index (CPI concept, medical pooled), rebuilt
+  rebuild vs 07 dimension_index.csv: 906 rows, max |diff| 2.84e-14
+
+## 3. Lowest minus highest income quintile, cumulative gap (pp)
+   BLS: equivalized-income quintiles, CE microdata, full CPI item-area detail.
+   Ours: CE LB01 before-tax income quintiles, flat files, 34 categories (07).
+   window               R-CPI-I   ours (lag-2 Laspeyres)   R-C-CPI-I   ours (Tornqvist)
+   2014-12 to 2019-12    +0.28       +1.27                    +1.24       +1.18
+   2019-12 to 2022-12    +1.27       +0.58                    +2.04       +0.37
+   2022-12 to 2024-12    +0.61       +0.74                    +1.18       +0.84
+   2019-12 to 2024-12    +2.06       +1.47                    +3.52       +1.36
+   2019-12 to 2025-12    +2.15       +1.84                     n/a         n/a 
+   annual Dec-to-Dec gaps:
+     2014   R-CPI-I +0.24   ours +0.40
+     2015   R-CPI-I -0.21   ours +0.12
+     2016   R-CPI-I -0.03   ours +0.19
+     2017   R-CPI-I +0.34   ours +0.42
+     2018   R-CPI-I +0.02   ours +0.14
+     2019   R-CPI-I +0.14   ours +0.32
+     2020   R-CPI-I +0.28   ours +0.35
+     2021   R-CPI-I +0.22   ours -0.53
+     2022   R-CPI-I +0.65   ours +0.69
+     2023   R-CPI-I +0.48   ours +0.45
+     2024   R-CPI-I +0.11   ours +0.27
+     2025   R-CPI-I +0.03   ours +0.27
+   correlation of annual gaps, 12 years: 0.47; same sign in 9 of 12 years
+
+## 4. Shelter weight (rent + lodging + OER), December relative importance, percent of basket
+   ours: cost weight in the January basket, i.e. price-updated to December
+   Dec 2019   BLS  35.1 34.9 32.7 31.5 32.0   |   ours  35.7 33.0 32.0 30.8 29.8   |  Q1-Q5: BLS  +3.0, ours  +5.8
+   Dec 2021   BLS  35.5 34.1 31.9 31.1 32.2   |   ours  37.4 34.4 32.0 29.9 30.7   |  Q1-Q5: BLS  +3.3, ours  +6.7
+   Dec 2023   BLS  38.2 37.2 35.7 33.9 35.6   |   ours  39.5 36.8 34.8 33.1 32.9   |  Q1-Q5: BLS  +2.6, ours  +6.7
+   Dec 2024   BLS  38.1 37.0 35.0 33.4 34.4   |   ours  40.1 37.5 34.5 32.7 32.3   |  Q1-Q5: BLS  +3.6, ours  +7.7
+
+## 5. Superlative minus fixed-weight, all consumer units (cumulative, pp)
+   2014-12 to 2019-12   BLS: C-CPI-U 7.48% - CPI-U 9.44% = -1.95  (C-CPI-U end-month footnote: final)
+                          ours: Tornqvist 8.53% - lag-2 Laspeyres 9.07% = -0.54  (lag-0 Laspeyres 8.70%)
+   2019-12 to 2024-12   BLS: C-CPI-U 21.47% - CPI-U 22.82% = -1.35  (C-CPI-U end-month footnote: final)
+                          ours: Tornqvist 22.33% - lag-2 Laspeyres 22.74% = -0.41  (lag-0 Laspeyres 22.70%)
+   Ours aggregates 34 categories; C-CPI-U aggregates about 243 items x 32 areas, so it
+   captures more substitution. Ours should be smaller in magnitude, same sign.
+

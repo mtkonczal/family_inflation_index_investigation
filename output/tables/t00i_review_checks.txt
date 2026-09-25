@@ -1,0 +1,513 @@
+# Review checks log (11_review_checks.R)
+# built_at: 2026-09-23T11:15:11-0400
+
+## 1. CEX panel (LB06, 2010-2024)
+  all-CU fallback verified against LB04: 10727 item-year overlaps, max difference 0
+  filled 3438 all-CU cells from LB04 for year(s): 2010, 2011, 2012, 2013
+  no interior year gaps [LB06 all cells]: 01:2010-2024, 03:2010-2024, 04:2010-2024, 05:2010-2024, 06:2010-2024, 07:2010-2024, 08:2010-2024, 09:2010-2024, 10:2010-2024
+  additivity OK [LB06 all cells]: 135 cells, worst 0.011%
+  pieces of 14 (HHPERSRV): 135 cells, 100 suppressed sub-item values counted as zero, min residual $12
+  pieces of 23 (VEHPURCH): 135 cells, 0 suppressed sub-item values counted as zero, min residual $0
+  pieces of 25 (VEHOTHXP): 135 cells, 0 suppressed sub-item values counted as zero, min residual $270
+  pieces of 37 (EDUCATN): 135 cells, 148 suppressed sub-item values counted as zero, min residual $64
+  pieces of 39 (MISC): 135 cells, 155 suppressed sub-item values counted as zero, min residual $347
+  pieces re-add to published categories: 5535 cells, max |diff| $0.00
+  CU counts: the seven cells sum to all CUs within 0.00% in every year
+  F1 pooled dollars vs 02 (families_kids): 615 cells, max |diff| $0.0000
+
+## 2. CE workbooks (2012-2024)
+  workbook columns found: 03 (2012-2024, 13 yrs); 04 (2012-2024, 13 yrs); 09 (2012-2024, 13 yrs); 10 (2012-2024, 13 yrs); 05 (2012-2024, 13 yrs); 06 (2012-2024, 13 yrs); 07 (2012-2024, 13 yrs); 08 (2012-2024, 13 yrs); 01 (2012-2024, 13 yrs)
+  workbook means vs flat files: 5546 cells, 5435 exact, max |diff| $61
+  cell RSE panel: 4550 cells, 65 carried from an adjacent year, 0 never published
+
+## 3. Prices and variants
+  price_panel.R rebuild of 05's category panel: max |diff| 5.68e-14
+  23O (other vehicles) is priced as the original vehicle composite: max |diff| 1.42e-14
+  deep price series: 14C 1997-02-2026-07; 14E 1997-02-2026-07; 23N 1997-02-2026-07; 23O 1997-02-2026-07; 23U 1997-02-2026-07; 25I 1997-02-2026-07; 25L 1998-01-2026-07; 25R 1997-02-2026-07; 37C 1997-02-2026-07; 37K 1997-02-2026-07; 37O 1997-02-2026-07; 37V 1998-01-2026-07
+  headline   oer   34 categories  2013-12 to 2026-07
+  headline   exsh  31 categories  2012-03 to 2026-07
+  fin_veh    oer   34 categories  2013-12 to 2026-07
+  fin_veh    exsh  31 categories  2012-03 to 2026-07
+  fin_all    oer   34 categories  2013-12 to 2026-07
+  fin_all    exsh  31 categories  2012-03 to 2026-07
+  childcare  oer   35 categories  2013-12 to 2026-07
+  childcare  exsh  32 categories  2012-03 to 2026-07
+  vehicles   oer   39 categories  2013-12 to 2026-07
+  vehicles   exsh  36 categories  2012-03 to 2026-07
+  education  oer   38 categories  2013-12 to 2026-07
+  education  exsh  35 categories  2012-03 to 2026-07
+  deep_xw    oer   44 categories  2013-12 to 2026-07
+  deep_xw    exsh  41 categories  2012-03 to 2026-07
+  deep       oer   42 categories  2013-12 to 2026-07
+  deep       exsh  39 categories  2012-03 to 2026-07
+  HEADLINE REPRODUCTION: 'headline' variant vs 06 family_index.csv, 2 baskets x 6 groups: max |diff| 4.26e-13
+
+## 4. Sampling-error inputs
+  deep variant: 0 cell-category-years without any RSE (only matters if the category has spending)
+  pieces priced separately but borrowing the parent's RSE: 14C, 14E, 37C, 37K, 37V, 37O
+  group 01: cell-implied RSE / published RSE, 546 category-years: median 0.90 (p10 0.75, p90 1.08)
+  group 04: cell-implied RSE / published RSE, 546 category-years: median 0.96 (p10 0.84, p90 1.09)
+
+## 5. Check 1: family definition (Dec 2019 to Jul 2026)
+   gap, cumulative percent (group vs single/other), SE (independent / persistent / worst-case bound), z (independent / bound)
+   F1  -10   headline  oer   -0.69 pp  (29.42% vs 30.11%)  SE 0.18 / 0.11 / 0.43  z  -3.7 /  -1.6
+   K1  -10   headline  oer   -0.84 pp  (29.27% vs 30.11%)  SE 0.21 / 0.13 / 0.48  z  -4.0 /  -1.7
+   04  -10   headline  oer   -0.79 pp  (29.32% vs 30.11%)  SE 0.19 / 0.12 / 0.45  z  -4.1 /  -1.8
+   05  -10   headline  oer   -0.55 pp  (29.56% vs 30.11%)  SE 0.36 / 0.21 / 0.84  z  -1.5 /  -0.7
+   06  -10   headline  oer   -1.17 pp  (28.94% vs 30.11%)  SE 0.26 / 0.17 / 0.60  z  -4.6 /  -2.0
+   07  -10   headline  oer   -0.37 pp  (29.74% vs 30.11%)  SE 0.28 / 0.15 / 0.64  z  -1.3 /  -0.6
+   09  -10   headline  oer   +0.14 pp  (30.25% vs 30.11%)  SE 0.38 / 0.18 / 0.85  z  +0.4 /  +0.2
+   F1  -10   headline  exsh  -0.41 pp  (27.48% vs 27.89%)  SE 0.24 / 0.15 / 0.56  z  -1.7 /  -0.7
+   K1  -10   headline  exsh  -0.67 pp  (27.22% vs 27.89%)  SE 0.27 / 0.17 / 0.63  z  -2.5 /  -1.1
+   04  -10   headline  exsh  -0.52 pp  (27.37% vs 27.89%)  SE 0.25 / 0.15 / 0.59  z  -2.1 /  -0.9
+   05  -10   headline  exsh  -0.30 pp  (27.60% vs 27.89%)  SE 0.47 / 0.26 / 1.11  z  -0.6 /  -0.3
+   06  -10   headline  exsh  -1.08 pp  (26.81% vs 27.89%)  SE 0.33 / 0.21 / 0.77  z  -3.3 /  -1.4
+   07  -10   headline  exsh  +0.12 pp  (28.01% vs 27.89%)  SE 0.36 / 0.20 / 0.82  z  +0.3 /  +0.1
+   09  -10   headline  exsh  +0.55 pp  (28.44% vs 27.89%)  SE 0.49 / 0.24 / 1.10  z  +1.1 /  +0.5
+   F1  -K1   headline  oer   +0.15 pp  (29.42% vs 29.27%)  SE 0.10 / 0.05 / 0.22  z  +1.5 /  +0.7
+   F1  -K1   headline  exsh  +0.26 pp  (27.48% vs 27.22%)  SE 0.13 / 0.07 / 0.28  z  +2.0 /  +0.9
+   cross-check vs 06 (group-level RSEs): SE 0.188 (06) vs 0.184 (cells), independent vintages
+
+## 6. Check 2: comparison groups (Dec 2019 to Jul 2026)
+   F1  -10   headline  oer   -0.69 pp  (29.42% vs 30.11%)  SE 0.18 / 0.11 / 0.43  z  -3.7 /  -1.6
+   F1  -01   headline  oer   -0.20 pp  (29.42% vs 29.62%)  SE 0.11 / 0.07 / 0.25  z  -1.8 /  -0.8
+   F1  -03   headline  oer   +0.20 pp  (29.42% vs 29.22%)  SE 0.21 / 0.13 / 0.49  z  +1.0 /  +0.4
+   F1  -RF   headline  oer   -0.32 pp  (29.42% vs 29.74%)  SE 0.17 / 0.10 / 0.39  z  -1.9 /  -0.8
+   K1  -10   headline  oer   -0.84 pp  (29.27% vs 30.11%)  SE 0.21 / 0.13 / 0.48  z  -4.0 /  -1.7
+   K1  -01   headline  oer   -0.35 pp  (29.27% vs 29.62%)  SE 0.15 / 0.09 / 0.34  z  -2.4 /  -1.0
+   K1  -03   headline  oer   +0.05 pp  (29.27% vs 29.22%)  SE 0.23 / 0.15 / 0.54  z  +0.2 /  +0.1
+   K1  -RK   headline  oer   -0.47 pp  (29.27% vs 29.74%)  SE 0.19 / 0.12 / 0.45  z  -2.4 /  -1.1
+   F1  -10   headline  exsh  -0.41 pp  (27.48% vs 27.89%)  SE 0.24 / 0.15 / 0.56  z  -1.7 /  -0.7
+   F1  -01   headline  exsh  +0.07 pp  (27.48% vs 27.41%)  SE 0.14 / 0.08 / 0.32  z  +0.5 /  +0.2
+   F1  -03   headline  exsh  +0.89 pp  (27.48% vs 26.59%)  SE 0.27 / 0.16 / 0.62  z  +3.2 /  +1.4
+   F1  -RF   headline  exsh  +0.10 pp  (27.48% vs 27.38%)  SE 0.22 / 0.13 / 0.50  z  +0.4 /  +0.2
+   K1  -10   headline  exsh  -0.67 pp  (27.22% vs 27.89%)  SE 0.27 / 0.17 / 0.63  z  -2.5 /  -1.1
+   K1  -01   headline  exsh  -0.18 pp  (27.22% vs 27.41%)  SE 0.19 / 0.11 / 0.43  z  -1.0 /  -0.4
+   K1  -03   headline  exsh  +0.63 pp  (27.22% vs 26.59%)  SE 0.30 / 0.18 / 0.69  z  +2.1 /  +0.9
+   K1  -RK   headline  exsh  -0.26 pp  (27.22% vs 27.48%)  SE 0.25 / 0.15 / 0.57  z  -1.0 /  -0.4
+   F1  -10   deep      oer   -0.66 pp  (29.80% vs 30.47%)  SE 0.23 / 0.11 / 0.52  z  -2.8 /  -1.3
+   F1  -01   deep      oer   -0.12 pp  (29.80% vs 29.93%)  SE 0.14 / 0.07 / 0.30  z  -0.9 /  -0.4
+   F1  -03   deep      oer   +0.49 pp  (29.80% vs 29.31%)  SE 0.26 / 0.13 / 0.58  z  +1.9 /  +0.9
+   F1  -RF   deep      oer   -0.21 pp  (29.80% vs 30.01%)  SE 0.21 / 0.10 / 0.47  z  -1.0 /  -0.4
+   K1  -10   deep      oer   -0.74 pp  (29.73% vs 30.47%)  SE 0.26 / 0.13 / 0.58  z  -2.8 /  -1.3
+   K1  -01   deep      oer   -0.20 pp  (29.73% vs 29.93%)  SE 0.18 / 0.09 / 0.40  z  -1.1 /  -0.5
+   K1  -03   deep      oer   +0.41 pp  (29.73% vs 29.31%)  SE 0.28 / 0.15 / 0.64  z  +1.5 /  +0.7
+   K1  -RK   deep      oer   -0.28 pp  (29.73% vs 30.00%)  SE 0.24 / 0.12 / 0.53  z  -1.1 /  -0.5
+   F1  -10   deep      exsh  -0.42 pp  (27.97% vs 28.39%)  SE 0.32 / 0.15 / 0.70  z  -1.3 /  -0.6
+   F1  -01   deep      exsh  +0.16 pp  (27.97% vs 27.81%)  SE 0.18 / 0.08 / 0.39  z  +0.9 /  +0.4
+   F1  -03   deep      exsh  +1.27 pp  (27.97% vs 26.69%)  SE 0.35 / 0.16 / 0.75  z  +3.7 /  +1.7
+   F1  -RF   deep      exsh  +0.23 pp  (27.97% vs 27.74%)  SE 0.28 / 0.13 / 0.62  z  +0.8 /  +0.4
+   K1  -10   deep      exsh  -0.58 pp  (27.81% vs 28.39%)  SE 0.36 / 0.16 / 0.78  z  -1.6 /  -0.7
+   K1  -01   deep      exsh  -0.00 pp  (27.81% vs 27.81%)  SE 0.24 / 0.11 / 0.52  z  -0.0 /  -0.0
+   K1  -03   deep      exsh  +1.12 pp  (27.81% vs 26.69%)  SE 0.38 / 0.18 / 0.83  z  +2.9 /  +1.3
+   K1  -RK   deep      exsh  -0.01 pp  (27.81% vs 27.82%)  SE 0.32 / 0.14 / 0.70  z  -0.0 /  -0.0
+
+## 7. Checks 4, 5, 8: basket variants, families minus single/other (Dec 2019 to Jul 2026)
+   F1  oer  Headline (D-30)                                gap  -0.69  (change vs headline +0.00)  SE 0.18 / 0.11 / 0.43
+   F1  oer  Vehicle finance charges removed (5)            gap  -0.71  (change vs headline -0.02)  SE 0.18 / 0.11 / 0.43
+   F1  oer  All separable finance charges removed (5)      gap  -0.71  (change vs headline -0.03)  SE 0.19 / 0.11 / 0.43
+   F1  oer  Real childcare items (4)                       gap  -0.70  (change vs headline -0.01)  SE 0.18 / 0.11 / 0.43
+   F1  oer  Vehicles split: new, used, cost pieces (8)     gap  -0.70  (change vs headline -0.02)  SE 0.23 / 0.12 / 0.52
+   F1  oer  Education split by level (8)                   gap  -0.61  (change vs headline +0.08)  SE 0.18 / 0.11 / 0.43
+   F1  oer  All deep splits, finance kept (4 + 8)          gap  -0.64  (change vs headline +0.05)  SE 0.23 / 0.11 / 0.52
+   F1  oer  All deep splits, finance removed (4 + 5 + 8)   gap  -0.66  (change vs headline +0.02)  SE 0.23 / 0.11 / 0.52
+   F1  exsh Headline (D-30)                                gap  -0.41  (change vs headline +0.00)  SE 0.24 / 0.15 / 0.56
+   F1  exsh Vehicle finance charges removed (5)            gap  -0.44  (change vs headline -0.02)  SE 0.24 / 0.15 / 0.56
+   F1  exsh All separable finance charges removed (5)      gap  -0.45  (change vs headline -0.04)  SE 0.24 / 0.15 / 0.56
+   F1  exsh Real childcare items (4)                       gap  -0.43  (change vs headline -0.02)  SE 0.24 / 0.15 / 0.56
+   F1  exsh Vehicles split: new, used, cost pieces (8)     gap  -0.48  (change vs headline -0.07)  SE 0.32 / 0.15 / 0.69
+   F1  exsh Education split by level (8)                   gap  -0.30  (change vs headline +0.12)  SE 0.24 / 0.14 / 0.56
+   F1  exsh All deep splits, finance kept (4 + 8)          gap  -0.39  (change vs headline +0.02)  SE 0.31 / 0.15 / 0.69
+   F1  exsh All deep splits, finance removed (4 + 5 + 8)   gap  -0.42  (change vs headline -0.01)  SE 0.32 / 0.15 / 0.70
+   K1  oer  Headline (D-30)                                gap  -0.84  (change vs headline +0.00)  SE 0.21 / 0.13 / 0.48
+   K1  oer  Vehicle finance charges removed (5)            gap  -0.86  (change vs headline -0.02)  SE 0.21 / 0.13 / 0.48
+   K1  oer  All separable finance charges removed (5)      gap  -0.86  (change vs headline -0.02)  SE 0.21 / 0.13 / 0.49
+   K1  oer  Real childcare items (4)                       gap  -0.85  (change vs headline -0.01)  SE 0.21 / 0.13 / 0.48
+   K1  oer  Vehicles split: new, used, cost pieces (8)     gap  -0.83  (change vs headline +0.01)  SE 0.26 / 0.13 / 0.58
+   K1  oer  Education split by level (8)                   gap  -0.71  (change vs headline +0.12)  SE 0.21 / 0.13 / 0.48
+   K1  oer  All deep splits, finance kept (4 + 8)          gap  -0.72  (change vs headline +0.12)  SE 0.26 / 0.13 / 0.58
+   K1  oer  All deep splits, finance removed (4 + 5 + 8)   gap  -0.74  (change vs headline +0.10)  SE 0.26 / 0.13 / 0.58
+   K1  exsh Headline (D-30)                                gap  -0.67  (change vs headline +0.00)  SE 0.27 / 0.17 / 0.63
+   K1  exsh Vehicle finance charges removed (5)            gap  -0.70  (change vs headline -0.03)  SE 0.27 / 0.17 / 0.63
+   K1  exsh All separable finance charges removed (5)      gap  -0.70  (change vs headline -0.03)  SE 0.27 / 0.17 / 0.63
+   K1  exsh Real childcare items (4)                       gap  -0.69  (change vs headline -0.02)  SE 0.27 / 0.17 / 0.63
+   K1  exsh Vehicles split: new, used, cost pieces (8)     gap  -0.71  (change vs headline -0.04)  SE 0.35 / 0.17 / 0.78
+   K1  exsh Education split by level (8)                   gap  -0.49  (change vs headline +0.18)  SE 0.27 / 0.16 / 0.63
+   K1  exsh All deep splits, finance kept (4 + 8)          gap  -0.55  (change vs headline +0.12)  SE 0.35 / 0.16 / 0.77
+   K1  exsh All deep splits, finance removed (4 + 5 + 8)   gap  -0.58  (change vs headline +0.09)  SE 0.36 / 0.16 / 0.78
+
+## 8. Check 6: one test per cumulative window
+   window 2014-12 to 2019-12, headline basket:
+     F1  -10    -1.05 pp  SE 0.06 / 0.10 / 0.13  p 0.000 / 0.000 / 0.000
+     K1  -10    -1.02 pp  SE 0.06 / 0.11 / 0.14  p 0.000 / 0.000 / 0.000
+     F1  -01    -0.43 pp  SE 0.03 / 0.06 / 0.07  p 0.000 / 0.000 / 0.000
+     K1  -01    -0.41 pp  SE 0.04 / 0.08 / 0.09  p 0.000 / 0.000 / 0.000
+     F1  -03    -0.36 pp  SE 0.06 / 0.11 / 0.14  p 0.000 / 0.002 / 0.008
+     K1  -03    -0.33 pp  SE 0.07 / 0.12 / 0.15  p 0.000 / 0.007 / 0.024
+     09  -04    +0.02 pp  SE 0.12 / 0.21 / 0.25  p 0.871 / 0.929 / 0.941
+   window 2019-12 to 2026-07, headline basket:
+     F1  -10    -0.69 pp  SE 0.18 / 0.11 / 0.43  p 0.000 / 0.000 / 0.109
+     K1  -10    -0.84 pp  SE 0.21 / 0.13 / 0.48  p 0.000 / 0.000 / 0.084
+     F1  -01    -0.20 pp  SE 0.11 / 0.07 / 0.25  p 0.071 / 0.003 / 0.438
+     K1  -01    -0.35 pp  SE 0.15 / 0.09 / 0.34  p 0.017 / 0.000 / 0.305
+     F1  -03    +0.20 pp  SE 0.21 / 0.13 / 0.49  p 0.333 / 0.121 / 0.678
+     K1  -03    +0.05 pp  SE 0.23 / 0.15 / 0.54  p 0.817 / 0.719 / 0.921
+     09  -04    +0.92 pp  SE 0.39 / 0.19 / 0.88  p 0.018 / 0.000 / 0.293
+   window 2020-12 to 2022-12, headline basket:
+     F1  -10    +0.23 pp  SE 0.15 / 0.07 / 0.22  p 0.129 / 0.002 / 0.278
+     K1  -10    +0.04 pp  SE 0.17 / 0.07 / 0.25  p 0.834 / 0.610 / 0.882
+     F1  -01    +0.19 pp  SE 0.09 / 0.04 / 0.13  p 0.038 / 0.000 / 0.138
+     K1  -01    -0.01 pp  SE 0.12 / 0.05 / 0.17  p 0.949 / 0.869 / 0.964
+     F1  -03    +0.44 pp  SE 0.18 / 0.09 / 0.24  p 0.012 / 0.000 / 0.070
+     K1  -03    +0.24 pp  SE 0.19 / 0.08 / 0.27  p 0.207 / 0.003 / 0.368
+     09  -04    +0.47 pp  SE 0.33 / 0.17 / 0.46  p 0.160 / 0.005 / 0.305
+   window 2022-12 to 2024-12, headline basket:
+     F1  -10    -0.65 pp  SE 0.06 / 0.08 / 0.09  p 0.000 / 0.000 / 0.000
+     K1  -10    -0.61 pp  SE 0.07 / 0.10 / 0.10  p 0.000 / 0.000 / 0.000
+     F1  -01    -0.28 pp  SE 0.04 / 0.05 / 0.05  p 0.000 / 0.000 / 0.000
+     K1  -01    -0.24 pp  SE 0.05 / 0.07 / 0.07  p 0.000 / 0.000 / 0.001
+     F1  -03    -0.19 pp  SE 0.07 / 0.10 / 0.10  p 0.007 / 0.045 / 0.055
+     K1  -03    -0.15 pp  SE 0.08 / 0.11 / 0.11  p 0.061 / 0.162 / 0.180
+     09  -04    +0.29 pp  SE 0.11 / 0.14 / 0.15  p 0.008 / 0.046 / 0.054
+   window 2024-12 to 2026-07, headline basket:
+     F1  -10    +0.01 pp  SE 0.04 / 0.04 / 0.06  p 0.766 / 0.755 / 0.825
+     K1  -10    +0.00 pp  SE 0.05 / 0.05 / 0.06  p 0.986 / 0.985 / 0.989
+     F1  -01    -0.00 pp  SE 0.03 / 0.03 / 0.04  p 0.853 / 0.845 / 0.890
+     K1  -01    -0.02 pp  SE 0.03 / 0.03 / 0.04  p 0.597 / 0.588 / 0.696
+     F1  -03    -0.02 pp  SE 0.05 / 0.05 / 0.07  p 0.670 / 0.648 / 0.752
+     K1  -03    -0.03 pp  SE 0.05 / 0.05 / 0.07  p 0.526 / 0.503 / 0.639
+     09  -04    +0.04 pp  SE 0.10 / 0.10 / 0.13  p 0.688 / 0.687 / 0.761
+
+## 9. Check 6: contributions to the cumulative gap with 95% sampling intervals (independent vintages)
+   point estimates vs 10_intuition.R (t33), headline F1: max |diff| 7.77e-16
+   [headline, oer, F1 minus 10, Dec 2019-Jul 2026] gap -0.69 (residual -0.032)
+     Rent                           -0.255  +/- 0.042   (bound +/- 0.097)
+     Education                      -0.175  +/- 0.050   (bound +/- 0.096)
+     Utilities and phone            -0.117  +/- 0.041   (bound +/- 0.100)
+     Apparel                        -0.107  +/- 0.032   (bound +/- 0.080)
+     Alcohol and tobacco            -0.065  +/- 0.014   (bound +/- 0.033)
+     Everything else                -0.055  +/- 0.087   (bound +/- 0.203)
+     Owners' housing and lodging    -0.013  +/- 0.080   (bound +/- 0.199)
+     Childcare                      +0.005  +/- 0.018   (bound +/- 0.041)
+     Vehicles, gas, transport       +0.022  +/- 0.298   (bound +/- 0.687)
+     Medical                        +0.029  +/- 0.035   (bound +/- 0.074)
+     Food                           +0.076  +/- 0.051   (bound +/- 0.112)
+   [headline, oer, K1 minus 10, Dec 2019-Jul 2026] gap -0.84 (residual -0.056)
+     Rent                           -0.232  +/- 0.047   (bound +/- 0.108)
+     Vehicles, gas, transport       -0.157  +/- 0.338   (bound +/- 0.777)
+     Apparel                        -0.134  +/- 0.035   (bound +/- 0.088)
+     Education                      -0.131  +/- 0.052   (bound +/- 0.100)
+     Everything else                -0.126  +/- 0.102   (bound +/- 0.230)
+     Utilities and phone            -0.071  +/- 0.044   (bound +/- 0.107)
+     Alcohol and tobacco            -0.065  +/- 0.015   (bound +/- 0.036)
+     Owners' housing and lodging    -0.011  +/- 0.087   (bound +/- 0.216)
+     Childcare                      +0.010  +/- 0.023   (bound +/- 0.054)
+     Medical                        +0.066  +/- 0.039   (bound +/- 0.082)
+     Food                           +0.069  +/- 0.056   (bound +/- 0.122)
+   [headline, oer, 07 minus 10, Dec 2019-Jul 2026] gap -0.37 (residual +0.018)
+     Rent                           -0.309  +/- 0.050   (bound +/- 0.117)
+     Education                      -0.272  +/- 0.084   (bound +/- 0.163)
+     Utilities and phone            -0.222  +/- 0.058   (bound +/- 0.139)
+     Alcohol and tobacco            -0.064  +/- 0.018   (bound +/- 0.044)
+     Medical                        -0.054  +/- 0.050   (bound +/- 0.103)
+     Apparel                        -0.041  +/- 0.048   (bound +/- 0.116)
+     Owners' housing and lodging    -0.015  +/- 0.123   (bound +/- 0.310)
+     Childcare                      -0.012  +/- 0.018   (bound +/- 0.037)
+     Food                           +0.086  +/- 0.075   (bound +/- 0.173)
+     Everything else                +0.096  +/- 0.121   (bound +/- 0.287)
+     Vehicles, gas, transport       +0.415  +/- 0.459   (bound +/- 1.031)
+   [headline, oer, F1 minus 03, Dec 2019-Jul 2026] gap +0.20 (residual +0.061)
+     Owners' housing and lodging    -0.356  +/- 0.111   (bound +/- 0.274)
+     Education                      -0.198  +/- 0.050   (bound +/- 0.096)
+     Apparel                        -0.164  +/- 0.029   (bound +/- 0.072)
+     Utilities and phone            -0.034  +/- 0.044   (bound +/- 0.107)
+     Childcare                      +0.005  +/- 0.017   (bound +/- 0.039)
+     Alcohol and tobacco            +0.026  +/- 0.014   (bound +/- 0.033)
+     Rent                           +0.052  +/- 0.039   (bound +/- 0.089)
+     Food                           +0.064  +/- 0.050   (bound +/- 0.114)
+     Vehicles, gas, transport       +0.152  +/- 0.333   (bound +/- 0.760)
+     Everything else                +0.238  +/- 0.124   (bound +/- 0.280)
+     Medical                        +0.359  +/- 0.042   (bound +/- 0.086)
+   [headline, oer, K1 minus 03, Dec 2019-Jul 2026] gap +0.05 (residual +0.038)
+     Owners' housing and lodging    -0.354  +/- 0.116   (bound +/- 0.287)
+     Apparel                        -0.190  +/- 0.031   (bound +/- 0.080)
+     Education                      -0.154  +/- 0.052   (bound +/- 0.100)
+     Vehicles, gas, transport       -0.027  +/- 0.369   (bound +/- 0.843)
+     Childcare                      +0.011  +/- 0.022   (bound +/- 0.052)
+     Utilities and phone            +0.012  +/- 0.047   (bound +/- 0.114)
+     Alcohol and tobacco            +0.026  +/- 0.015   (bound +/- 0.036)
+     Food                           +0.056  +/- 0.055   (bound +/- 0.124)
+     Rent                           +0.075  +/- 0.045   (bound +/- 0.101)
+     Everything else                +0.167  +/- 0.135   (bound +/- 0.297)
+     Medical                        +0.396  +/- 0.045   (bound +/- 0.093)
+   [headline, oer, 09 minus 04, Dec 2019-Jul 2026] gap +0.92 (residual +0.067)
+     Owners' housing and lodging    -0.239  +/- 0.162   (bound +/- 0.403)
+     Apparel                        -0.114  +/- 0.066   (bound +/- 0.164)
+     Food                           -0.061  +/- 0.107   (bound +/- 0.239)
+     Everything else                -0.037  +/- 0.144   (bound +/- 0.339)
+     Childcare                      +0.019  +/- 0.035   (bound +/- 0.079)
+     Alcohol and tobacco            +0.051  +/- 0.035   (bound +/- 0.071)
+     Utilities and phone            +0.096  +/- 0.078   (bound +/- 0.188)
+     Education                      +0.180  +/- 0.067   (bound +/- 0.135)
+     Medical                        +0.260  +/- 0.065   (bound +/- 0.137)
+     Rent                           +0.349  +/- 0.097   (bound +/- 0.225)
+     Vehicles, gas, transport       +0.353  +/- 0.645   (bound +/- 1.435)
+   [headline, exsh, F1 minus 10, Dec 2019-Jul 2026] gap -0.41 (residual -0.008)
+     Utilities and phone            -0.218  +/- 0.064   (bound +/- 0.153)
+     Education                      -0.174  +/- 0.081   (bound +/- 0.143)
+     Vehicles, gas, transport       -0.147  +/- 0.394   (bound +/- 0.918)
+     Alcohol and tobacco            -0.129  +/- 0.024   (bound +/- 0.057)
+     Apparel                        -0.094  +/- 0.045   (bound +/- 0.111)
+     Childcare                      +0.040  +/- 0.032   (bound +/- 0.074)
+     Food                           +0.043  +/- 0.090   (bound +/- 0.203)
+     Everything else                +0.126  +/- 0.120   (bound +/- 0.291)
+     Medical                        +0.147  +/- 0.058   (bound +/- 0.122)
+   [headline, exsh, K1 minus 10, Dec 2019-Jul 2026] gap -0.67 (residual -0.040)
+     Vehicles, gas, transport       -0.395  +/- 0.445   (bound +/- 1.034)
+     Utilities and phone            -0.156  +/- 0.068   (bound +/- 0.163)
+     Education                      -0.132  +/- 0.086   (bound +/- 0.150)
+     Apparel                        -0.131  +/- 0.049   (bound +/- 0.123)
+     Alcohol and tobacco            -0.130  +/- 0.026   (bound +/- 0.061)
+     Everything else                +0.031  +/- 0.136   (bound +/- 0.321)
+     Food                           +0.039  +/- 0.098   (bound +/- 0.221)
+     Childcare                      +0.067  +/- 0.042   (bound +/- 0.096)
+     Medical                        +0.179  +/- 0.063   (bound +/- 0.134)
+   [headline, exsh, 07 minus 10, Dec 2019-Jul 2026] gap +0.12 (residual +0.059)
+     Utilities and phone            -0.354  +/- 0.085   (bound +/- 0.205)
+     Education                      -0.262  +/- 0.122   (bound +/- 0.223)
+     Alcohol and tobacco            -0.127  +/- 0.031   (bound +/- 0.073)
+     Childcare                      -0.025  +/- 0.032   (bound +/- 0.065)
+     Apparel                        -0.001  +/- 0.064   (bound +/- 0.153)
+     Food                           +0.045  +/- 0.130   (bound +/- 0.307)
+     Medical                        +0.078  +/- 0.081   (bound +/- 0.167)
+     Everything else                +0.321  +/- 0.177   (bound +/- 0.422)
+     Vehicles, gas, transport       +0.385  +/- 0.582   (bound +/- 1.335)
+   [headline, exsh, F1 minus 03, Dec 2019-Jul 2026] gap +0.89 (residual +0.093)
+     Education                      -0.227  +/- 0.078   (bound +/- 0.138)
+     Apparel                        -0.179  +/- 0.040   (bound +/- 0.098)
+     Utilities and phone            -0.060  +/- 0.064   (bound +/- 0.158)
+     Alcohol and tobacco            +0.024  +/- 0.025   (bound +/- 0.057)
+     Childcare                      +0.045  +/- 0.030   (bound +/- 0.070)
+     Food                           +0.086  +/- 0.086   (bound +/- 0.204)
+     Vehicles, gas, transport       +0.175  +/- 0.437   (bound +/- 1.007)
+     Everything else                +0.427  +/- 0.175   (bound +/- 0.402)
+     Medical                        +0.501  +/- 0.070   (bound +/- 0.140)
+   [headline, exsh, K1 minus 03, Dec 2019-Jul 2026] gap +0.63 (residual +0.062)
+     Apparel                        -0.216  +/- 0.044   (bound +/- 0.110)
+     Education                      -0.185  +/- 0.083   (bound +/- 0.146)
+     Vehicles, gas, transport       -0.072  +/- 0.484   (bound +/- 1.114)
+     Utilities and phone            +0.002  +/- 0.068   (bound +/- 0.168)
+     Alcohol and tobacco            +0.023  +/- 0.026   (bound +/- 0.061)
+     Childcare                      +0.071  +/- 0.040   (bound +/- 0.094)
+     Food                           +0.081  +/- 0.095   (bound +/- 0.222)
+     Everything else                +0.332  +/- 0.187   (bound +/- 0.421)
+     Medical                        +0.532  +/- 0.074   (bound +/- 0.151)
+   [headline, exsh, 09 minus 04, Dec 2019-Jul 2026] gap +1.07 (residual +0.052)
+     Apparel                        -0.147  +/- 0.086   (bound +/- 0.209)
+     Everything else                -0.075  +/- 0.210   (bound +/- 0.500)
+     Food                           +0.014  +/- 0.181   (bound +/- 0.415)
+     Childcare                      +0.024  +/- 0.063   (bound +/- 0.142)
+     Alcohol and tobacco            +0.075  +/- 0.060   (bound +/- 0.119)
+     Education                      +0.195  +/- 0.107   (bound +/- 0.191)
+     Utilities and phone            +0.205  +/- 0.114   (bound +/- 0.275)
+     Medical                        +0.291  +/- 0.102   (bound +/- 0.215)
+     Vehicles, gas, transport       +0.437  +/- 0.836   (bound +/- 1.888)
+   [deep, oer, F1 minus 10, Dec 2019-Jul 2026] gap -0.66 (residual -0.027)
+     Rent                           -0.242  +/- 0.044   (bound +/- 0.102)
+     Utilities and phone            -0.118  +/- 0.042   (bound +/- 0.101)
+     Apparel                        -0.110  +/- 0.033   (bound +/- 0.082)
+     Education                      -0.102  +/- 0.040   (bound +/- 0.086)
+     Everything else                -0.081  +/- 0.085   (bound +/- 0.200)
+     Alcohol and tobacco            -0.064  +/- 0.014   (bound +/- 0.034)
+     Owners' housing and lodging    -0.014  +/- 0.083   (bound +/- 0.206)
+     Vehicles, gas, transport       -0.006  +/- 0.405   (bound +/- 0.880)
+     Childcare                      +0.001  +/- 0.016   (bound +/- 0.038)
+     Medical                        +0.030  +/- 0.036   (bound +/- 0.075)
+     Food                           +0.071  +/- 0.053   (bound +/- 0.116)
+   [deep, oer, K1 minus 10, Dec 2019-Jul 2026] gap -0.74 (residual -0.040)
+     Rent                           -0.222  +/- 0.049   (bound +/- 0.113)
+     Vehicles, gas, transport       -0.167  +/- 0.458   (bound +/- 0.990)
+     Everything else                -0.151  +/- 0.099   (bound +/- 0.226)
+     Apparel                        -0.138  +/- 0.035   (bound +/- 0.089)
+     Utilities and phone            -0.071  +/- 0.045   (bound +/- 0.108)
+     Alcohol and tobacco            -0.064  +/- 0.015   (bound +/- 0.036)
+     Education                      -0.011  +/- 0.038   (bound +/- 0.084)
+     Owners' housing and lodging    -0.009  +/- 0.090   (bound +/- 0.223)
+     Childcare                      +0.002  +/- 0.023   (bound +/- 0.053)
+     Food                           +0.063  +/- 0.058   (bound +/- 0.127)
+     Medical                        +0.068  +/- 0.040   (bound +/- 0.083)
+   [deep, oer, 07 minus 10, Dec 2019-Jul 2026] gap -0.51 (residual -0.000)
+     Education                      -0.301  +/- 0.074   (bound +/- 0.156)
+     Rent                           -0.287  +/- 0.053   (bound +/- 0.124)
+     Utilities and phone            -0.226  +/- 0.059   (bound +/- 0.141)
+     Alcohol and tobacco            -0.063  +/- 0.018   (bound +/- 0.045)
+     Medical                        -0.056  +/- 0.051   (bound +/- 0.104)
+     Apparel                        -0.042  +/- 0.049   (bound +/- 0.118)
+     Owners' housing and lodging    -0.023  +/- 0.127   (bound +/- 0.317)
+     Childcare                      -0.004  +/- 0.009   (bound +/- 0.020)
+     Everything else                +0.065  +/- 0.119   (bound +/- 0.283)
+     Food                           +0.080  +/- 0.077   (bound +/- 0.179)
+     Vehicles, gas, transport       +0.348  +/- 0.611   (bound +/- 1.322)
+   [deep, oer, F1 minus 03, Dec 2019-Jul 2026] gap +0.49 (residual +0.119)
+     Owners' housing and lodging    -0.344  +/- 0.114   (bound +/- 0.281)
+     Apparel                        -0.169  +/- 0.029   (bound +/- 0.074)
+     Education                      -0.115  +/- 0.040   (bound +/- 0.088)
+     Utilities and phone            -0.038  +/- 0.045   (bound +/- 0.109)
+     Childcare                      +0.000  +/- 0.016   (bound +/- 0.037)
+     Alcohol and tobacco            +0.028  +/- 0.014   (bound +/- 0.034)
+     Rent                           +0.047  +/- 0.042   (bound +/- 0.092)
+     Food                           +0.056  +/- 0.052   (bound +/- 0.118)
+     Everything else                +0.229  +/- 0.125   (bound +/- 0.283)
+     Vehicles, gas, transport       +0.311  +/- 0.439   (bound +/- 0.944)
+     Medical                        +0.368  +/- 0.044   (bound +/- 0.088)
+   [deep, oer, K1 minus 03, Dec 2019-Jul 2026] gap +0.41 (residual +0.106)
+     Owners' housing and lodging    -0.339  +/- 0.120   (bound +/- 0.294)
+     Apparel                        -0.196  +/- 0.032   (bound +/- 0.082)
+     Education                      -0.025  +/- 0.039   (bound +/- 0.086)
+     Childcare                      +0.000  +/- 0.022   (bound +/- 0.052)
+     Utilities and phone            +0.010  +/- 0.047   (bound +/- 0.116)
+     Alcohol and tobacco            +0.027  +/- 0.016   (bound +/- 0.037)
+     Food                           +0.048  +/- 0.057   (bound +/- 0.129)
+     Rent                           +0.067  +/- 0.047   (bound +/- 0.106)
+     Vehicles, gas, transport       +0.151  +/- 0.488   (bound +/- 1.046)
+     Everything else                +0.159  +/- 0.135   (bound +/- 0.299)
+     Medical                        +0.407  +/- 0.047   (bound +/- 0.095)
+   [deep, oer, 09 minus 04, Dec 2019-Jul 2026] gap +1.95 (residual +0.221)
+     Owners' housing and lodging    -0.223  +/- 0.169   (bound +/- 0.419)
+     Apparel                        -0.118  +/- 0.067   (bound +/- 0.167)
+     Food                           -0.064  +/- 0.111   (bound +/- 0.250)
+     Everything else                +0.011  +/- 0.139   (bound +/- 0.328)
+     Childcare                      +0.015  +/- 0.036   (bound +/- 0.080)
+     Alcohol and tobacco            +0.051  +/- 0.037   (bound +/- 0.074)
+     Utilities and phone            +0.094  +/- 0.079   (bound +/- 0.191)
+     Education                      +0.191  +/- 0.048   (bound +/- 0.116)
+     Medical                        +0.268  +/- 0.067   (bound +/- 0.139)
+     Rent                           +0.329  +/- 0.102   (bound +/- 0.236)
+     Vehicles, gas, transport       +1.178  +/- 1.034   (bound +/- 2.030)
+   [deep, exsh, F1 minus 10, Dec 2019-Jul 2026] gap -0.42 (residual -0.010)
+     Vehicles, gas, transport       -0.224  +/- 0.556   (bound +/- 1.213)
+     Utilities and phone            -0.220  +/- 0.065   (bound +/- 0.157)
+     Alcohol and tobacco            -0.127  +/- 0.025   (bound +/- 0.060)
+     Apparel                        -0.096  +/- 0.047   (bound +/- 0.115)
+     Education                      -0.065  +/- 0.065   (bound +/- 0.134)
+     Childcare                      +0.036  +/- 0.030   (bound +/- 0.069)
+     Food                           +0.036  +/- 0.095   (bound +/- 0.213)
+     Everything else                +0.091  +/- 0.116   (bound +/- 0.284)
+     Medical                        +0.156  +/- 0.061   (bound +/- 0.125)
+   [deep, exsh, K1 minus 10, Dec 2019-Jul 2026] gap -0.58 (residual -0.030)
+     Vehicles, gas, transport       -0.449  +/- 0.626   (bound +/- 1.358)
+     Utilities and phone            -0.156  +/- 0.069   (bound +/- 0.167)
+     Apparel                        -0.136  +/- 0.051   (bound +/- 0.128)
+     Alcohol and tobacco            -0.128  +/- 0.027   (bound +/- 0.064)
+     Everything else                -0.000  +/- 0.130   (bound +/- 0.312)
+     Food                           +0.030  +/- 0.103   (bound +/- 0.231)
+     Education                      +0.044  +/- 0.065   (bound +/- 0.137)
+     Childcare                      +0.053  +/- 0.042   (bound +/- 0.096)
+     Medical                        +0.189  +/- 0.066   (bound +/- 0.137)
+   [deep, exsh, 07 minus 10, Dec 2019-Jul 2026] gap -0.11 (residual +0.029)
+     Utilities and phone            -0.361  +/- 0.088   (bound +/- 0.210)
+     Education                      -0.299  +/- 0.107   (bound +/- 0.215)
+     Alcohol and tobacco            -0.125  +/- 0.032   (bound +/- 0.076)
+     Childcare                      -0.010  +/- 0.017   (bound +/- 0.035)
+     Apparel                        +0.000  +/- 0.066   (bound +/- 0.157)
+     Food                           +0.039  +/- 0.136   (bound +/- 0.322)
+     Medical                        +0.083  +/- 0.084   (bound +/- 0.169)
+     Vehicles, gas, transport       +0.261  +/- 0.813   (bound +/- 1.769)
+     Everything else                +0.276  +/- 0.174   (bound +/- 0.411)
+   [deep, exsh, F1 minus 03, Dec 2019-Jul 2026] gap +1.27 (residual +0.162)
+     Apparel                        -0.186  +/- 0.041   (bound +/- 0.102)
+     Education                      -0.102  +/- 0.065   (bound +/- 0.133)
+     Utilities and phone            -0.065  +/- 0.066   (bound +/- 0.162)
+     Alcohol and tobacco            +0.027  +/- 0.026   (bound +/- 0.059)
+     Childcare                      +0.036  +/- 0.029   (bound +/- 0.066)
+     Food                           +0.075  +/- 0.092   (bound +/- 0.215)
+     Vehicles, gas, transport       +0.390  +/- 0.599   (bound +/- 1.285)
+     Everything else                +0.414  +/- 0.179   (bound +/- 0.406)
+     Medical                        +0.523  +/- 0.075   (bound +/- 0.145)
+   [deep, exsh, K1 minus 03, Dec 2019-Jul 2026] gap +1.12 (residual +0.143)
+     Apparel                        -0.225  +/- 0.046   (bound +/- 0.115)
+     Utilities and phone            -0.002  +/- 0.070   (bound +/- 0.172)
+     Education                      +0.007  +/- 0.064   (bound +/- 0.135)
+     Alcohol and tobacco            +0.027  +/- 0.028   (bound +/- 0.063)
+     Childcare                      +0.054  +/- 0.041   (bound +/- 0.094)
+     Food                           +0.069  +/- 0.100   (bound +/- 0.234)
+     Vehicles, gas, transport       +0.166  +/- 0.664   (bound +/- 1.420)
+     Everything else                +0.323  +/- 0.188   (bound +/- 0.422)
+     Medical                        +0.556  +/- 0.079   (bound +/- 0.156)
+   [deep, exsh, 09 minus 04, Dec 2019-Jul 2026] gap +2.52 (residual +0.241)
+     Apparel                        -0.156  +/- 0.089   (bound +/- 0.216)
+     Food                           +0.009  +/- 0.193   (bound +/- 0.438)
+     Everything else                +0.016  +/- 0.200   (bound +/- 0.481)
+     Childcare                      +0.018  +/- 0.065   (bound +/- 0.146)
+     Alcohol and tobacco            +0.075  +/- 0.065   (bound +/- 0.126)
+     Utilities and phone            +0.203  +/- 0.117   (bound +/- 0.282)
+     Education                      +0.214  +/- 0.076   (bound +/- 0.179)
+     Medical                        +0.303  +/- 0.107   (bound +/- 0.218)
+     Vehicles, gas, transport       +1.592  +/- 1.363   (bound +/- 2.725)
+
+## 10. Check 3: weight timing (Laspeyres lag 2 / 1 / 0, Tornqvist on adjacent CE years)
+   Dec-to-Dec link gaps, F1 minus 10 (pp), and shelter weight gap (F1 minus 10, pp of basket):
+     2015   link gap: lag-2 Laspeyres -0.22  Tornqvist -0.19   shelter weight gap: lag-2  -5.6  Tornqvist  -6.2
+     2016   link gap: lag-2 Laspeyres -0.24  Tornqvist -0.21   shelter weight gap: lag-2  -7.1  Tornqvist  -5.5
+     2017   link gap: lag-2 Laspeyres -0.20  Tornqvist -0.21   shelter weight gap: lag-2  -5.7  Tornqvist  -5.8
+     2018   link gap: lag-2 Laspeyres -0.14  Tornqvist -0.15   shelter weight gap: lag-2  -5.6  Tornqvist  -6.1
+     2019   link gap: lag-2 Laspeyres -0.17  Tornqvist -0.17   shelter weight gap: lag-2  -6.3  Tornqvist  -6.1
+     2020   link gap: lag-2 Laspeyres -0.14  Tornqvist -0.12   shelter weight gap: lag-2  -6.2  Tornqvist  -6.3
+     2021   link gap: lag-2 Laspeyres +0.58  Tornqvist +0.63   shelter weight gap: lag-2  -6.3  Tornqvist  -6.5
+     2022   link gap: lag-2 Laspeyres -0.36  Tornqvist -0.36   shelter weight gap: lag-2  -6.2  Tornqvist  -6.4
+     2023   link gap: lag-2 Laspeyres -0.45  Tornqvist -0.35   shelter weight gap: lag-2  -6.7  Tornqvist  -6.2
+     2024   link gap: lag-2 Laspeyres -0.18  Tornqvist -0.18   shelter weight gap: lag-2  -6.3  Tornqvist  -6.5
+   [headline, oer] 2014-12-01 2019-12-01:
+     lasp_lag2              all-CU   9.07%   F1-10 -1.05   K1-10 -1.02   F1-01 -0.43   K1-03 -0.33
+     lasp_lag1              all-CU   9.03%   F1-10 -1.01   K1-10 -0.97   F1-01 -0.41   K1-03 -0.27
+     lasp_lag0              all-CU   8.70%   F1-10 -0.94   K1-10 -0.89   F1-01 -0.39   K1-03 -0.25
+     tornqvist              all-CU   8.53%   F1-10 -0.99   K1-10 -0.93   F1-01 -0.41   K1-03 -0.28
+     tornqvist_ext          all-CU   8.53%   F1-10 -0.99   K1-10 -0.93   F1-01 -0.41   K1-03 -0.28
+   [headline, oer] 2019-12-01 2024-12-01:
+     lasp_lag2              all-CU  22.74%   F1-10 -0.67   K1-10 -0.79   F1-01 -0.18   K1-03 +0.09
+     lasp_lag1              all-CU  22.75%   F1-10 -0.54   K1-10 -0.51   F1-01 -0.14   K1-03 +0.23
+     lasp_lag0              all-CU  22.70%   F1-10 -0.34   K1-10 -0.23   F1-01 +0.02   K1-03 +0.66
+     tornqvist              all-CU  22.33%   F1-10 -0.47   K1-10 -0.40   F1-01 -0.07   K1-03 +0.43
+     tornqvist_ext          all-CU  22.33%   F1-10 -0.47   K1-10 -0.40   F1-01 -0.07   K1-03 +0.43
+   [headline, oer] 2019-12-01 2026-07-01:
+     lasp_lag2              all-CU  29.62%   F1-10 -0.69   K1-10 -0.84   F1-01 -0.20   K1-03 +0.05
+     tornqvist_ext          all-CU  29.10%   F1-10 -0.47   K1-10 -0.42   F1-01 -0.08   K1-03 +0.40
+   [headline, oer] 2014-07-01 2019-07-01:
+     annual_avg_lasp_lag2   all-CU   7.62%   F1-10 -1.14   K1-10 -1.08   F1-01 -0.47   K1-03 -0.40
+     annual_avg_tornqvist   all-CU   7.28%   F1-10 -1.03   K1-10 -0.95   F1-01 -0.42   K1-03 -0.30
+   [headline, oer] 2019-07-01 2024-07-01:
+     annual_avg_lasp_lag2   all-CU  22.62%   F1-10 -0.65   K1-10 -0.82   F1-01 -0.16   K1-03 +0.08
+     annual_avg_tornqvist   all-CU  22.35%   F1-10 -0.49   K1-10 -0.42   F1-01 -0.06   K1-03 +0.52
+   [deep, oer] 2014-12-01 2019-12-01:
+     lasp_lag2              all-CU   8.99%   F1-10 -1.08   K1-10 -1.07   F1-01 -0.45   K1-03 -0.39
+     lasp_lag1              all-CU   8.92%   F1-10 -1.04   K1-10 -0.99   F1-01 -0.44   K1-03 -0.32
+     lasp_lag0              all-CU   8.53%   F1-10 -0.99   K1-10 -0.94   F1-01 -0.41   K1-03 -0.26
+     tornqvist              all-CU   8.38%   F1-10 -1.03   K1-10 -0.97   F1-01 -0.44   K1-03 -0.31
+     tornqvist_ext          all-CU   8.38%   F1-10 -1.03   K1-10 -0.97   F1-01 -0.44   K1-03 -0.31
+   [deep, oer] 2019-12-01 2024-12-01:
+     lasp_lag2              all-CU  22.99%   F1-10 -0.67   K1-10 -0.74   F1-01 -0.13   K1-03 +0.38
+     lasp_lag1              all-CU  23.02%   F1-10 -0.16   K1-10 -0.16   F1-01 +0.10   K1-03 +0.65
+     lasp_lag0              all-CU  22.85%   F1-10 -0.39   K1-10 -0.35   F1-01 +0.05   K1-03 +0.77
+     tornqvist              all-CU  22.45%   F1-10 -0.33   K1-10 -0.30   F1-01 +0.04   K1-03 +0.65
+     tornqvist_ext          all-CU  22.45%   F1-10 -0.33   K1-10 -0.30   F1-01 +0.04   K1-03 +0.65
+   [deep, oer] 2019-12-01 2026-07-01:
+     lasp_lag2              all-CU  29.93%   F1-10 -0.66   K1-10 -0.74   F1-01 -0.12   K1-03 +0.41
+     tornqvist_ext          all-CU  29.27%   F1-10 -0.28   K1-10 -0.25   F1-01 +0.07   K1-03 +0.70
+   [deep, oer] 2014-07-01 2019-07-01:
+     annual_avg_lasp_lag2   all-CU   7.50%   F1-10 -1.16   K1-10 -1.12   F1-01 -0.50   K1-03 -0.51
+     annual_avg_tornqvist   all-CU   7.04%   F1-10 -1.08   K1-10 -1.00   F1-01 -0.46   K1-03 -0.38
+   [deep, oer] 2019-07-01 2024-07-01:
+     annual_avg_lasp_lag2   all-CU  22.84%   F1-10 -0.66   K1-10 -0.78   F1-01 -0.12   K1-03 +0.34
+     annual_avg_tornqvist   all-CU  22.48%   F1-10 -0.46   K1-10 -0.42   F1-01 -0.01   K1-03 +0.64
+
+## 11. Check 4: childcare cost weight, mean 2020-2026, CPI-concept basket
+   F1  Families with children, headline (04 + 09)       proxy (HHPERSRV) 1.59%   real childcare 1.57%
+   K1  Families with children under 18 (05 + 06 + 09)   proxy (HHPERSRV) 2.24%   real childcare 2.23%
+   05  Married, oldest child under 6                    proxy (HHPERSRV) 6.06%   real childcare 6.06%
+   06  Married, oldest child 6-17                       proxy (HHPERSRV) 1.33%   real childcare 1.32%
+   07  Married, oldest child 18+                        proxy (HHPERSRV) 0.15%   real childcare 0.09%
+   09  One parent, child under 18                       proxy (HHPERSRV) 1.20%   real childcare 1.19%
+   10  Single person and other CUs                      proxy (HHPERSRV) 0.30%   real childcare 0.18%
+   01  All consumer units                               proxy (HHPERSRV) 0.71%   real childcare 0.64%
+   families (F1) / single-other ratio: proxy 5.3x, real childcare 8.5x; K1: 12.2x
+

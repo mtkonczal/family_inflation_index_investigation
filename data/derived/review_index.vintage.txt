@@ -1,0 +1,4 @@
+artifact: review_index
+built_at: 2026-09-23T11:15:11-0400
+rows: 33592
+cols: variant, basket, group, date, index, chg_12m

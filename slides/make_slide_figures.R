@@ -307,3 +307,24 @@ p_sz <- ggplot2::ggplot(sz, ggplot2::aes(size, value, fill = name)) +
   ggplot2::labs(x = "Household size", y = "Share of spending, 2024") +
   theme_slide()
 save_slide(p_sz, "size_slide.png", 11, 5.6)
+
+# --- comparison groups (review 2, from 11_review_checks.R) -----------------
+cmp <- readr::read_csv(file.path(DIR_TAB, "t38_comparators.csv"), show_col_types = FALSE,
+                       col_types = readr::cols(g1 = "c", g2 = "c")) |>
+  dplyr::filter(variant == "headline", basket == "oer", g1 == "F1") |>
+  dplyr::mutate(who = c("10" = "Single-person and other households", "RF" = "All other households",
+                        "01" = "All households", "03" = "Married couples without children")[g2],
+                who = factor(who, levels = rev(c("Single-person and other households", "All other households",
+                                                 "All households", "Married couples without children"))))
+p_cmp <- ggplot2::ggplot(cmp, ggplot2::aes(gap, who)) +
+  ggplot2::geom_vline(xintercept = 0, colour = "grey40", linewidth = 0.5) +
+  ggplot2::geom_errorbar(ggplot2::aes(xmin = gap - 1.96 * se_indep, xmax = gap + 1.96 * se_indep),
+                         width = 0, linewidth = 1.6, colour = ESP_NAVY, alpha = 0.45, orientation = "y") +
+  ggplot2::geom_point(size = 4.2, colour = ESP_NAVY) +
+  ggplot2::geom_text(ggplot2::aes(label = sprintf("%+.1f", gap)), vjust = -1.1, size = 4.8,
+                     colour = ESP_NAVY, fontface = "bold") +
+  ggplot2::scale_x_continuous(labels = function(x) paste0(x, " pts"), limits = c(-1.2, 0.8)) +
+  ggplot2::labs(x = "Families minus comparison group, cumulative inflation since Dec 2019", y = NULL) +
+  theme_slide() + ggplot2::theme(panel.grid.major.y = ggplot2::element_blank(),
+                                 axis.text.y = ggplot2::element_text(colour = ESP_TEXT, size = 15))
+save_slide(p_cmp, "comparators_slide.png", 11, 5.2)

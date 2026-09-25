@@ -23,6 +23,10 @@ suppressPackageStartupMessages({library(tidyverse); library(knitr)})
 options(knitr.kable.NA = "n/a")
 P <- normalizePath("..")
 tab <- function(f) read_csv(file.path(P, "output/tables", f), show_col_types = FALSE)
+# Review-2 tables carry LB06 codes ("01", "03", "10") that must stay character.
+tabc <- function(f) read_csv(file.path(P, "output/tables", f), show_col_types = FALSE,
+                             col_types = cols(.default = col_guess(), g1 = col_character(),
+                                              g2 = col_character(), group = col_character()))
 der <- function(f) read_csv(file.path(P, "data/derived", f), show_col_types = FALSE)
 # Relative, not absolute: Quarto resolves figure paths against the qmd
 # directory and prefixes "./", which breaks an absolute path.
@@ -33,6 +37,11 @@ dimv  <- tab("t30_dimension_verdicts.csv")
 rob   <- tab("t31_robustness.csv")
 burd  <- tab("t24_burden_by_group.csv")
 nec   <- tab("t25_necessity_shares.csv")
+fdef  <- tabc("t37_family_definitions.csv")
+comp  <- tabc("t38_comparators.csv")
+wtim  <- tabc("t39_weight_timing.csv")
+wint  <- tabc("t41_window_tests.csv")
+rcpi  <- tab("t45_rcpi_i_benchmark.csv")
 BLAB <- c(pm_oer_all_in = "CPI concept, medical pooled (headline)",
           oer_all_in = "CPI concept, medical unpooled",
           pm_ex_shelter = "Ex-shelter, medical pooled",
@@ -40,33 +49,46 @@ BLAB <- c(pm_oer_all_in = "CPI concept, medical pooled (headline)",
           all_in = "All-in without owner shelter",
           ex_shelter = "Ex-shelter", ex_housing = "Ex-housing",
           all_in_long = "All-in, long panel", ex_shelter_long = "Ex-shelter, long panel")
+GL <- c("01" = "All consumer units", "03" = "Married couples without children",
+        "04" = "Married couples with children, any age (04)",
+        "05" = "Married, oldest child under 6 (05)", "06" = "Married, oldest child 6 to 17 (06)",
+        "07" = "Married, oldest child 18 or older (07)", "09" = "One parent, child under 18 (09)",
+        "10" = "Single-person and other consumer units",
+        F1 = "Families with children, headline (04 + 09)",
+        K1 = "Families with a child under 18 (05 + 06 + 09)",
+        RF = "All other consumer units")
+pfmt <- function(p) ifelse(p < 0.001, "<0.001", sprintf("%.3f", p))
 ```
 
 ## Abstract {.unnumbered}
 
-Households with children buy a different basket of goods than single-person
+Households with children buy a different basket of goods than other
 households, and item-level inflation rates diverge. That raises an obvious
 question: do families experience higher inflation than the headline CPI
-implies? This paper builds group-specific chained Laspeyres price indices from
-Consumer Expenditure Survey budget shares and CPI-U item indices, pricing owner
-housing with owners' equivalent rent weighted by the same CE rental-value
-question BLS uses. **Families did not face higher inflation.** Between December
-2019 and July 2026 prices rose 29.4 percent for families with children and
-30.1 percent for single-person and other consumer units, a gap of $-0.7$
-percentage points, about 0.1 point a year. The gap is small but exceeds CE
-sampling error, and across nine basket definitions it ranges from $-1.0$ to
-$+0.1$ points.
+implies? This paper builds group-specific price indices from Consumer
+Expenditure Survey budget shares and CPI-U item indices, pricing owner housing
+with owners' equivalent rent weighted by the same CE rental-value question BLS
+uses. **Families did not face higher inflation.** Between December 2019 and
+July 2026 prices rose 29.4 percent for families with children and 30.1
+percent for single-person and other consumer units, a gap of $-0.7$
+percentage points, about 0.1 point a year. The gap exceeds CE sampling error
+if errors are independent across survey years but not under the worst-case
+correlation, and it shrinks to about $-0.5$ on a superlative index with
+contemporaneous weights. Its sign depends on the comparison: families' prices
+rose 0.2 points less than all households' and 0.2 points more than those of
+married couples without children, neither distinguishable from zero. The
+robust finding is that household type barely moves inflation.
 
-About half the gap comes from shelter: single households devote 36 percent of
-the basket to it against 30 percent for families, and shelter rose 33.5
-percent against 27.9 percent for everything else. The rest comes from
-families' tilt toward categories whose prices rose slowly, tuition above all.
-Childcare, the most family-specific category, contributes nothing, because its
-price rose at the average rate. Families did face higher inflation in
-the 2021-22 goods surge, by up to 0.6 points on a 12-month basis, and lower
-inflation once rents caught up. The same machinery finds an income gradient
-roughly three times larger and of opposite sign: the lowest income quintile
-faced 1.8 points more cumulative inflation than the highest.
+The differences that exist follow housing's share of the budget, not
+children. Single households devote 36 percent of the basket to shelter
+against 30 percent for families, and shelter rose 33.5 percent against 27.9
+percent for everything else. Childcare, the most family-specific category,
+contributes nothing, because its price rose at the average rate. The 12-month
+gap turned briefly positive in 2021-22, but over those two years it cumulated
+to $+0.2$ points, not distinguishable from zero, and it reversed in 2023-24.
+The same machinery finds an income gradient about three times larger and of
+opposite sign, close to what BLS's own research index by income quintile
+shows for the same period.
 
 Rates are not burdens. The same inflation cost married-couple families about
 \$16,300 a year in non-housing spending, against about \$8,100 for
@@ -83,10 +105,10 @@ academic literature on inflation inequality [@hobijn2005; @jaravel2021].
 
 There is a second channel this paper cannot reach. Within a CPI item stratum,
 different households pay different prices and face different variety and quality
-trajectories. @kaplan2017 find this *price-faced channel* is large and roughly
-orthogonal to the composition channel. Because CPI item indices are common to
-all households by construction, everything here is a lower bound on total
-dispersion across household types.
+trajectories. @kaplan2017 find this *price-faced channel* is large at the
+household level. Because CPI item indices are common to all households by
+construction, everything here is the composition channel alone, and the
+price-faced channel could widen the family gap or narrow it.
 
 The sign was not obvious in advance. Families with children are
 disproportionately homeowners and single-person households disproportionately
@@ -102,8 +124,11 @@ Both surveys come from the BLS time-series flat files.
 
 **Consumer Expenditure Survey** (prefix `cx`), dimension `LB06`, composition of
 consumer unit. Annual mean expenditures per consumer unit, 1988 to 2024. The
-analytic groups are married-couple-with-children plus one-parent-with-a-child-under-18
-(pooled by consumer-unit counts) against single-person-and-other consumer units.
+headline family group is married couples with children plus one-parent
+households with a child under 18, pooled by consumer-unit counts, against
+single-person and other consumer units. The CE's married-with-children group
+counts children of any age, so it includes couples whose children are all
+adults; @sec-whom re-estimates with families that have a child under 18.
 
 **CPI-U** (prefix `cu`), national, not seasonally adjusted, monthly through July
 2026. NSA is the right basis because relative importance is published NSA and
@@ -155,7 +180,8 @@ P^g_t = P^g_{t-1}\sum_i w_{i,t}\,\frac{p_{i,t}}{p_{i,t-1}}$$
 where $\bar p_{i,V}$ is the category's average price in the expenditure year.
 Price updating converts a static expenditure share into the cost weight CPI
 uses. Updating only from December $Y-1$, or not at all, moves the headline
-cumulative gap by 0.08 points.
+cumulative gap by 0.08 points. @sec-formula replaces the lagged Laspeyres with
+a superlative index.
 
 Mapping CEX categories to CPI item strata required a hand-built crosswalk, since
 BLS publishes no concordance in either flat-file directory. It maps 37 of the 41
@@ -204,11 +230,17 @@ baskets are reported to show the range.
 
 **Sampling error.** CE standard errors are propagated to the gap by the delta
 method. With group inflation $\pi_g = \sum_i w_i r_i$ and $w_i \propto x_i u_i$,
-$\mathrm{Var}(\pi_g) \approx \sum_i [w_i (r_i - \pi_g)]^2 \mathrm{RSE}_i^2$,
-treating category means as uncorrelated and the two groups as independent
-samples. A common scale component of the covariance cancels exactly because
-$\sum_i w_i (r_i - \pi_g) = 0$. Cumulative intervals are reported under
-uncorrelated and perfectly correlated weight vintages.
+$\partial \pi_g / \partial \log x_i = w_i (r_i - \pi_g)$, and a common scale
+component of sampling error cancels exactly because
+$\sum_i w_i (r_i - \pi_g) = 0$. Every CE household-type group is a
+consumer-unit-weighted mix of seven disjoint published cells, so the
+derivatives are taken with respect to each cell's category means. That gets
+the covariance right when the two groups overlap, as families and all
+households do. Category means are treated as uncorrelated within a cell. Two
+conventions for correlation across survey years are reported: independent,
+and the worst case over any correlation, which adds the standard deviations of
+the annual links. The truth lies between, because CE interview households stay
+in the sample for about a year and adjacent survey years share respondents.
 
 **Weight-source discrepancy.** The all-households index rebuilt with CPI's
 published relative importance instead of CEX shares, same basket, formula and
@@ -218,24 +250,27 @@ alongside, not used as a test.
 
 ## Results
 
-### Families did not face higher inflation
+### Families did not face higher inflation than single households
 
 ```{r headline}
 cumg |>
   filter(pair == "fam", from == as.Date("2019-12-01")) |>
-  left_join(filter(verd, pair == "fam") |> select(basket, mean_gap, mean_se), by = "basket") |>
+  left_join(filter(verd, pair == "fam") |> select(basket, mean_gap), by = "basket") |>
   transmute(Basket = BLAB[basket], `Families (%)` = cum_1, `Single/other (%)` = cum_2,
-            `Gap (pp)` = gap_pp, `95% CI, uncorr.` = 1.96 * se_indep,
-            `95% CI, corr.` = 1.96 * se_corr, `Mean 12m gap` = mean_gap) |>
+            `Gap (pp)` = gap_pp, `95% CI, independent` = 1.96 * se_indep,
+            `95% CI, worst case` = 1.96 * se_corr, `Mean 12m gap` = mean_gap) |>
   arrange(match(Basket, BLAB)) |>
-  kable(digits = 2, caption = "Cumulative price change December 2019 to July 2026, families with children and single-person and other consumer units, every basket. Confidence intervals from CE sampling error under uncorrelated and perfectly correlated weight vintages.")
+  kable(digits = 2, caption = "Cumulative price change December 2019 to July 2026, families with children and single-person and other consumer units, every basket. Confidence intervals from CE sampling error with errors independent across survey years and in the worst case.")
 ```
 
 On the headline basket prices rose 29.42 percent for families with children and
 30.11 percent for single-person and other consumer units. The gap of $-0.69$
-points is small, about 0.1 point a year, but it is not noise: the mean
-12-month gap of $-0.15$ points compares with a mean sampling standard error of
-0.05. Across all nine baskets the cumulative gap runs from $-0.98$ to $+0.08$.
+points is small, about 0.1 point a year. Measured against CE sampling error it
+is 3.7 standard errors if errors are independent across survey years, and 1.6
+in the worst case ($p = 0.11$). Every basket that avoids the health-insurance
+problem below puts families 0.4 to 1.0 points below single households. Those
+baskets share the same survey samples, so that is robustness to specification,
+not to sampling.
 
 The two baskets near zero, ex-shelter and ex-housing without pooling, are the
 ones that price CEX health insurance with CPI's retained-earnings index. That
@@ -244,22 +279,59 @@ An earlier version of this paper headlined the ex-shelter basket (25.3 against
 25.3 percent) and judged the gap against a yardstick that covered only
 2013-2020. Both choices are corrected here.
 
-```{r robust}
-rob |>
-  filter(pair == "fam", basket %in% c("pm_oer_all_in", "pm_ex_shelter")) |>
-  transmute(`Price input` = recode(price_input, cpiu_nsa = "CPI-U, NSA", cpiw_nsa = "CPI-W, NSA",
-                                   cpiu_sa = "CPI-U, seasonally adjusted"),
-            Basket = BLAB[basket], `Families (%)` = cum_1, `Single/other (%)` = cum_2,
-            `Gap (pp)` = cum_gap) |>
-  kable(digits = 2, caption = "The headline gap under alternative price inputs, December 2019 to July 2026.")
+![The twelve-month family gap with its 95 percent sampling interval.](`r fig("f09_gap_vs_errorbar.png")`){#fig-gap}
+
+### Compared with whom, and which families? {#sec-whom}
+
+The headline compares families with a residual category that pools single
+people, roommates, the young and the elderly. Changing the comparison changes
+the sign.
+
+```{r comparators}
+comp |>
+  filter(variant == "headline", g1 == "F1") |>
+  select(basket, g2, gap, p_indep, p_bound) |>
+  pivot_wider(names_from = basket, values_from = c(gap, p_indep, p_bound)) |>
+  transmute(`Families with children minus` = GL[g2],
+            `Gap, CPI concept (pp)` = gap_oer,
+            `p, independent / worst case` = paste(pfmt(p_indep_oer), "/", pfmt(p_bound_oer)),
+            `Gap, ex-shelter (pp)` = gap_exsh,
+            `p, ex-shelter` = paste(pfmt(p_indep_exsh), "/", pfmt(p_bound_exsh))) |>
+  kable(digits = 2, caption = "Headline families against four comparison groups, cumulative December 2019 to July 2026. All other consumer units is everyone outside the headline family group.")
 ```
 
-The result does not depend on the price input, on the price-updating
-convention, or on the family definition: married couples with children alone
-show $-0.79$ points, and a size cut, four-person minus one-person consumer
-units, shows $-0.41$ (not significant).
+Against all households, families' prices rose 0.20 points less; against
+married couples without children, 0.20 points more. Neither is
+distinguishable from zero. On the non-housing basket, families ran 0.89 points
+above childless couples ($p = 0.001$ with independent errors, $0.16$ in the
+worst case). Two lifecycle categories drive the comparison with childless
+couples and nearly cancel on the full basket. Childless couples, whose
+reference person averages 60 years old, carry more medical weight, and
+medical prices rose slowly; that adds 0.36 points to families' relative
+inflation. They also carry more owners'-equivalent-rent weight, and OER rose
+fast; that subtracts 0.36. The ordering of groups tracks age and household
+size, through shelter and medical care, more than children.
 
-![The twelve-month family gap with its 95 percent sampling interval.](`r fig("f09_gap_vs_errorbar.png")`){#fig-gap}
+```{r definitions}
+fdef |>
+  filter(g2 == "10") |>
+  select(basket, g1, gap, se_indep, se_bound) |>
+  pivot_wider(names_from = basket, values_from = c(gap, se_indep, se_bound)) |>
+  transmute(`Group minus single/other` = GL[g1], `Gap, CPI concept (pp)` = gap_oer,
+            `SE, independent` = se_indep_oer, `SE, worst case` = se_bound_oer,
+            `Gap, ex-shelter (pp)` = gap_exsh) |>
+  kable(digits = 2, caption = "Family definitions, each minus single-person and other consumer units, cumulative December 2019 to July 2026.")
+```
+
+The CE's married-with-children group includes couples whose children are all
+adults, who spend \$129 a year on childcare. Restricting to families with a
+child under 18 widens the gap to $-0.84$ points, so the headline is, if
+anything, conservative. Within families the differences are larger than
+between families and anyone else: married couples whose oldest child is 6 to
+17 are furthest below single households ($-1.17$), and one-parent households
+are not below them at all ($+0.14$).
+
+![Cumulative gaps for every comparison group and family definition, with 95 percent sampling intervals.](`r fig("f19_definitions_comparators.png")`){#fig-whom}
 
 ### Where the gap comes from
 
@@ -274,39 +346,123 @@ On that basis the December 2019 to July 2026 gap splits roughly in half.
 Housing is one half. Single-person and other households put 35.9 percent of
 spending into shelter against 29.6 percent for families; the owners'
 equivalent rent weights are almost the same (22.1 and 22.7 percent), so the
-difference is rent, 12.7 against 5.3. Rent contributes $-0.26$ points. The
-other half is the non-housing mix: education $-0.18$ (families' share is 1.3
-points higher, and tuition rose 14 percent against 30 overall), apparel
-$-0.11$, recreation goods $-0.10$, tobacco $-0.09$ and electricity $-0.07$
-against gasoline $+0.18$ and food $+0.08$.
+difference is rent, 12.7 against 5.3. Rent contributes $-0.26$ points
+($\pm 0.04$ at 95 percent, independent errors). The other half is the
+non-housing mix: education $-0.18$ ($\pm 0.05$), recreation goods $-0.10$,
+tobacco $-0.09$ and electricity $-0.07$, against gasoline $+0.18$
+($\pm 0.10$). Vehicle purchases carry large CE sampling error ($-0.08 \pm
+0.28$), so no vehicle attribution is supported in either direction.
 
-Childcare is the instructive case. Families carry five times the weight single
-households do, 1.6 percent against 0.3, yet it contributes nothing: CPI day
-care and preschool rose 29.8 percent against 29.9 for all items. Day care has
-tracked services generally since 2010 (2.6 percent a year in the 2010s against
-2.6 for all services). The childcare problem families describe is real, and it
-is the size of the bill: married couples whose oldest child is under 6 average
-\$5,586 a year, 6.4 percent of spending, and that average includes families
-who pay nothing.
+The education term is mostly parents of college-age children. It is $-0.27$
+for couples whose oldest child is 18 or older and $-0.13$ for families with a
+child under 18. Priced by level, with K-12 tuition on its own CPI series
+rather than a composite dominated by college tuition, the under-18 term is
+$-0.01$. For families with a child under 18, the non-housing tilt that
+lowers their inflation is apparel ($-0.13$), utilities ($-0.07$) and tobacco
+($-0.07$).
+
+Childcare is the instructive case. On the CE's childcare items, families carry
+about eight times the weight single households do, 1.6 percent of the basket
+against 0.2 (twelve times for families with a child under 18), yet childcare
+contributes nothing: CPI day care and preschool rose 29.8 percent against 29.9
+for all items. Day care has tracked services generally since 2010 (2.6 percent
+a year in the 2010s against 2.6 for all services). The childcare problem
+families describe is real, and it is the size of the bill: married couples
+whose oldest child is under 6 average \$5,586 a year, 6.4 percent of spending,
+and that average includes families who pay nothing.
 
 The same forces operate in ordinary years. From December 2014 to December 2019
-the gap was $-1.05$ points: rent $-0.68$ (rent rose 19.9 percent against 9.1
-overall), vehicles and gas $-0.22$ as car prices fell, childcare $+0.07$.
-Housing has economies of scale, which is why the shares differ: it takes 40
-percent of a one-person household's spending and 31 percent of a four-person
-household's.
+the gap was $-1.05$ points, clearly outside sampling error: rent $-0.68$ (rent
+rose 19.9 percent against 9.1 overall), vehicles and gas $-0.22$ as car prices
+fell, childcare $+0.07$. Housing has economies of scale, which is why the
+shares differ: it takes 40 percent of a one-person household's spending and 31
+percent of a four-person household's.
 
 ![Mean contribution to the twelve-month gap by category, 2020 to 2026.](`r fig("f11_gap_contributions.png")`){#fig-contrib}
 
-### Two episodes, with opposite signs
+### The 2021-22 episode, tested once
 
-A period average can hide offsetting episodes. On the headline basket the gap
-exceeds 1.96 sampling standard errors for 17 months from April 2021 to August
-2022, with families *higher* by a mean of $+0.43$ points (peak $+0.60$), driven by
-vehicles, food and gasoline. It then runs the other way for 39 months from
-November 2022 to February 2026, mean $-0.32$ (peak $-0.55$), as rents caught up.
-Window averages are $+0.27$, $-0.40$ and $-0.11$ points for 2021-22, 2023-24
-and 2025-26. The latest months are back near zero.
+```{r windows}
+wint |>
+  filter(variant == "headline", basket == "oer", g1 == "F1", g2 == "10") |>
+  transmute(Window = paste(format(from, "%b %Y"), "to", format(to, "%b %Y")),
+            `Gap (pp)` = gap, `SE, independent` = se_indep, `SE, worst case` = se_bound,
+            `p, independent` = pfmt(p_indep), `p, worst case` = pfmt(p_bound)) |>
+  kable(digits = 2, caption = "One test per window: cumulative gap, families with children minus single-person and other consumer units, headline basket.")
+```
+
+The 12-month gap was positive from April 2021 to August 2022, peaking at
+$+0.60$. A run of positive 12-month readings overstates the evidence, because
+overlapping 12-month windows share most of their data. Tested once over the
+window, December 2020 to December 2022, families' prices rose 0.23 points
+more, which is not distinguishable from zero ($p = 0.13$ with independent
+errors). The one precisely estimated piece is rent ($+0.12$), which lagged
+other prices while single households carry more of it. Vehicles and gasoline
+contribute as much ($+0.19$) but with a 95 percent interval of $\pm 0.25$.
+The reversal is not in doubt: from December 2022 to December 2024 families ran
+0.65 points below single households, significant under either convention,
+led by rent ($-0.36$). Since December 2024 the gap is zero.
+
+### How much the answer depends on the index formula {#sec-formula}
+
+The headline follows CPI practice: two-year-old CE weights, price-updated, in
+a Laspeyres formula. The lag is a production constraint that a retrospective
+study does not need, and it prices 2022 and 2023 with pandemic-era 2020 and
+2021 spending. A Törnqvist index on adjacent CE years' expenditure shares,
+the superlative concept behind the C-CPI-U, removes both the lag and the
+fixed-basket formula.
+
+```{r formula}
+MLAB <- c(lasp_lag2 = "Laspeyres, 2-year-old weights (headline)",
+          lasp_lag1 = "Laspeyres, 1-year-old weights",
+          lasp_lag0 = "Laspeyres, same-year weights",
+          tornqvist = "Tornqvist, adjacent CE years")
+wtim |>
+  filter(variant == "headline", basket == "oer", method %in% names(MLAB),
+         from %in% as.Date(c("2014-12-01", "2019-12-01")), to %in% as.Date(c("2019-12-01", "2024-12-01"))) |>
+  select(method, from, to, group, cum) |>
+  pivot_wider(names_from = group, values_from = cum) |>
+  transmute(Window = paste(format(from, "%b %Y"), "to", format(to, "%b %Y")),
+            Method = MLAB[method], `All CUs (%)` = `01`,
+            `Families minus single/other` = F1 - `10`, `Families minus all CUs` = F1 - `01`,
+            `Families minus childless couples` = F1 - `03`) |>
+  arrange(Window, match(Method, MLAB)) |>
+  kable(digits = 2, caption = "Cumulative gaps (pp) under four weight and formula choices, headline basket. Contemporaneous weights end with the 2024 CE.")
+```
+
+Over December 2019 to December 2024 the family-minus-single gap is $-0.47$ on
+the Törnqvist against $-0.67$ on the headline formula, and $-0.47$ against
+$-0.69$ extended to July 2026. The sign holds and the magnitude falls by about
+a third. Against married couples without children, families move to $+0.36$.
+Before 2020 the formula barely matters ($-0.99$ against $-1.05$). Most of the
+difference sits in the 2023 link, which the headline prices with 2021 CE
+weights; the shelter-weight gap between the groups is 6.2 to 6.7 points under
+every method, so fresher weights shrink the gap through other categories. For
+all households the Törnqvist runs 0.41 points below the Laspeyres over
+2019-2024, the same sign as BLS's C-CPI-U minus CPI-U ($-1.35$) and smaller,
+as it should be when substitution is measured across 34 categories rather than
+BLS's roughly 7,800 item-area cells.
+
+### Other robustness
+
+```{r robust}
+rob |>
+  filter(pair == "fam", basket %in% c("pm_oer_all_in", "pm_ex_shelter")) |>
+  transmute(`Price input` = recode(price_input, cpiu_nsa = "CPI-U, NSA", cpiw_nsa = "CPI-W, NSA",
+                                   cpiu_sa = "CPI-U, seasonally adjusted"),
+            Basket = BLAB[basket], `Families (%)` = cum_1, `Single/other (%)` = cum_2,
+            `Gap (pp)` = cum_gap) |>
+  kable(digits = 2, caption = "The headline gap under alternative price inputs, December 2019 to July 2026.")
+```
+
+The result does not depend on the price input or the price-updating
+convention. Married couples with children alone show $-0.79$ points, and a
+size cut, four-person minus one-person consumer units, shows $-0.41$ (not
+significant). Splitting five categories into their published sub-items (new
+and used vehicles; vehicle insurance, repair and leasing; tuition by level;
+childcare separately from elder care) moves the gap to $-0.66$. Removing
+vehicle and other finance charges, which CPI excludes as interest, moves it by
+0.02 to 0.04 points.
 
 ### Family status against income and tenure
 
@@ -317,7 +473,7 @@ identical machinery was run on income and tenure.
 dimv |>
   filter(basket == "pm_oer_all_in") |>
   transmute(Cut = gap_label, `Cumulative gap (pp)` = cum_gap,
-            `95% CI, uncorr.` = ci95_indep, `95% CI, corr.` = ci95_corr,
+            `95% CI, independent` = ci95_indep, `95% CI, worst case` = ci95_corr,
             `Mean 12m gap` = mean_gap, `Mean SE` = mean_se) |>
   arrange(desc(abs(`Mean 12m gap`))) |>
   kable(digits = 2, caption = "Every cut on the headline basket, December 2019 to July 2026. Renters minus homeowners has no cumulative figure: the CE tenure workbooks start in 2019, so its headline index starts in 2021.")
@@ -325,9 +481,33 @@ dimv |>
 
 The income gradient is about three times the family gap and runs the other
 way. The lowest income quintile faced 1.84 points more cumulative inflation
-than the highest, and the lowest decile 2.06 points more. The mechanism matches
-the literature in direction [@jaravel2021; @argente2021], led by rent and
-vehicle purchases.
+than the highest, and the lowest decile 2.06 points more. It is led by rent,
+with vehicle purchases, which higher-income households buy more of and whose
+prices lagged, about as large, though vehicle purchases carry large CE
+sampling error. The direction matches the
+literature [@jaravel2021; @argente2021].
+
+BLS publishes its own research index by income quintile, built from CE
+microdata with households ranked by income adjusted for household size
+[@klick2024]. It is the closest external check this method has.
+
+```{r rcpi}
+rcpi |>
+  filter(kind == "cumulative") |>
+  transmute(Window = paste(format(from, "%b %Y"), "to", format(to, "%b %Y")),
+            `BLS R-CPI-I` = bls_rcpi_i, `This paper` = ours_laspeyres,
+            `BLS R-C-CPI-I (chained)` = bls_r_c_cpi_i, `This paper, Tornqvist` = ours_tornqvist) |>
+  kable(digits = 2, caption = "Lowest minus highest income quintile, cumulative gap (pp). BLS ranks households by equivalized income; this paper uses the CE's before-tax income quintiles.")
+```
+
+Over December 2019 to December 2025 the BLS gap is $+2.15$ points against
+$+1.84$ here. The two agree less well before 2020 ($+0.28$ against $+1.27$)
+and year by year (correlation 0.47). The income ranking differs: adjusting for
+household size moves single-person households up the distribution, and this
+paper's lowest quintile carries about twice BLS's excess shelter weight. The
+post-2019 agreement is the one to rely on.
+
+![Lowest minus highest income quintile, December-to-December, against BLS's research index.](`r fig("f20_rcpi_i_benchmark.png")`){#fig-rcpi}
 
 Tenure, by contrast, nearly disappears once owners are priced with rental
 equivalence: renters minus homeowners averages $+0.03$ points on the 12-month
@@ -367,12 +547,12 @@ other consumer units, 28 percent more. (Per capita the ranking reverses, but
 per-capita comparisons ignore economies of scale.)
 
 **"Families" is not one group.** One-parent households faced 0.92 points more
-cumulative inflation than married-couple families on the headline basket, at
-the edge of the sampling interval (95 percent CI $\pm 0.77$ to $\pm 1.73$).
-Baskets that price health insurance with the CPI's retained-earnings index put
-the gap as high as 2.9 points, because one-parent households carry the smallest
-health insurance share. They devote 43.0 percent of consumption to food at
-home, utilities and shelter against 36.6 percent for married-couple families.
+cumulative inflation than married-couple families on the headline basket
+($p = 0.02$ with independent errors, $0.29$ in the worst case). Baskets that
+price health insurance with the CPI's retained-earnings index put the gap as
+high as 2.9 points, because one-parent households carry the smallest health
+insurance share. They devote 43.0 percent of consumption to food at home,
+utilities and shelter against 36.6 percent for married-couple families.
 Pooling the two, as the headline family index does, averages over this.
 
 ![Inflation rates, dollar costs and necessity shares by household type.](`r fig("f14_burden.png")`){#fig-burden}
@@ -386,10 +566,12 @@ dollars and necessity shares instead.
 ## Limitations
 
 1. **The composition channel only.** CPI item indices are common to all
-   households, so the price-faced channel of @kaplan2017 is unreachable.
+   households, so the price-faced channel of @kaplan2017 is unreachable, and
+   it could move the family gap in either direction.
 2. **Sampling error is approximate.** The delta method treats category means as
-   uncorrelated within a group and ignores CE non-sampling error, notably
-   under-reporting.
+   uncorrelated within a CE cell and ignores CE non-sampling error, notably
+   under-reporting. Sub-items without a published standard error borrow their
+   parent's.
 3. **Owners' equivalent rent rests on self-reported rental value**, as the
    CPI's own OER weight does, and is available only from 2012.
 4. **Age is not controlled in the index.** Families with children average 44.3
@@ -398,30 +580,37 @@ dollars and necessity shares instead.
    runs *against* the rent gap rather than explaining it: renting falls
    steeply with age and families are younger, so age predicts families should
    spend more of their budget on rent, and they spend 10.1 points less. The
-   flat files publish no cross-tabs, so the index itself is unconditional.
+   comparison with childless couples in @sec-whom shows age working through
+   medical care in the other direction. The flat files publish no cross-tabs,
+   so the index itself is unconditional.
 5. **Comparison-group composition.** The single-person-and-other category pools
    genuine single-person households with unrelated-adult households, and pools
    the young with the elderly.
-6. **Not run:** the deep (levels 4 to 7) crosswalk, C-CPI-U prices (BLS
-   publishes no item strata), and an age-conditioned comparison (requires
-   microdata).
+6. **Group weights describe a group's aggregate spending**, which gives
+   high-spending households more weight than the typical household in the
+   group.
+7. **Not run:** the full item-level crosswalk, and an age-conditioned or
+   household-weighted comparison, both of which require CE microdata.
 
 ## Conclusion
 
 Families with children did not face higher inflation than single-person
 households over 2019 to 2026. On the index closest to the CPI's own concept
-they faced slightly less, about 0.7 points over six and a half years, because
-single households spend more of their budget on rent in a period when rent
-rose fastest, and families lean toward things whose prices rose slowly. Families were briefly worse off in the 2021-22 goods surge, and
-that reversed.
+they faced slightly less, about 0.7 points over six and a half years, and
+about 0.5 on a superlative index, because single households spend more of
+their budget on housing in a period when housing rose fastest. Against all
+households or childless couples the difference is a few tenths of a point
+either way and not distinguishable from zero. Household type barely moves
+inflation. The 2021-22 stretch when families looked worse off is not
+distinguishable from zero either, and it reversed.
 
 The comparison that matters more is income. On identical machinery the lowest
-income quintile faced 1.8 points more inflation than the highest, roughly three
-times the family gap, through rent, groceries and electricity. The households
-that need attention are identified by income, by rent exposure, and by the
-share of the budget that goes to necessities, where one-parent households look
-more like the bottom of the income distribution than like married-couple
-families.
+income quintile faced 1.8 points more inflation than the highest, close to what
+BLS's own research index shows over the same years, led by rent. The
+households that need attention are identified by income, by housing exposure,
+and by the share of the budget that goes to necessities, where one-parent
+households look more like the bottom of the income distribution than like
+married-couple families.
 
 ## References {.unnumbered}
 

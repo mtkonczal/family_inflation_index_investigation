@@ -1,6 +1,6 @@
 # Methods
 
-Version 0.2, revised 2026-09-23 after a methods review (decisions_log D-27 to D-33).
+Version 0.3, revised 2026-09-23 after two methods reviews (decisions_log D-27 to D-40).
 Vintage of results reported here: 2026-09-23 (CEX through 2024, CPI-U through 2026 M07).
 
 ---
@@ -19,9 +19,12 @@ A group-specific price index decomposes into two channels:
 
 This project measures channel 1. Channel 2 is unreachable with CPI data, because
 CPI item indices are common to all households by construction. Kaplan and
-Schulhofer-Wohl (2017) find channel 2 is large and roughly orthogonal to channel
-1, so **estimates here are a lower bound on total dispersion across household
-types.** State this in any write-up.
+Schulhofer-Wohl (2017) find channel 2 is large at the household level. At the
+level of group means it could widen or narrow a composition gap, so **estimates
+here are the composition channel only, and nothing here signs channel 2.**
+State this in any write-up. (An earlier version called these estimates a lower
+bound on dispersion across household types; that does not follow for a gap
+between group means.)
 
 ## 2. Group definitions
 
@@ -46,7 +49,7 @@ This reproduces the mean expenditure of the pooled population, which a simple
 average would not, since married-with-children CUs outnumber single-parent CUs
 roughly five to one.
 
-**Two cautions on the comparison group.**
+**Cautions on the group definitions.**
 
 - Code 10 pools genuine single-person CUs with unrelated-adult households
   (roommates). It is not "single people."
@@ -55,6 +58,12 @@ roughly five to one.
   family status.** The flat files publish `LB06` and `LB21` (age) only
   marginally, with no cross-tab, so conditioning on age requires CEX PUMD
   microdata. This is the most important unaddressed confound.
+- Code 04 counts children of any age, so it includes married couples whose
+  children are all adults (code 07). Families with a child under 18 are
+  05 + 06 + 09 (D-37).
+- The sign of the family gap is specific to this comparison group. Against all
+  CUs or married couples without children it is within a few tenths of a point
+  either way (D-37).
 
 ## 3. Expenditure scope: CEX is not CPI
 
@@ -208,14 +217,16 @@ residual alongside every estimate.
 
 ### Robustness table, specified before estimation
 
-| Dimension | Variants | Status (D-32) |
+| Dimension | Variants | Status (D-32; review 2, D-35 to D-40) |
 |---|---|---|
 | Shelter | scope_cpi_a; scope_cpi_b with OER; drop owner shelter and renormalize | all run |
-| Crosswalk depth | levels 0-3 (1988-) versus levels 0-7 (2010-) | **not run** |
-| Price input | CPI-U; C-CPI-U (`su`); CPI-W (`cw`) | CPI-W run; C-CPI-U impossible (no item strata published) |
+| Crosswalk depth | levels 0-3 (1988-) versus levels 0-7 (2010-) | full 0-7 crosswalk not run; **targeted split** of childcare, vehicles, vehicle costs, education and finance charges run (D-39) |
+| Price input | CPI-U; C-CPI-U (`su`); CPI-W (`cw`) | CPI-W run; C-CPI-U item strata unpublished, so a **superlative (Tornqvist) upper level** was built instead (D-38) |
+| Weight timing | 2-year lag; 1-year lag; contemporaneous; Tornqvist on adjacent CE years | run (D-38) |
 | Seasonality | NSA 12-month changes; SA monthly | run |
-| Group definition | 04+09 versus 04 alone; `LB05` size cut | run |
+| Group definition | 04+09 versus 04 alone; `LB05` size cut; children under 18 (05+06+09); comparison groups 01, 03 and complements | run (D-37) |
 | Lifecycle | age-conditioned comparison (requires PUMD) | **not run** |
+| External | BLS R-CPI-I income gradient; C-CPI-U | run (D-40) |
 
 The "kill criterion" above compared the gap with the weight-source residual.
 The review found that yardstick answers a different question (level
@@ -364,18 +375,28 @@ correlated weight vintages.
 ### Result
 Headline, December 2019 to July 2026: families with children 29.42 percent,
 single-person and other CUs 30.11 percent, gap -0.69 pp (95% CI +/- 0.37 to
-0.86). Across all nine baskets -0.98 to +0.08 pp. **Families did not face
-higher inflation; they faced slightly lower inflation.** Roughly half is
-shelter (single/other households' share 35.9 against 29.6 percent, shelter
-+33.5 against +27.9 for everything else); the rest is families' tilt toward
-slow-rising categories, tuition above all. Contributions are attributed in
-relative-price form, $(w^F_i - w^N_i)(\pi_i - \bar\pi)$ (D-34).
+0.86, independent / worst-case correlation across survey years; p = 0.11 in
+the worst case). Across all nine baskets -0.98 to +0.08 pp. **Families did not
+face higher inflation than single/other CUs; they faced slightly lower
+inflation.** Against all CUs the gap is -0.20 and against married couples
+without children +0.20, neither distinguishable from zero (D-37). On a
+Tornqvist with contemporaneous weights the headline gap is about -0.47 (D-38).
+
+Roughly half is shelter (single/other households' share 35.9 against 29.6
+percent, shelter +33.5 against +27.9 for everything else). The rest is the
+non-housing mix: education, which is mostly parents of college-age children;
+for families with a child under 18, apparel, utilities and tobacco.
+Contributions are attributed in relative-price form,
+$(w^F_i - w^N_i)(\pi_i - \bar\pi)$ (D-34), with sampling intervals in
+`t42_contrib_se.csv`.
 
 ## 11. Known limitations
 
 1. **Sampling error is approximate.** The flat files have no standard errors;
    the CE workbooks do (2012 on). The delta method treats category means as
    uncorrelated within a group, and does not cover CE non-sampling error.
+   Review 2 rebuilds it from the seven disjoint LB06 cells (D-36), which
+   handles overlapping groups and adds a worst-case bound across vintages.
 2. **Age confound.** Unaddressed. See section 2.
 3. **Tenure is the dominant budget difference,** not children. In 2024 the
    rented dwellings share is 5.8 percent for families against 16.5 percent for

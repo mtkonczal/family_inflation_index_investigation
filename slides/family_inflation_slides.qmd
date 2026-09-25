@@ -139,7 +139,7 @@ We measure one mechanism: whether the *mix* of what a household buys gives it a 
 The **Consumer Expenditure Survey** is BLS's survey of household spending. We use its published annual averages by household type, the same survey BLS uses to weight the CPI.
 
 ::: {.callout-box}
-"Families with children" pools married couples with children (30.3 million households in 2024) and single parents (6.2 million), weighted by how many households are in each. The comparison group is single-person and other households (64.4 million).
+"Families with children" pools married couples with children of any age (30.3 million households in 2024) and single parents with a child under 18 (6.2 million), weighted by how many households are in each. The main comparison group is single-person and other households (64.4 million); we also check against all households and married couples without children.
 :::
 
 - 41 spending categories, every year from 1988 to 2024
@@ -185,23 +185,33 @@ Built this way, our all-household index tracks official CPI to within 0.1 percen
 | Single-person and other | **+30.1%** |
 | **Gap** | **−0.7 pts** |
 
-About 0.1 point a year, and in families' favor. Survey error is about ±0.4 to ±0.9 points over the period.
+About 0.1 point a year, and in families' favor. Survey error is about ±0.4 to ±0.9 points over the period, so the gap sits at the edge of it.
 :::
 
 ::::
 
 ::: {.callout-box}
-**No.** Families with children did not face higher inflation. Nine ways of defining the basket, three price sources and two family definitions all put families at or below single households.
+**No.** Families with children did not face higher inflation. Nine ways of defining the basket, three price sources, three family definitions and two index formulas all put families at or below single households.
 :::
 
 ---
 
-## 2021 was different {#two-waves}
+## Compared with whom? {#comparators}
+
+![](`r fig_slide("comparators_slide.png")`){.r-stretch}
+
+::: {.chart-note}
+Families come out lower only against single-person households, who spend more of their budget on housing. Against all households the gap is −0.2 points; against married couples without children, who spend more on slow-rising medical care, it is +0.2. Neither is outside the margin of error. **Household type barely moves inflation.**
+:::
+
+---
+
+## 2021-22: a blip, then a reversal {#two-waves}
 
 ![](`r fig_slide("gap12_slide.png")`){.r-stretch}
 
 ::: {.chart-note}
-Twelve-month inflation, families minus single households, with a 95% margin of error. From April 2021 to August 2022 families ran up to 0.6 points hotter on cars, gas and groceries. From late 2022 rent took over and singles ran hotter for three years. Today the gap is close to zero.
+Twelve-month inflation, families minus single households, with a 95% margin of error. From April 2021 to August 2022 families ran up to 0.6 points hotter, but over those two years the difference added up to +0.2 points, too small to separate from survey error. From late 2022 rent took over and singles ran clearly hotter, by 0.65 points over 2023-24. Today the gap is zero.
 :::
 
 ---
@@ -222,7 +232,7 @@ Contribution of each spending area to the gap. From 2014 to 2019, before COVID, 
 
 ::: {.chart-note}
 ::: {.callout-box}
-Same method, same years. The lowest-income tenth of households saw prices rise 2.1 points more than the top tenth. The family gap is a third that size and runs the other way.
+Same method, same years. The lowest-income tenth of households saw prices rise 2.1 points more than the top tenth. The family gap is a third that size and runs the other way. BLS's own research index by income finds a similar gap: +2.1 points for the bottom versus top fifth, Dec 2019 to Dec 2025, against our +1.8.
 :::
 :::
 
@@ -245,7 +255,7 @@ The rate depends on budget *shares*, and the shares are close:
 ![](`r fig_slide("scatter_slide.png")`){.r-stretch}
 
 ::: {.chart-note}
-A category moves the gap when families buy more of it **and** its price rose faster than everything else. Education (tuition up 14% against 30% overall) pulled families down. Gasoline pushed them up. Rent, far to the left, pulled them down most. Child care sits on the zero line.
+A category moves the gap when families buy more of it **and** its price rose faster than everything else. Rent, far to the left, pulled families down most. Education (tuition up 14% against 30% overall) pulled them down too, but that is mostly parents of college-age children. Gasoline pushed them up. Child care sits on the zero line.
 :::
 
 ---
@@ -299,11 +309,12 @@ Married families pay twice the dollar increase of single households at a slightl
 
 ## What this does not cover {#limits}
 
-- **Prices paid.** Everyone is charged the same price for the same item here. Research using scanner data finds households pay quite different prices within an item, and that channel is large.
+- **Prices paid.** Everyone is charged the same price for the same item here. Scanner-data research finds households pay quite different prices within an item.
 - **Cash versus CPI housing costs.** Owners are charged their home's rental value, as in CPI. An owner with a locked-in mortgage saw cash housing costs rise less than that; a recent buyer saw them rise more.
-- **Age.** Families average 44 years old, single households 53. The published tables don't allow controlling for age.
-- **Survey error.** Margins of error come from BLS standard errors and are approximate.
+- **Age.** Families average 44 years old, single households 53. The published tables don't allow controlling for age, and the comparison with childless couples shows age matters through medical care.
+- **Survey error.** Margins of error come from BLS standard errors. Under the most cautious assumption about errors across years, the headline gap is not distinguishable from zero.
+- **Index formula.** The headline uses two-year-old spending weights, as the CPI does. With up-to-date weights (as in BLS's chained CPI) the gap is a third smaller: −0.5, not −0.7.
 
 ::: {.notes}
-Revised 2026-09-23. The earlier version headlined 25.32% vs 25.26%. That basket priced health insurance premiums with a CPI index that fell 19% while CPI rose 30%, and left out owners' housing. Methods and decisions: docs/decisions_log.md D-27 to D-34.
+Revised 2026-09-23 after two methods reviews. The earlier version headlined 25.32% vs 25.26%. That basket priced health insurance premiums with a CPI index that fell 19% while CPI rose 30%, and left out owners' housing. Review 2 added comparison groups, family definitions, a superlative index and a BLS benchmark (docs/review_checks.md). Methods and decisions: docs/decisions_log.md D-27 to D-40.
 :::

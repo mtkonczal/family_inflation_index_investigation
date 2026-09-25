@@ -434,7 +434,10 @@ gap_se_12m <- function(wF, wN, rseF, rseN, pi12, lag_years = 2L) {
 #' samples, so their errors are neither independent nor identical. Both
 #' bounds are returned: `se_indep` (uncorrelated across vintages) and
 #' `se_corr` (perfectly correlated).
-cum_se <- function(index, weights, prices, rse, d0, d1) {
+#'
+#' @param lag_years Weight vintage lag; must match the lag the index was built
+#'   with, or each link is paired with the wrong vintage's RSEs.
+cum_se <- function(index, weights, prices, rse, d0, d1, lag_years = 2L) {
   idx <- index[order(index$date), c("date", "index")]
   cuts <- c(d0, seq(as.Date(sprintf("%s-12-01", format(d0, "%Y"))), d1, by = "year"), d1)
   cuts <- sort(unique(cuts[cuts >= d0 & cuts <= d1]))
@@ -448,7 +451,7 @@ cum_se <- function(index, weights, prices, rse, d0, d1) {
     pb <- prices[prices$date == b, c("cat_id", "index")]
     r <- dplyr::inner_join(pa, pb, by = "cat_id", suffix = c("_a", "_b")) |>
       dplyr::transmute(cat_id, r = index_b / index_a - 1)
-    vy <- as.integer(format(first_m, "%Y")) - 2L
+    vy <- as.integer(format(first_m, "%Y")) - lag_years
     z <- w |> dplyr::inner_join(r, by = "cat_id") |>
       dplyr::left_join(dplyr::filter(rse, year == vy) |> dplyr::select(cat_id, rse), by = "cat_id")
     if (anyNA(z$rse)) return(c(se_indep = NA_real_, se_corr = NA_real_))
