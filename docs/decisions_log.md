@@ -721,7 +721,7 @@ Three defects in `08_burden.R`.
 | Seasonality, SA monthly | run, `09_robustness.R` |
 | Group: 04+09 vs 04 alone | run (`married_kids` in `06`) |
 | Group: LB05 size cut | run, `07_dimension_indices.R` |
-| Lifecycle, age-conditioned | **not identified** in the published tables |
+| Lifecycle, age-conditioned | **not run**: cannot be estimated from the published tables |
 
 The word "pre-registered" is dropped from the write-ups: the specification was
 written down before estimation, but not deposited anywhere, and half of it was
@@ -776,7 +776,7 @@ half the non-housing mix (education -0.18, apparel -0.11, gasoline +0.18). In
 ---
 
 ## D-35. Second review: eight checks run beside the headline, headline unchanged
-**Date:** 2026-09-23 | **Phase:** review 2 | **Status:** results in `docs/review_checks.md`
+**Date:** 2026-09-23 | **Phase:** review 2 | **Status:** results in `output/tables/t00i_review_checks.txt` and the paper
 
 `R/11_review_checks.R` (checks 1-6, 8) and `R/12_external_benchmarks.R`
 (check 7) answer a second methods review. Several results bear on the
@@ -981,5 +981,5 @@ oldest child; code 07 includes both couples with only adult children and
 couples with an adult oldest child and a younger minor. The published tables
 cannot separate these cases or isolate exactly age 18. K1's -0.84 pp result
 therefore describes only this narrower proxy. An exact "at least one resident
-child aged 18 or younger" group is not identified in these published tables.
+child aged 18 or younger" group cannot be isolated in these published tables.
 No exact-cutoff estimate has been produced.

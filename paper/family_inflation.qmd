@@ -1,7 +1,7 @@
 ---
 title: "Do Families Face Higher Inflation?"
 subtitle: "A group-specific price index for households with children"
-author: "Mike Konczal, Economic Security Project"
+author: "Vibe-Coded by Claude Opus 5.5 · Mike Konczal"
 date: last-modified
 format:
   html:
@@ -62,30 +62,34 @@ pfmt <- function(p) ifelse(p < 0.001, "<0.001", sprintf("%.3f", p))
 
 ## Abstract {.unnumbered}
 
-Did the goods and services families buy make their inflation higher? This paper
-combines Consumer Expenditure Survey spending shares with CPI-U item prices
-to measure that part of the difference. Owner housing is priced with owners'
-equivalent rent. From December 2019 to July 2026, the family basket rose
-29.42 percent; the single-person-and-other basket rose 30.11 percent. The
-$-0.69$ percentage-point gap has an approximate 95 percent sampling margin
-of $\pm 0.41$ points under independent survey-year errors and $\pm 0.95$
-points under the cross-year correlation bound.
+Families with children buy a different mix of goods and services than other
+households. Did that mix give them higher inflation? This paper prices
+Consumer Expenditure Survey spending shares for each household type with
+CPI-U item indexes, with owner housing priced by owners' equivalent rent.
+**The family basket did not have higher inflation than the
+single-person-and-other basket.** From December 2019 to July 2026 the two
+rose 29.42 and 30.11 percent. The $-0.69$ percentage-point gap has an
+approximate 95 percent sampling margin of $\pm 0.41$ points under
+independent survey-year errors and $\pm 0.95$ points under the cross-year
+correlation bound. An annual-share Törnqvist index gives about $-0.5$.
 
-The negative gap predates COVID-19. On the same basket the family gap was $-1.05$
-points from December 2014 to December 2019. A longer index excluding shelter
-puts the 2010-19 gap near zero ($+0.07$); the baskets are not directly
-comparable. For 2019-26, married couples with children and a narrower
-minor-child proxy both show negative gaps against single-person and other
-households. The one-parent estimate is $+0.14$ points and imprecise. Against
-all households or married couples without children, the pooled family's gap
-is only $-0.20$ or $+0.20$ points.
+The negative gap predates COVID-19: on the same basket it was $-1.05$ points
+from December 2014 to December 2019. For 2019-26, married couples with
+children and a narrower minor-child proxy both show negative gaps against
+single-person and other households. The one-parent estimate is $+0.14$ points
+and imprecise. Against all households or married couples without children,
+the pooled family's gap is only $-0.20$ or $+0.20$ points.
 
-Shelter explains roughly half the 2019-26 family-minus-single/other gap:
-single-person and other households devote 36 percent of their basket to it,
-against 30 percent for families. Childcare prices rose at about the overall
+Shelter explains roughly half the 2019-26 family-minus-single/other gap.
+Single-person and other households devote 36 percent of their basket to it,
+against 30 percent for families, and shelter rose 33.5 percent against 27.9
+percent for everything else. Childcare prices rose at about the overall
 rate, so its contribution is near zero despite families' much larger
-childcare share. These indexes hold CPI item price changes common across
-groups; they do not measure differences in prices paid within an item.
+childcare share. The same method finds an income gradient about three times
+larger and of opposite sign, close to what BLS's research index by income
+quintile shows after 2019. These indexes hold CPI item price changes common
+across groups; they do not measure differences in prices paid within an
+item.
 
 ## The question, and why the answer is not obvious
 
@@ -240,8 +244,10 @@ share respondents.
 
 **Weight-source discrepancy.** Rebuilding the all-households index with CPI's
 published relative importance, while holding the basket, formula and prices
-fixed, measures the effect of using different weights. It is reported
-alongside the group gap; it is not a sampling-error estimate.
+fixed, measures the effect of using different weights. Most of that effect is
+common to every CE group and differences out of a gap, so it is reported
+alongside the gap rather than used as a test. It is not a sampling-error
+estimate.
 
 ## Results
 
@@ -321,9 +327,10 @@ keeps married couples whose oldest child is under 18 and one-parent CUs with
 a minor has a $-0.84$ point gap. This proxy cannot recover all families with
 a resident minor: couples whose oldest child is 18 or older may also have a
 younger child. The exact age-18 boundary is likewise unavailable in these
-tables. Married couples whose oldest child is 6 to 17 have a $-1.17$ point
-gap against single-person and other households. The one-parent estimate is
-$+0.14$ points, with a wide sampling interval. No reported family subgroup
+tables. The spread within families is wider than the gap between families
+and anyone else. Married couples whose oldest child is 6 to 17 have a $-1.17$
+point gap against single-person and other households. The one-parent estimate
+is $+0.14$ points, with a wide sampling interval. No reported family subgroup
 has a clearly positive gap.
 
 ![Cumulative gaps for every comparison group and family definition, with 95 percent sampling intervals.](`r fig("f19_definitions_comparators.png")`){#fig-whom}
@@ -379,10 +386,14 @@ percent, and the comparison group had the larger rent share. Vehicles and gas
 contributed $-0.22$ as car prices fell; childcare contributed $+0.07$.
 
 A longer series excluding shelter runs from December 2010 to December 2019.
-Its family gap is $+0.07$ points, near zero. It is a different basket, so the
-two estimates should not be treated as a continuous series. Neither shows a
-large pre-pandemic family inflation premium. A negative headline gap was
-already present before the pandemic.
+Its family gap is $+0.07$ points, with childcare and education each
+contributing about $+0.28$. It is a weaker check than the headline. It
+excludes shelter, the category that drove the 2014-19 gap, so the right
+comparison is the medical-pooled ex-shelter basket's $-0.22$ for 2014-19, not
+the headline $-1.05$. It prices medical care without pooling, the treatment
+that biases the 2019-26 ex-shelter baskets, although medical contributes
+about zero in this window. It also has no sampling interval. It shows no
+sizable pre-pandemic family premium outside shelter.
 
 ### The 2021-22 episode, tested once
 
@@ -593,7 +604,10 @@ group, not shares of reported income.
 6. **Group weights describe a group's aggregate spending**, which gives
    high-spending households more weight than the typical household in the
    group.
-7. **Population coverage.** Published CE group tables cover the national CE
+7. **Not run:** the full item-level crosswalk, an age-conditioned
+   comparison, and a household-weighted index. None can be estimated from
+   the published tables used here.
+8. **Population coverage.** Published CE group tables cover the national CE
    universe, while CPI-U weights and prices target urban consumers. The
    all-consumer-unit aggregate fit does not establish that this coverage
    difference cancels in the family gap.
@@ -606,16 +620,20 @@ sampling interval includes zero under the cross-year correlation bound. It
 remains negative with a Törnqvist formula and when married couples with
 children are examined alone; the one-parent estimate is near zero and
 imprecise. Before the pandemic the headline gap was $-1.05$ points in
-2014-19. A longer ex-shelter series gives a near-zero gap for 2010-19.
+2014-19.
 
 The 2019-26 gap largely reflects the comparison group's greater shelter
 share while shelter prices rose faster than other prices. Families differ
 little from all households or childless married couples on the full basket.
-The income gradient is larger: the lowest income quintile's basket rose 1.84
-points more than the highest's. For policy purposes, the price index should
-be read alongside dollar costs and spending shares, especially for one-parent
-households. It does not measure the prices households pay within CPI items or
-their financial hardship.
+
+Income matters more than family type. The lowest income quintile's basket
+rose 1.84 points more than the highest's, close to BLS's own research index
+over 2019-25 ($+2.15$), led by rent. On necessity spending, one-parent
+households (43 percent of consumption) look more like the lowest income
+quintile (46 percent) than like married-couple families (37 percent). Those
+patterns point attention toward income, housing exposure and necessity
+spending. A price index cannot establish hardship, and this one does not
+measure the prices households pay within CPI items.
 
 ## References {.unnumbered}
 

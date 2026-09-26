@@ -43,3 +43,6 @@ slides/_fonts_embedded.scss
 
 # --- Local tooling ---
 .claude/
+
+# --- Run logs (regenerate by re-running R/) ---
+logs/

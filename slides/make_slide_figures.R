@@ -15,7 +15,7 @@ shares <- readr::read_csv(file.path(DIR_DER, "cex_shares_long.csv"),
                           show_col_types = FALSE)
 LATEST <- max(shares$year)
 
-# C3 palette (Economic Security Project): soft green accent, warm navy anchor.
+# Slide palette: soft green accent, warm navy anchor.
 # The deck is C3, so Warm Red (the C4 accent) is not used.
 ESP_NAVY <- "#2c3254"; ESP_GREEN <- "#70ad8f"; ESP_BEIGE <- "#f4f2e4"
 ESP_GOLD <- "#ebc382"; ESP_PURPLE <- "#472b51"; ESP_TEXT <- "#3c4164"
@@ -370,3 +370,65 @@ p_defs <- ggplot2::ggplot(defs, ggplot2::aes(gap, group)) +
   ggplot2::theme(panel.grid.major.y = ggplot2::element_blank(),
                  axis.text.y = ggplot2::element_text(colour = ESP_TEXT, size = 13))
 save_slide(p_defs, "family_definitions_slide.png", 11.5, 5.7)
+
+# --- child care prices since 2010 (intro intuition slide) ------------------
+# CPI-U NSA, U.S. city average, Dec 2010 = 100: day care and preschool
+# (SEEB03), all services (SAS), all items (SA0). BLS published no October 2025
+# CPI, so that month is NA and dropped; the lines connect across it.
+source(file.path(PROJ, "R", "functions", "index_build.R"))
+cc_codes <- c(SEEB03 = "Day care", SAS = "All services", SA0 = "All items")
+cc <- cpi_national(readRDS(file.path(DIR_RAW, "cpi_raw.rds")))
+cc <- cc[cc$item_code %in% names(cc_codes) & cc$date >= as.Date("2010-12-01") &
+           !is.na(cc$value), c("item_code", "date", "value")] |>
+  dplyr::group_by(item_code) |> dplyr::arrange(date, .by_group = TRUE) |>
+  dplyr::mutate(idx = 100 * value / value[date == as.Date("2010-12-01")],
+                series = cc_codes[item_code]) |>
+  dplyr::ungroup()
+stopifnot(all(table(cc$item_code) > 180))
+cc_end <- cc |> dplyr::group_by(series) |> dplyr::filter(date == max(date)) |> dplyr::ungroup()
+message(sprintf("  childcare chart, %s: %s", format(max(cc$date), "%Y-%m"),
+                paste(sprintf("%s %+.1f%%", cc_end$series, cc_end$idx - 100), collapse = "; ")))
+cc_col <- c("Day care" = ESP_GREEN, "All services" = ESP_NAVY, "All items" = "#9a9fb5")
+p_cc10 <- ggplot2::ggplot(cc, ggplot2::aes(date, idx, colour = series)) +
+  ggplot2::geom_line(ggplot2::aes(linewidth = series == "Day care")) +
+  ggplot2::scale_linewidth_manual(values = c(`TRUE` = 1.6, `FALSE` = 1.0), guide = "none") +
+  ggplot2::geom_text(data = cc_end,
+                     ggplot2::aes(label = sprintf("%s  %+.0f%%", series, idx - 100)),
+                     hjust = 0, nudge_x = 60, size = 4.6, fontface = "bold",
+                     vjust = c("All items" = 0.5, "All services" = -0.3,
+                               "Day care" = 1.3)[cc_end$series]) +
+  ggplot2::scale_colour_manual(values = cc_col, guide = "none") +
+  ggplot2::scale_x_date(breaks = as.Date(sprintf("%d-01-01", seq(2012, 2026, 2))),
+                        date_labels = "%Y", expand = ggplot2::expansion(mult = c(0.01, 0.01))) +
+  ggplot2::coord_cartesian(clip = "off") +
+  ggplot2::labs(x = NULL, y = "CPI price index, Dec 2010 = 100") +
+  theme_slide() +
+  ggplot2::theme(plot.margin = ggplot2::margin(10, 190, 10, 10))
+save_slide(p_cc10, "childcare_since2010_slide.png", 11, 5.4)
+
+# --- method check against BLS's research index by income (R-CPI-I) --------
+# Cumulative inflation Dec 2019 to Dec 2025, lowest and highest income fifths.
+# BLS ranks households by equivalized income; this project uses the CE's
+# before-tax income quintiles (t45, from R/12_external_benchmarks.R).
+b45 <- readr::read_csv(file.path(DIR_TAB, "t45_rcpi_i_benchmark.csv"), show_col_types = FALSE) |>
+  dplyr::filter(kind == "cumulative", from == as.Date("2019-12-01"), to == as.Date("2025-12-01"))
+stopifnot(nrow(b45) == 1)
+bls_d <- tibble::tibble(
+  group  = factor(rep(c("Lowest-income fifth", "Highest-income fifth"), each = 2),
+                  levels = c("Lowest-income fifth", "Highest-income fifth")),
+  source = factor(rep(c("BLS research index", "This project"), 2),
+                  levels = c("BLS research index", "This project")),
+  value  = c(b45$bls_q1, b45$ours_q1, b45$bls_q5, b45$ours_q5))
+message(sprintf("  BLS check: gap BLS %+.2f, ours %+.2f", b45$bls_rcpi_i, b45$ours_laspeyres))
+p_bls <- ggplot2::ggplot(bls_d, ggplot2::aes(group, value, fill = source)) +
+  ggplot2::geom_col(position = ggplot2::position_dodge(width = 0.8), width = 0.72) +
+  ggplot2::geom_text(ggplot2::aes(label = sprintf("%.1f%%", value)),
+                     position = ggplot2::position_dodge(width = 0.8), vjust = -0.5,
+                     size = 5, fontface = "bold", colour = ESP_TEXT) +
+  ggplot2::scale_fill_manual(values = c(ESP_NAVY, ESP_GREEN)) +
+  ggplot2::scale_y_continuous(labels = function(x) paste0(x, "%"),
+                              expand = ggplot2::expansion(mult = c(0, 0.12))) +
+  ggplot2::labs(x = NULL, y = "Cumulative inflation, Dec 2019 to Dec 2025") +
+  theme_slide() +
+  ggplot2::theme(axis.text.x = ggplot2::element_text(size = 15, colour = ESP_TEXT))
+save_slide(p_bls, "bls_check_slide.png", 11, 5.2)

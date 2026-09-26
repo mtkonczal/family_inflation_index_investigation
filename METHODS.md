@@ -62,7 +62,7 @@ roughly five to one.
   keeps married couples whose **oldest** child is under 18 and one-parent CUs
   with at least one child under 18. It misses married couples with an adult
   oldest child and a younger minor, and it cannot include exactly age 18
-  without also including older children. The published tables cannot identify
+  without also including older children. The published tables cannot isolate
   an exact resident-child group (D-37).
 - The sign of the family gap is specific to this comparison group. Against all
   CUs or married couples without children it is within a few tenths of a point
@@ -228,7 +228,7 @@ residual alongside every estimate.
 | Weight timing | 2-year lag; 1-year lag; contemporaneous; Tornqvist on adjacent CE years | run (D-38) |
 | Seasonality | NSA 12-month changes; SA monthly | run |
 | Group definition | 04+09 versus 04 alone; `LB05` size cut; children under 18 (05+06+09); comparison groups 01, 03 and complements | run (D-37) |
-| Lifecycle | age-conditioned comparison | **not identified in the published tables** |
+| Lifecycle | age-conditioned comparison | **not run: cannot be estimated from the published tables** |
 | External | BLS R-CPI-I income gradient; C-CPI-U | run (D-40) |
 
 The "kill criterion" above compared the gap with the weight-source residual.
@@ -238,8 +238,8 @@ error; see section 10 and D-28.
 
 ## 8. Adjustment passes (Phase 1b)
 
-`R/04_adjusted_passes.R`. Full results in `docs/phase1b_adjusted_passes.md`,
-rationale in `decisions_log.md` D-12 through D-15.
+`R/04_adjusted_passes.R`. Validation log in `output/tables/t00b_adjusted_validation.txt`,
+rationale in `docs/decisions_log.md` D-12 through D-15.
 
 ### Bases
 Three renormalized baskets, each additive to 100 within itself: `consumption`
@@ -284,7 +284,7 @@ see section 10 for the current specification.
 ## 9. The CEX-to-CPI crosswalk (Phase 2)
 
 `crosswalk/cex_to_cpi.csv`, built and validated by `R/05_build_crosswalk.R`.
-Full results in `docs/phase2_crosswalk.md`, rationale in `decisions_log.md`
+Validation log in `output/tables/t00c_crosswalk_validation.txt`, rationale in `docs/decisions_log.md`
 D-16 through D-22.
 
 66 rows mapping 37 of the 41 categories onto 62 CPI item strata, 12 of them
@@ -337,8 +337,8 @@ against CPI 11.31), not a level disagreement.
 
 ## 10. The index (Phase 3, revised)
 
-`R/06_build_index.R` with `R/functions/index_build.R`. Results in
-`docs/phase3_index.md`, decisions in `decisions_log.md` D-23 through D-33.
+`R/06_build_index.R` with `R/functions/index_build.R`. Validation log in
+`output/tables/t00d_index_validation.txt`, decisions in `docs/decisions_log.md` D-23 through D-33.
 
 ### Aggregation
 Chained Laspeyres with BLS-style price-updated cost weights. For month t in
