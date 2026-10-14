@@ -3,7 +3,7 @@
 Uses reveal's ?print-pdf view in the locally installed Google Chrome and waits
 until every slide has been laid out as a PDF page before printing.
 
-Run from the repo root after copying the rendered deck to slides.html:
+Run from the repo root after copying the rendered deck to family_inflation_metric_slides.html:
     python3 slides/export_pdf.py
 """
 from pathlib import Path
@@ -11,8 +11,8 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "slides.html"
-OUT = ROOT / "slides.pdf"
+SRC = ROOT / "family_inflation_metric_slides.html"
+OUT = ROOT / "family_inflation_metric_slides.pdf"
 
 with sync_playwright() as p:
     browser = p.chromium.launch(channel="chrome")

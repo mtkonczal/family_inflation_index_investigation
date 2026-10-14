@@ -2,8 +2,8 @@
 
 *An experiment, vibe-coded by Claude Opus 5.5 · Mike Konczal*
 
-- **Slides (PDF):** [`slides.pdf`](slides.pdf), viewable directly on GitHub.
-- **Slides (interactive):** [`slides.html`](slides.html). Download it and open it in a browser; it is one self-contained file.
+- **Slides (PDF):** [`family_inflation_metric_slides.pdf`](family_inflation_metric_slides.pdf), viewable directly on GitHub.
+- **Slides (interactive):** [`family_inflation_metric_slides.html`](family_inflation_metric_slides.html). Download it and open it in a browser; it is one self-contained file.
 - **Paper:** [`paper/family_inflation.qmd`](paper/family_inflation.qmd).
 
 *Preliminary; not for quotation.*
@@ -117,7 +117,7 @@ Requires R 4.4+ (`tidyverse`, `tidyusmacro`, `readxl`), Quarto, a
 for f in R/0[1-9]_*.R R/1[0-2]_*.R; do Rscript "$f" || break; done
 Rscript slides/make_slide_figures.R
 (cd paper && quarto render family_inflation.qmd)
-(cd slides && quarto render family_inflation_slides.qmd) && cp slides/family_inflation_slides.html slides.html
+(cd slides && quarto render family_inflation_slides.qmd) && cp slides/family_inflation_slides.html family_inflation_metric_slides.html
 python3 slides/export_pdf.py
 ```
 
