@@ -1,6 +1,6 @@
 ---
 title: "Do Families Face Higher Inflation?"
-author: "Vibe-Coded by Claude Opus 5.5 &nbsp;·&nbsp; Mike Konczal"
+author: "An experiment, vibe-coded by Claude Opus 5.5 &nbsp;·&nbsp; Mike Konczal"
 date: last-modified
 date-format: "MMM D, YYYY"
 format:

@@ -1,6 +1,6 @@
 # Do families face higher inflation?
 
-*Vibe-Coded by Claude Opus 5.5 · Mike Konczal*
+*An experiment, vibe-coded by Claude Opus 5.5 · Mike Konczal*
 
 - **Slides (PDF):** [`slides.pdf`](slides.pdf), viewable directly on GitHub.
 - **Slides (interactive):** [`slides.html`](slides.html). Download it and open it in a browser; it is one self-contained file.

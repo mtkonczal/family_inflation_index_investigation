@@ -1,7 +1,7 @@
 ---
 title: "Do Families Face Higher Inflation?"
 subtitle: "A group-specific price index for households with children"
-author: "Vibe-Coded by Claude Opus 5.5 · Mike Konczal"
+author: "An experiment, vibe-coded by Claude Opus 5.5 · Mike Konczal"
 date: last-modified
 format:
   html:
